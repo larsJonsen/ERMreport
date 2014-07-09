@@ -1,0 +1,324 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[memoir, erm.sty]{ERM report}
+#  \DeclareCategory{Reports}
+# Author: Lars Ravn-Jonsen <lrj@sam.sdu.dk>
+# Based on Memoir textclass definition file
+# feel free to contribute missing features!
+
+Preamble
+	 \usepackage{erm}
+	 \usepackage{hyperref}
+EndPreamble
+
+
+Format 49
+Columns            1
+Sides              2
+SecNumDepth        2
+TocDepth           1
+DefaultStyle       Standard
+PageStyle          headings
+Provides makeidx   1
+Provides framed    1
+Provides subscript 1
+# Memoir has support for line spacing, but uses different names from
+# what setspace.sty does.  
+Provides SetSpace  1
+TitleLatexName  "mrmTitlepage" 
+
+
+ClassOptions
+	FontSize             9|10|11|12|14|17
+	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
+	Other                oldfontcommands
+End
+
+
+Style Standard
+	Category              MainText
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+End
+
+
+Input stdinsets.inc
+Input stdlists.inc
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdsections.inc
+Input stdstarsections.inc
+Input numreport.inc
+
+
+NoStyle Part
+NoStyle Part*  
+
+Style Preface
+	Margin                Static
+	Category              FrontMatter
+	LabelString           "Preface"
+	LabelType             Counter
+	LabelCounter          chapter
+	#TocLevel              0
+	LatexType             Command
+	LatexName             chapter
+	NeedProtect           1
+	NextNoIndent          1
+	ParSkip               0.4
+	TopSep                4
+	BottomSep             0.8
+	ParSep                0.8
+	Align                 Block
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The chapter as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The chapter as it appears in the running headers"
+		Requires      1
+	EndArgument
+	Font
+	  Series              Bold
+	  Size                Huge
+	EndFont
+	HTMLTag               h1
+End      	
+
+Style Chapter
+	LatexName         mrmChapter
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The chapter as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The chapter as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+Style Chapter*
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The chapter as it appears in the table of contents"
+	EndArgument
+End
+
+
+Style Section
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The section as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The section as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+Style Subsection
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The subsection as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The subsection as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+Style Subsubsection
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The subsubsection as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The subsubsection as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+Style Paragraph
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The paragraph as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The paragraph as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+Style Subparagraph
+	Argument 1
+		LabelString   "Short Title (TOC)|S"
+		Tooltip       "The subparagraph as it appears in the table of contents"
+	EndArgument
+	Argument 2
+		LabelString   "Short Title (Header)"
+		Tooltip       "The subparagraph as it appears in the running headers"
+		Requires      1
+	EndArgument
+End
+
+
+# Style Chapterprecis
+
+# Style Epigraph
+
+# Style Poemtitle
+
+# Style Poemtitle*
+
+
+Input stdtitle.inc
+Input stdstruct.inc
+
+
+Style Bibliography
+	TopSep               4
+	LabelString          "Bibliography"
+	LabelFont
+	  Series             Bold
+	  Size               Huge
+	EndFont
+End
+
+
+Input lyxmacros.inc
+Input stdlayouts.inc
+
+# Style Legend
+
+Style Title
+	LatexName             setTitle
+	Category              Title
+End
+
+Style Date
+	LatexName             setDate
+	LabelString          "Delivery date"
+	LabelType             Static
+	Category              Title
+	LabelFont
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
+	EndFont
+End
+
+Style Author
+	LatexName             setAuthor
+	LabelString          "Author"
+	LabelType             Static
+	Category              Title
+	Argument 1
+		LabelString   "Birthday"
+		Tooltip       "Aditional information e.g. your birthday"
+	EndArgument
+	LabelFont
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
+	EndFont
+
+End
+
+Style Supervisor
+	Margin                Static
+	LatexType             Command
+	Category              Title
+	InTitle               1
+	LatexName             setSupervisor
+	LabelString          "Supervisor"
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	LabelType             Static
+	LabelFont
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
+	EndFont
+End
+
+
+Style Trustpage
+	Margin                Static
+	LatexType             Command
+	Category              Title
+	InTitle               1
+	LatexName             setTrustpage
+	LabelString          "Tro og Love: pdf file navn"
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	LabelType             Static
+	LabelFont
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
+	EndFont
+End
+
+Style Cover
+	Margin                Static
+	LatexType             Command
+	Category              Title
+	InTitle               1
+	LatexName             setCover
+	LabelString          "Alternativ forside: pdf-file-navn"
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	LabelType             Static
+	LabelFont
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
+	EndFont
+End
+
+Float
+	Type                  boks
+	GuiName               Boks
+	Placement             tbp
+	Extension             lob
+	NumberWithin          none
+	Style                 ruled
+	ListName              "List of Boxes"
+	IsPredefined          true
+	UsesFloatPkg          false
+	RefPrefix             box
+End
+
