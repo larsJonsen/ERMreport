@@ -283,11 +283,11 @@
     %%%%%%%%%%%%%%%
 
     mrmChapter
-    setTitle
-    setDate
-    setAuthor
-    setSupervisor
-    setTrustpage
-    setCover
-    mrmTitlepage
+   \newcommand[1]{setTitle}{\def\mrmTitle{#1}}
+   \newcommand[1]{setDate}{\def\mrmDate{#1}}
+   \newcommand[1]{setAuthor}{\def\mrmAuthor{#1}}
+   \newcommand[1]{setSupervisor}{\def\mrmSupervisor{#1}}
+   \newcommand[1]{setTrustpage}{\def\mrmTrustpage{#1}}
+   \newcommand[1]{setCover}{\def\mrmCover{#1}}
+   \newcommand{mrmTitlepage}{}
     boks
