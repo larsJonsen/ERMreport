@@ -3,7 +3,7 @@
 \ProvidesClass{ermreport}[2014/08/01 v0.0 erm report]
 \LoadClassWithOptions{memoir}%[⟨date⟩]
 %% Package
-\RequirePackage{ifthen}%[1994/06/01]
+%\RequirePackage{ifthen}%[1994/06/01]
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 
@@ -113,17 +113,35 @@
   \end{minipage}
   \end{center}
   \vspace*{\fill}
-%  \renewcommand*{\do}[1]{#1 \\}
-%  \dolistloop{\AuthorList} 
 }
-\newcommand{\ermChapter}[1]{%
+
+\def\ermChapter{%
+   \@ifnextchar[%
+     {\ermChapter@i}
+     {\ermChapter@i[]}%
+}
+\def\ermChapter@i[#1]{%
+   \@ifnextchar[%
+     {\ermChapter@ii{#1}}
+     {\ermChapter@ii{#1}[]}%
+}
+\def\ermChapter@ii#1[#2]#3{%
   \ifanappendix
     \relax
   \else
-    \ifnumequal{\value{chapter}}{0}{\mainmatter}{}
+    \ifnum\value{chapter} = 0 \mainmatter \fi
   \fi
-  \chapter{#1}%
+  \chapter[#1][#2]{#3}%   
 }
-%boks
 
+% box enverioment
+ \newcommand{\boxname}{\bfseries Box}
+ \newcommand{\listboxname}{List of boxes}
+ \newlistof{listofboxs}{lob}{\listboxname}
+ \newfloat{boxx}{lob}{\boxname}
+ \newfixedcaption{\fboxcaption}{\fb boks}
+ \newlistentry{boks}{lob}{0}
 
+\newenvironment{boks}%
+  {\begin{boxx}\begin{framed}}
+  {\end{framed}\end{boxx}}
