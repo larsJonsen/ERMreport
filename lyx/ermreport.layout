@@ -24,7 +24,7 @@ Provides subscript 1
 # Memoir has support for line spacing, but uses different names from
 # what setspace.sty does.  
 Provides SetSpace  1
-TitleLatexName  "mrmTitlepage" 
+TitleLatexName  "ermFront" 
 
 
 ClassOptions
@@ -92,7 +92,7 @@ Style Preface
 End      	
 
 Style Chapter
-	LatexName         mrmChapter
+	LatexName         ermChapter
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The chapter as it appears in the table of contents"
