@@ -177,3 +177,37 @@
 \newenvironment{boks}%
   {\begin{boxx}\begin{framed}}
   {\end{framed}\end{boxx}}
+
+% Pagestyle
+
+\makepagestyle{erm}
+\makeevenfoot{erm}{\thepage}{}{}
+\makeoddfoot{erm}{}{}{\thepage}
+\makeheadrule{erm}{\textwidth}{\normalrulethickness}
+\newcommand{\@ermmarks}{%
+  \let\@mkboth\markboth
+  \def\chaptermark##1{%
+    \markboth{%
+      \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+          \thechapter. \ %
+        \fi
+      \fi
+      ##1}{}}
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth>\z@
+      \thesection. \ %
+    \fi
+    ##1}}
+  \def\tocmark{\markboth{\contentsname}{Indhold}}
+  \def\lofmark{\markboth{\listfigurename}{}}
+  \def\lotmark{\markboth{\listtablename}{}}
+  \def\bibmark{\markboth{\bibname}{}}
+  \def\indexmark{\markboth{\indexname}{}}
+}
+\makepsmarks{erm}{\@ermmarks}
+\makeevenhead{erm}{\slshape\leftmark}{}{}
+\makeoddhead{erm}{}{}{\slshape\rightmark}
+
+\pagestyle{erm}
+
