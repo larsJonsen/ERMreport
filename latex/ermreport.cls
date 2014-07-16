@@ -6,6 +6,14 @@
 %\RequirePackage{ifthen}%[1994/06/01]
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
+%%%
+
+%%%%%%%%
+\RequirePackage{microtype} 
+\microtypesetup{expansion=false}%
+\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeTextUppercase{#1}}}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeTextLowercase{#1}}}
+%%%%%%%%
 
 \newcommand{\maxLength}[2]{%
   \ifdimcomp{#1}{>}{#2}{#1}{#2}
@@ -80,7 +88,7 @@
   \begin{adjustwidth}{-1.5cm}{-1.5cm} 
   \begin{center}
   \vspace*{\fill}
-  \LARGE\textsc\ermTitle\par
+  \LARGE\spacedallcaps\ermTitle\par
   \vspace{2cm}
   \let\do=\@doList
   \large\dolistloop{\AuthorList}
@@ -210,4 +218,8 @@
 \makeoddhead{erm}{}{}{\slshape\rightmark}
 
 \pagestyle{erm}
+
+\endinput
+%%
+%% End of file `ermreport.cls'.
 
