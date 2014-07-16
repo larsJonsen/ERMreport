@@ -23,6 +23,12 @@
 % Date
 \newcommand{\setDate}[1]{\def\ermDate{#1}}
 \newcommand{\setPlace}[1]{\def\ermPlace{#1}}
+\newcommand{\setSubject}[1]{\def\ermSubject{#1}}
+\newcommand{\setStudy}[1]{\def\ermStudy{#1}}
+\newcommand{\setUniversity}[1]{\def\ermUniversity{#1}}
+
+
+
 % Author
 \newlength{\len@Aut}
 \newlength{\len@Sup}
@@ -30,10 +36,10 @@
 \setlength{\len@Sup}{0pt}
 \newlength{\len@B}
 \newlength{\len@C}
-\newcommand{\setAuthor}[2][]{%
+\newcommand{\setAuthor}[2][\mbox{}]{%
   \settowidth{\len@B}{#2}%
   \setlength{\len@Aut}{\maxLength{\len@Aut}{\len@B}}
-  \settowidth{\len@B}{#2}%
+  \settowidth{\len@B}{#1}%
   \setlength{\len@Sup}{\maxLength{\len@Sup}{\len@B}}
   \listadd{\AuthorList}{#2}
   \listadd{\SupAuthorList}{#1}
@@ -52,37 +58,61 @@
 \newcommand{\setTrustpage}[1]{\def\ermTrustpage{#1}}
 \newcommand{\setCover}[1]{\def\ermCover{#1}}
 
+\newcommand{\setCoverLogo}[1]{\def\coverLogo{#1}}
+\setCoverLogo{%
+  \includegraphics[width=0.44\textwidth]{sdu_segl}
+  \hfill
+  \includegraphics[width=0.47\textwidth]{aau_segl}
+}
+\newcommand{\setTitleLogo}[1]{\def\titleLogo{#1}}
+\setTitleLogo{%
+  \includegraphics[width=0.47\textwidth]{sdu_logo}
+  \hfill
+  \includegraphics[width=0.44\textwidth]{aau_logo}
+}
 % Trust Text
 \newcommand{\setTrustText}[1]{\def\ermTrustText{#1}}
+%
 % Cover
 \newcommand{\coverpage}{%
-  \thispagestyle{empty}
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+  \begin{adjustwidth}{-1.5cm}{-1.5cm} 
   \begin{center}
-  \LARGE\ermTitle\par
-  \vspace{4cm}
+  \vspace*{\fill}
+  \LARGE\textsc\ermTitle\par
+  \vspace{2cm}
   \let\do=\@doList
   \large\dolistloop{\AuthorList}
+  \vfill
+  \coverLogo
+  \thispagestyle{empty}
   \end{center}
-  \cleartorecto
-}
+  \end{adjustwidth}
+  \end{adjustwidth*}}
+%
 % Title page
 \newcommand{\titlepage}{
   \frontmatter
   \thispagestyle{empty}
   \begin{center}
-  \Large\ermTitle\par
+  \large\textsc\ermSubject\par 
+  \large\textsc\ermStudy\par
+  \large\textsc\ermUniversity\par
+  \vfill
+  \Large\textsc\ermTitle\par
   \vspace{2em}
-  \normalsize{
-    \begin{minipage}{\len@Aut}
-    \let\do=\@doList
-    \dolistloop{\AuthorList} 
-    \end{minipage}}%
+  \normalsize
+  \begin{minipage}[t]{\len@Aut}%
+    \let\do=\@doList%
+    \dolistloop{\AuthorList}%
+  \end{minipage}%
   \hspace{2ex}%
-  \begin{minipage}{\len@Sup}
-  \let\do=\@doList
-  \dolistloop{\SupAuthorList} 
-  \end{minipage}\par
-  \end{center}
+  \begin{minipage}[t]{\len@Sup}%
+    \let\do=\@doList
+    \raggedleft
+    \dolistloop{\SupAuthorList} 
+  \end{minipage}\par 
   \vfill
   \setlength{\len@B}{\textwidth}
   \ifnumless{\value{count@Sup}}{2}{%
@@ -94,7 +124,9 @@
   \begin{minipage}[t]{\len@B}
     \let\do=\@doList@i
     \dolistloop{\SupervisorList} 
-  \end{minipage}%
+  \end{minipage}\par
+  \titleLogo
+  \end{center}
 \cleartorecto
 }
 % Declaration page
