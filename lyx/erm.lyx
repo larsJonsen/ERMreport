@@ -2,10 +2,20 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass article
+\textclass ermreport
+\begin_preamble
+\setUniversity{Syddansk Universitet}
+\setSupervisorText{Vejleder:}{Vejledere:}
+\setPlace{Esbjerg}
+\setSubject{Projekt 1. semester}
+
+\setTrustText{Det erklæres herved på tro og love, at undertegnede egenhændigt og selvstændigt har udformet denne rapport. Alle citater i teksten er markeret som sådanne, og rapporten eller væsentlige dele af den har ikke tidligere været fremlagt i anden bedømmelsessammenhæng.}
+
+\usepackage{lipsum}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language danish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,19 +35,20 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 1
+\use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 1
+\use_package mathtools 0
 \use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -55,9 +66,9 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language danish
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -68,7 +79,342 @@
 
 \begin_body
 
+\begin_layout Title
+Dette ufattelige store projekt som jeg har arbejdet på både dag og nat for
+ så længe og som endelig er overstået
+\end_layout
+
+\begin_layout Date
+8.
+ Juni 2014
+\end_layout
+
+\begin_layout Author
+Casper Hansen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Lars Jølk Ravn-Jonsen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Katrine Petersen Jensen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Kurt Frank Blåtand
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+	
+\end_layout
+
+\begin_layout Supervisor
+Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøko
+nomi
+\end_layout
+
+\begin_layout Abstract
+Her er en korte redegørelse for hvad jeg har bedrevet
+\end_layout
+
+\begin_layout Preface
+Forord
+\end_layout
+
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-2]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Forkortelser}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Indledning
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[3-5]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float boks
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aenean faucibus pede eu ant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[56-57]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Quisque ullamcorper placerat ipsum
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[5-10]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DSB"
+description "De DanskeStatasbaner"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DFDS"
+description "De Forenede Damskibs Selskaber"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lorem ipsum dolor sit amet
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[11-25]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Chapter
+Nulla malesuada porttitor diam
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[22-23]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sed commodo posuere pede
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[24-30]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Suspendisse vel felis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[31-50]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Proin tempus nibh sit amet nisl'
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[100-120]
+\end_layout
+
+\end_inset
+
 
 \end_layout
 

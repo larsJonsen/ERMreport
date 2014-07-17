@@ -1,12 +1,11 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[memoir, erm.sty]{ERM report}
+#  \DeclareLaTeXClass[ermreport]{ERM report}
 #  \DeclareCategory{Reports}
 # Author: Lars Ravn-Jonsen <lrj@sam.sdu.dk>
 # Based on Memoir textclass definition file
 # feel free to contribute missing features!
 
 Preamble
-	 \usepackage{erm}
 	 \usepackage{hyperref}
 EndPreamble
 
