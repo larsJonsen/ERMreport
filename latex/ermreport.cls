@@ -34,9 +34,6 @@
 \newcommand{\setSubject}[1]{\def\ermSubject{#1}}
 \newcommand{\setStudy}[1]{\def\ermStudy{#1}}
 \newcommand{\setUniversity}[1]{\def\ermUniversity{#1}}
-
-
-
 % Author
 \newlength{\len@Aut}
 \newlength{\len@Sup}
@@ -62,10 +59,10 @@
   \def\ermSup@i{#1}
   \def\ermSup@ii{#2}
 }
-
+% Input pdfs
 \newcommand{\setTrustpage}[1]{\def\ermTrustpage{#1}}
 \newcommand{\setCover}[1]{\def\ermCover{#1}}
-
+% Logo
 \newcommand{\setCoverLogo}[1]{\def\coverLogo{#1}}
 \setCoverLogo{%
   \includegraphics[width=0.44\textwidth]{sdu_segl}
@@ -73,6 +70,7 @@
   \includegraphics[width=0.47\textwidth]{aau_segl}
 }
 \newcommand{\setTitleLogo}[1]{\def\titleLogo{#1}}
+%
 \setTitleLogo{%
   \includegraphics[width=0.47\textwidth]{sdu_logo}
   \hfill
@@ -101,7 +99,6 @@
 %
 % Title page
 \newcommand{\titlepage}{
-  \frontmatter
   \thispagestyle{empty}
   \begin{center}
   \large\textsc\ermSubject\par 
@@ -154,17 +151,26 @@
   \end{center}
   \vspace*{\fill}
 }
-
+% Gluing evrything togheteher, for LYX
+\newcommand{\ermFront}{%
+  \coverpage
+  \frontmatter
+  \titlepage
+  \trustpage
+}
+% Making chapter strat mainmatter, for Lyx
 \def\ermChapter{%
-   \@ifnextchar[%
-     {\ermChapter@i}
-     {\ermChapter@i[]}%
+  \@ifnextchar[%
+    {\ermChapter@i}
+    {\ermChapter@i[]}%
 }
+
 \def\ermChapter@i[#1]{%
-   \@ifnextchar[%
-     {\ermChapter@ii{#1}}
-     {\ermChapter@ii{#1}[]}%
+  \@ifnextchar[%
+  {\ermChapter@ii{#1}}
+  {\ermChapter@ii{#1}[]}%
 }
+
 \def\ermChapter@ii#1[#2]#3{%
   \ifanappendix
     \relax
