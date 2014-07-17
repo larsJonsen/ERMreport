@@ -1,13 +1,20 @@
 %%%% file ermreport.cls
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ermreport}[2014/08/01 v0.0 erm report]
+%
+\newif\if@danish
+  \@danishfalse
+\DeclareOption{danish}{\@danishtrue}
+\ProcessOptions\relax
 \LoadClassWithOptions{memoir}%[⟨date⟩]
 %% Package
 %\RequirePackage{ifthen}%[1994/06/01]
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 %%%
-
+\PassOptionsToPackage{osf,sc}{mathpazo}%
+\RequirePackage{mathpazo} % Palatino with real small caps and old style figures
+\linespread{1.05} % a bit more for Palatino
 %%%%%%%%
 \RequirePackage{microtype} 
 \microtypesetup{expansion=false}%
@@ -88,8 +95,10 @@
   \vspace*{\fill}
   \LARGE\spacedallcaps\ermTitle\par
   \vspace{2cm}
-  \let\do=\@doList
-  \large\dolistloop{\AuthorList}
+  \ifdefined\AuthorList
+    \let\do=\@doList
+    \large\dolistloop{\AuthorList}
+  \fi  
   \vfill
   \coverLogo
   \thispagestyle{empty}
@@ -99,6 +108,7 @@
 %
 % Title page
 \newcommand{\titlepage}{
+  \clearforchapter
   \thispagestyle{empty}
   \begin{center}
   \large\textsc\ermSubject\par 
@@ -108,34 +118,38 @@
   \Large\textsc\ermTitle\par
   \vspace{2em}
   \normalsize
-  \begin{minipage}[t]{\len@Aut}%
-    \let\do=\@doList%
-    \dolistloop{\AuthorList}%
-  \end{minipage}%
-  \hspace{2ex}%
-  \begin{minipage}[t]{\len@Sup}%
-    \let\do=\@doList
-    \raggedleft
-    \dolistloop{\SupAuthorList} 
-  \end{minipage}\par 
+  \ifdefined\AuthorList
+    \begin{minipage}[t]{\len@Aut}%
+      \let\do=\@doList%
+      \dolistloop{\AuthorList}%
+    \end{minipage}%
+    \hspace{2ex}%
+    \begin{minipage}[t]{\len@Sup}%
+      \let\do=\@doList
+      \raggedleft
+      \dolistloop{\SupAuthorList} 
+    \end{minipage}\par 
+  \fi
   \vfill
-  \setlength{\len@B}{\textwidth}
-  \ifnumless{\value{count@Sup}}{2}{%
-  \ermSup@i\settowidth{\len@C}{\ermSup@i\hspace{2ex}}%
-  }{%
-  \ermSup@ii\settowidth{\len@C}{\ermSup@ii\hspace{2ex}}%
-  }\hfill%
-  \addtolength{\len@B}{-\len@C}
-  \begin{minipage}[t]{\len@B}
-    \let\do=\@doList@i
-    \dolistloop{\SupervisorList} 
-  \end{minipage}\par
+  \ifdefined\SupervisorList
+    \setlength{\len@B}{\textwidth}
+    \ifnumless{\value{count@Sup}}{2}{%
+    \ermSup@i\settowidth{\len@C}{\ermSup@i\hspace{2ex}}%
+    }{%
+    \ermSup@ii\settowidth{\len@C}{\ermSup@ii\hspace{2ex}}%
+    }\hfill%
+    \addtolength{\len@B}{-\len@C}
+    \begin{minipage}[t]{\len@B}
+      \let\do=\@doList@i
+      \dolistloop{\SupervisorList} 
+    \end{minipage}\par
+  \fi
   \titleLogo
   \end{center}
-\cleartorecto
 }
 % Declaration page
 \newcommand{\trustpage}{%
+  \clearforchapter
   \vspace*{\fill}
   \begin{quote}
   \ermTrustText\par
@@ -143,12 +157,14 @@
   \ermPlace, \ermDate\par
   \vspace{2cm}
   \end{quote}
-  \begin{center}
-  \begin{minipage}{0.8\textwidth}
-    \let\do=\@doList@ii
-    \dolistloop{\AuthorList}
-  \end{minipage}
-  \end{center}
+  \ifdefined\AuthorList
+    \begin{center}
+    \begin{minipage}{0.8\textwidth}
+      \let\do=\@doList@ii
+      \dolistloop{\AuthorList}
+    \end{minipage}
+    \end{center}
+  \fi
   \vspace*{\fill}
 }
 % Gluing evrything togheteher, for LYX
@@ -158,7 +174,31 @@
   \titlepage
   \trustpage
 }
-% Making chapter strat mainmatter, for Lyx
+% Abstract
+% Make it start on new page
+\renewcommand{\setup@bstract}{%
+  \clearforchapter
+  \abs@leftindent=\absleftindent
+  \pagestyle{resume}
+  \if@twocolumn
+    \if@bsonecol
+    \else
+      \abs@leftindent=\z@
+      \absrightindent=\z@
+      \renewcommand*{\abstractnamefont}{\abscolnamefont}
+      \renewcommand*{\abstracttextfont}{\abscoltextfont}
+      \renewcommand*{\absnamepos}{flushleft}
+      \setlength{\abstitleskip}{-2ex}
+    \fi
+  \fi}
+% Table fo content and friends
+\renewcommand{\tocheadstart}{%
+  \parindent\z@
+  \parskip\z@
+  \clearpage%
+}
+
+% Making chapter stt mainmatter, for Lyx
 \def\ermChapter{%
   \@ifnextchar[%
     {\ermChapter@i}
@@ -223,7 +263,154 @@
 \makeevenhead{erm}{\slshape\leftmark}{}{}
 \makeoddhead{erm}{}{}{\slshape\rightmark}
 
-\pagestyle{erm}
+
+ %% Bringhurst page style
+\newlength{\pwlayi}
+\newlength{\pwlayii}
+\makepagestyle{bringhurst}
+\makeevenfoot{bringhurst}{\thepage}{}{}
+\makeoddfoot{bringhurst}{}{}{\thepage}
+\setlength{\pwlayi}{\headsep}
+\addtolength{\pwlayi}{\topskip}
+\addtolength{\pwlayi}{7.3\onelineskip}
+\newcommand{\bringpicr}[1]{%
+  \setlength{\unitlength}{1pt}
+  \begin{picture}(0,0)
+   \put(\strip@pt\marginparsep, -\strip@pt\pwlayi){%
+    \begin{minipage}[t]{\marginparwidth}
+      \raggedright\itshape #1
+    \end{minipage}
+    }
+  \end{picture}
+}
+       
+\setlength{\pwlayii}{\marginparsep}
+\addtolength{\pwlayii}{\marginparwidth}
+\newcommand{\bringpicl}[1]{%
+  \setlength{\unitlength}{1pt}
+  \begin{picture}(0,0)
+    \put(-\strip@pt\pwlayii, -\strip@pt\pwlayi){%
+      \begin{minipage}[t]{\marginparwidth}
+        \raggedleft\itshape #1
+      \end{minipage}
+    }
+  \end{picture}
+}
+\makepsmarks{bringhurst}{%
+  \def\chaptermark##1{\markboth{##1}{##1}}
+  \def\sectionmark##1{\markright{##1}}
+}    
+\makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
+\makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
+\pagestyle{bringhurst}
+
+
+%%%%%%%%%%
+%% Headstyle modifyed bringhust from memoir
+\makechapterstyle{Bringhurst}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapterheadstart}{}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{}
+  %  \hfill
+  %  \makebox[0pt][l]{%
+  %     \hspace{.8em}%
+  %     \resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}}
+  % }
+  \renewcommand*{\afterchapternum}{}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \memRTLraggedright\spacedallcaps{##1}}
+  \renewcommand*{\afterchaptertitle}{%
+  \hfill%
+  \makebox[0pt][l]{%
+      \hspace{.8em}%
+      \resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}}
+  \vskip\onelineskip \hrule\vskip\onelineskip}}
+
+\afterchaptertitle
+
+\makeheadstyles{Bringhurst}{%
+\chapterstyle{Bringhurst}
+  \setbeforesecskip{-1\onelineskip
+                    \@plus -0.5\onelineskip \@minus -.5\onelineskip}%
+  \setaftersecskip{1\onelineskip \@plus 0.1\onelineskip}%
+%%%  \setsecheadstyle{\normalfont\raggedright\scshape\MakeLowercase}%
+  \setsecheadstyle{\memRTLraggedright\spacedlowsmallcaps}%
+  \setbeforesubsecskip{-1.0\onelineskip
+                       \@plus -0.25\onelineskip \@minus -0.25\onelineskip}%
+  \setaftersubsecskip{1.0\onelineskip \@plus 0.1\onelineskip}%
+%%%  \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\raggedright}%
+  \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\memRTLraggedright}%
+  \setbeforesubsubsecskip{1.0\onelineskip
+                          \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
+  \setaftersubsubsecskip{-1em}%
+  \setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
+  \setbeforeparaskip{1.0\onelineskip
+                     \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
+  \setafterparaskip{-1em}%
+  \setparaheadstyle{\normalfont\normalsize\itshape\addperiod}%
+  \setsubparaindent{\parindent}%
+  \setbeforesubparaskip{1.0\onelineskip
+                        \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
+  \setaftersubparaskip{-1em}%
+  \setsubparaheadstyle{\normalfont\normalsize\itshape\addperiod}}
+
+\headstyles{Bringhurst}
+
+\makepagestyle{dedication}
+\makeevenhead{dedication}{}{\spacedallcaps\@dediTop}{}
+\makeoddhead{dedication}{}{\spacedallcaps\@vTop}{}
+\newcommand{\setDediHead}[1]{\def\@dediTop{#1}}
+\setDediHead{dedication}
+
+\newenvironment{dedication}{%
+\clearpage
+\pagestyle{dedication}
+\setDediHead{\@dedicationHead}
+}{\clearpage}
+
+\newenvironment{resume}{%
+\clearpage
+\pagestyle{dedication}
+\renewcommand{\@dediTop}{\@resumeHead}
+}{\clearpage}
+
+\renewenvironment{abstract}{%
+\clearpage
+\pagestyle{dedication}
+\renewcommand{\@dediTop}{\@abstractHead}
+}{\clearpage}
+
+\newcommand{\@dedicationHead}{Dedication}
+\newcommand{\@resumeHead}{Resume}
+\newcommand{\@abstractHead}{Abstract}
+
+%%%%%% Standard text input
+
+\if@danish
+  \setUniversity{Syddansk Universitet, Esbjerg}
+  \setStudy{Milj\o{} og Resource Management}
+  \setTrustText{Det erkl\ae{}res herved p\aa{} tro og love, at undertegnede egenh\ae{}ndigt og selvst\ae{}ndigt har udformet denne rapport. Alle citater i teksten er markeret som s\aa{}danne, og rapporten eller v\ae{}sentlige dele af den har ikke tidligere v\ae{}ret fremlagt i anden bed\o{}mmelsessammenh\ae{}ng.}
+  \setSupervisorText{Vejleder:}{Vejledere:}
+  \setTitle{Dette ufattelige store projekt som jeg har arbejdet p\aa{} b\aa{}de dag og nat for s\aa{} l\ae{}nge og som endelig er overst\aa{}et}
+  \setDate{}
+  \setPlace{Esbjerg}
+  \setSubject{}
+  \renewcommand{\boxname}{\bfseries Boks}
+\else
+  \setUniversity{University of Southern Denmark, Esbjerg}
+  \setStudy{Environmental and Resource Management}
+  \setTrustText{Det erkl\ae{}res herved p\aa{} tro og love, at undertegnede egenh\ae{}ndigt og selvst\ae{}ndigt har udformet denne rapport. Alle citater i teksten er markeret som s\aa{}danne, og rapporten eller v\ae{}sentlige dele af den har ikke tidligere v\ae{}ret fremlagt i anden bed\o{}mmelsessammenh\ae{}ng.}
+  \setSupervisorText{Vejleder:}{Vejledere:}
+  \setTitle{An Incredible Piece of Work over Which I have Struggled
+   Day and Night for Far Too Long and now It is Over}
+  \setDate{}
+  \setPlace{Esbjerg}
+  \setSubject{}
+\fi
+%
+
 
 \endinput
 %%

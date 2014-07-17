@@ -1,2 +1,7 @@
 
 *.lyx~
+*.log
+*.aux
+*.toc
+*.synctex.gz
+*.fdb_latekmk
