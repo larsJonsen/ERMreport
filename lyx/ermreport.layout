@@ -62,8 +62,8 @@ Style Preface
 	Margin                Static
 	Category              FrontMatter
 	LabelString           "Preface"
-	LabelType             Counter
-	LabelCounter          chapter
+	#LabelType             Counter
+	#LabelCounter          chapter
 	#TocLevel              0
 	LatexType             Command
 	LatexName             chapter

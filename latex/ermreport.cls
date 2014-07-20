@@ -22,6 +22,15 @@
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeTextLowercase{#1}}}
 % for TOC and friends
 \renewcommand{\cftchapterfont}[1]{\textls[80]{\scshape{#1}}}
+\renewcommand{\cftpartfont}[1]{\textls[80]{\scshape{#1}}}
+\renewcommand{\cftbookfont}[1]{\textls[80]{\scshape{#1}}}
+\let\@tmp\addcontentsline
+\renewcommand{\addcontentsline}[3]{
+\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
+  \ifinlist{#2}{\@list}%
+    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
+    {\@tmp{#1}{#2}{#3}}
+}
 %%%%%%%%
 %\newfont{\chapterNumber}{pplr9d scaled 7000}
 \newfont{\chapterNumber}{eurb10 scaled 7000}
@@ -236,13 +245,12 @@
   \chapter[#1][#2]{#3}%   
 }
 
-% box enverioment
- \newcommand{\boxname}{\bfseries Box}
- \newcommand{\listboxname}{List of boxes}
- \newlistof{listofboxs}{lob}{\listboxname}
- \newfloat{boxx}{lob}{\boxname}
- \newfixedcaption{\fboxcaption}{\fb boks}
- \newlistentry{boks}{lob}{0}
+\newcommand{\boxname}{Box}
+\newcommand{\listboxname}{List of boxes}
+\newlistof{listofboxs}{lob}{\listboxname}
+\newfloat{boxx}{lob}{\boxname}
+%\newfixedcaption{\fboxcaption}{boks}
+\newlistentry{boks}{lob}{0}
 
 \newenvironment{boks}%
   {\begin{boxx}\begin{framed}}
@@ -377,62 +385,9 @@
 
 \headstyles{Bringhurst}
 
-%%%%%%% TOC and freinds
-%\let\@tmp\addcontentsline
-%\renewcommand{\addcontentsline}[3]{
-%  \nametest{#2}{chapter}
-%  \ifsamename
-%    \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
-%  \else
-%    \nametest{#2}{part}
-%    \ifsamename
-%      \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
-%    \else
-%      \nametest{#2}{book}
-%      \ifsamename
-%        \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
-%      \else
-%        \nametest{#2}{appendix}
-%        \ifsamename
-%          \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
-%        \else
-%          \@tmp{#1}{#2}{#3}
-%        \fi
-%      \fi
-%    \fi
-%  \fi
-%}
-\let\@tmp\addcontentsline
-\renewcommand{\addcontentsline}[3]{
-\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
-  \ifinlist{#2}{\@list}%
-    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
-    {\@tmp{#1}{#2}{#3}}
-}
+
   
 
-\forcsvlist{\listadd\mylist}{item1, item2, item3}
-%\settocpreprocessor{chapter}{%
-%  \let\tempf@rtoc\f@rtoc%
-%  \def\f@rtoc{%
-%    \texorpdfstring{\MakeTextLowercase{\tempf@rtoc}}{\tempf@rtoc}}%
-%}
-%\settocpreprocessor{part}{%
-%  \let\tempf@rtoc\f@rtoc%
-%  \def\f@rtoc{%
-%    \texorpdfstring{\MakeTextLowercase{\tempf@rtoc}}{\tempf@rtoc}}%
-%}
-%%%% Change the toc content to lowercase for TOC etc
-%%%% It have to be after begin document so bable do not revers chanengs
-%\newcommand{\cstolower}[1]{
-%  \csletcs{temp}{#1}
-%  \csdef{#1}{\texorpdfstring{\MakeTextLowercase{\temp}}{\temp}}
-%}
-%\AfterEndPreamble{
-%  \cstolower{contentsname}
-%  %\cstolower{appendixtocname}
-%}
-%
 %%%%%%%% 
 \renewenvironment{abstract}{%
 \chapter*{\@abstractHead}
@@ -458,7 +413,7 @@
   \setDate{}
   \setPlace{Esbjerg}
   \setSubject{}
-  \renewcommand{\boxname}{\bfseries Boks}
+  \renewcommand{\boxname}{Boks}
   %\newcommand*{\abstractname}{Abstract}
   % from memoir
 \renewcommand*{\contentsname}{Indhold}
@@ -497,11 +452,18 @@
 \fi
 
 \appto\appendix{\appendixpage}
-\endinput
 
 
+%%  Center figures and tables
 
+ \renewcommand\@memmain@floats{%
+   \counterwithout{figure}{chapter} 
+   \counterwithout{table}{chapter}}   
+
+\setfloatadjustment{figure}{\centering}
+\setfloatadjustment{table}{\centering}
 
 %%
+\endinput
 %% End of file `ermreport.cls'.
 
