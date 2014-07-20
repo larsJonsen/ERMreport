@@ -4,7 +4,8 @@
 \usepackage{lipsum}
 \usepackage{etoolbox}
 \usepackage{babel}
-
+\usepackage{graphicx}
+\usepackage{hyperref}
 
 %\setUniversity{Syddansk Universitet, Esbjerg}
 %\setStudy{Environmental and Resource Management}
@@ -40,9 +41,14 @@
  safasfs
 \end{resume}
 \chapter{Preface}
-
+\csshow{addcontentsline}
+\tableofcontents
 \ermChapter{Første}
-
+\section{Section}
+\subsection{Subsection}
+\section[Toc]{Section}
+\section[Toc2][head]{Section}
+\appendix
 \ermChapter[To]{Anden}
 \begin{boks}
 \caption{her er caption}

@@ -20,8 +20,24 @@
 \microtypesetup{expansion=false}%
 \DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeTextUppercase{#1}}}%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeTextLowercase{#1}}}
+% for TOC and friends
+\renewcommand{\cftchapterfont}[1]{\textls[80]{\scshape{#1}}}
 %%%%%%%%
+%\newfont{\chapterNumber}{pplr9d scaled 7000}
+\newfont{\chapterNumber}{eurb10 scaled 7000}
+%%%%%%%%
+\PassOptionsToPackage{dvipsnames}{xcolor}
+  \RequirePackage{xcolor} % [dvipsnames] 
+\definecolor{halfgray}{gray}{0.55} % chapter numbers 
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+%\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+%\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+%%%
+\RequirePackage{hyperref} 
 
+
+%%%
 \newcommand{\maxLength}[2]{%
   \ifdimcomp{#1}{>}{#2}{#1}{#2}
 }
@@ -149,7 +165,7 @@
 }
 % Declaration page
 \newcommand{\trustpage}{%
-  \clearforchapter
+  \chapter{\@trustHead}
   \vspace*{\fill}
   \begin{quote}
   \ermTrustText\par
@@ -198,7 +214,7 @@
   \clearpage%
 }
 
-% Making chapter stt mainmatter, for Lyx
+% Making chapter start mainmatter. For Lyx
 \def\ermChapter{%
   \@ifnextchar[%
     {\ermChapter@i}
@@ -265,18 +281,20 @@
 
 
  %% Bringhurst page style
-\newlength{\pwlayi}
-\newlength{\pwlayii}
+\newlength{\bringi}
+\newlength{\bringii}
+\newlength{\bringiii}
+\newlength{\bringiv}
 \makepagestyle{bringhurst}
 \makeevenfoot{bringhurst}{\thepage}{}{}
 \makeoddfoot{bringhurst}{}{}{\thepage}
-\setlength{\pwlayi}{\headsep}
-\addtolength{\pwlayi}{\topskip}
-\addtolength{\pwlayi}{7.3\onelineskip}
+\setlength{\bringi}{\headsep}
+\addtolength{\bringi}{\topskip}
+\addtolength{\bringi}{7.3\onelineskip}
 \newcommand{\bringpicr}[1]{%
   \setlength{\unitlength}{1pt}
   \begin{picture}(0,0)
-   \put(\strip@pt\marginparsep, -\strip@pt\pwlayi){%
+   \put(\strip@pt\marginparsep, -\strip@pt\bringi){%
     \begin{minipage}[t]{\marginparwidth}
       \raggedright\itshape #1
     \end{minipage}
@@ -284,12 +302,12 @@
   \end{picture}
 }
        
-\setlength{\pwlayii}{\marginparsep}
-\addtolength{\pwlayii}{\marginparwidth}
+\setlength{\bringii}{\marginparsep}
+\addtolength{\bringii}{\marginparwidth}
 \newcommand{\bringpicl}[1]{%
   \setlength{\unitlength}{1pt}
   \begin{picture}(0,0)
-    \put(-\strip@pt\pwlayii, -\strip@pt\pwlayi){%
+    \put(-\strip@pt\bringii, -\strip@pt\bringi){%
       \begin{minipage}[t]{\marginparwidth}
         \raggedleft\itshape #1
       \end{minipage}
@@ -304,7 +322,9 @@
 \makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
 \pagestyle{bringhurst}
 
-
+\setlength{\bringiii}{\textwidth}
+\addtolength{\bringiii}{\marginparsep}
+\setlength{\bringiv}{7.3\onelineskip}
 %%%%%%%%%%
 %% Headstyle modifyed bringhust from memoir
 \makechapterstyle{Bringhurst}{%
@@ -312,20 +332,19 @@
   \renewcommand*{\chapterheadstart}{}
   \renewcommand*{\printchaptername}{}
   \renewcommand*{\chapternamenum}{}
-  \renewcommand*{\printchapternum}{}
-  %  \hfill
-  %  \makebox[0pt][l]{%
-  %     \hspace{.8em}%
-  %     \resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}}
-  % }
+  \renewcommand*{\printchapternum}{
+    \setlength{\unitlength}{1pt}
+    \begin{picture}(0,0)
+      \put(\strip@pt\bringiii,-\strip@pt\bringiv){
+      \color{halfgray}\chapterNumber\thechapter
+      %\resizebox{!}{\beforechapskip}{\color{halfgray}\chapnumfont \thechapter}
+      }
+    \end{picture}%
+  }
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchaptertitle}[1]{%
     \memRTLraggedright\spacedallcaps{##1}}
   \renewcommand*{\afterchaptertitle}{%
-  \hfill%
-  \makebox[0pt][l]{%
-      \hspace{.8em}%
-      \resizebox{!}{\beforechapskip}{\chapnumfont \thechapter}}
   \vskip\onelineskip \hrule\vskip\onelineskip}}
 
 \afterchaptertitle
@@ -358,33 +377,75 @@
 
 \headstyles{Bringhurst}
 
-\makepagestyle{dedication}
-\makeevenhead{dedication}{}{\spacedallcaps\@dediTop}{}
-\makeoddhead{dedication}{}{\spacedallcaps\@vTop}{}
-\newcommand{\setDediHead}[1]{\def\@dediTop{#1}}
-\setDediHead{dedication}
+%%%%%%% TOC and freinds
+%\let\@tmp\addcontentsline
+%\renewcommand{\addcontentsline}[3]{
+%  \nametest{#2}{chapter}
+%  \ifsamename
+%    \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
+%  \else
+%    \nametest{#2}{part}
+%    \ifsamename
+%      \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
+%    \else
+%      \nametest{#2}{book}
+%      \ifsamename
+%        \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
+%      \else
+%        \nametest{#2}{appendix}
+%        \ifsamename
+%          \@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}
+%        \else
+%          \@tmp{#1}{#2}{#3}
+%        \fi
+%      \fi
+%    \fi
+%  \fi
+%}
+\let\@tmp\addcontentsline
+\renewcommand{\addcontentsline}[3]{
+\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
+  \ifinlist{#2}{\@list}%
+    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
+    {\@tmp{#1}{#2}{#3}}
+}
+  
 
-\newenvironment{dedication}{%
-\clearpage
-\pagestyle{dedication}
-\setDediHead{\@dedicationHead}
-}{\clearpage}
+\forcsvlist{\listadd\mylist}{item1, item2, item3}
+%\settocpreprocessor{chapter}{%
+%  \let\tempf@rtoc\f@rtoc%
+%  \def\f@rtoc{%
+%    \texorpdfstring{\MakeTextLowercase{\tempf@rtoc}}{\tempf@rtoc}}%
+%}
+%\settocpreprocessor{part}{%
+%  \let\tempf@rtoc\f@rtoc%
+%  \def\f@rtoc{%
+%    \texorpdfstring{\MakeTextLowercase{\tempf@rtoc}}{\tempf@rtoc}}%
+%}
+%%%% Change the toc content to lowercase for TOC etc
+%%%% It have to be after begin document so bable do not revers chanengs
+%\newcommand{\cstolower}[1]{
+%  \csletcs{temp}{#1}
+%  \csdef{#1}{\texorpdfstring{\MakeTextLowercase{\temp}}{\temp}}
+%}
+%\AfterEndPreamble{
+%  \cstolower{contentsname}
+%  %\cstolower{appendixtocname}
+%}
+%
+%%%%%%%% 
+\renewenvironment{abstract}{%
+\chapter*{\@abstractHead}
+}{}
 
 \newenvironment{resume}{%
-\clearpage
-\pagestyle{dedication}
-\renewcommand{\@dediTop}{\@resumeHead}
-}{\clearpage}
-
-\renewenvironment{abstract}{%
-\clearpage
-\pagestyle{dedication}
-\renewcommand{\@dediTop}{\@abstractHead}
-}{\clearpage}
+\chapter*{\@resumeHead}
+}{}
 
 \newcommand{\@dedicationHead}{Dedication}
 \newcommand{\@resumeHead}{Resume}
 \newcommand{\@abstractHead}{Abstract}
+\newcommand{\@trustHead}{Declaration}
 
 %%%%%% Standard text input
 
@@ -398,6 +459,31 @@
   \setPlace{Esbjerg}
   \setSubject{}
   \renewcommand{\boxname}{\bfseries Boks}
+  %\newcommand*{\abstractname}{Abstract}
+  % from memoir
+\renewcommand*{\contentsname}{Indhold}
+\renewcommand*{\listfigurename}{Figure}
+\renewcommand*{\listtablename}{Tabeler}
+\renewcommand*{\bookname}{Bog}
+\renewcommand*{\partname}{Part}
+\renewcommand*{\chaptername}{Kapitel}
+\renewcommand*{\appendixname}{Bilag}
+\renewcommand*{\appendixtocname}{Bilag}
+\renewcommand*{\appendixpagename}{Bilag}
+\renewcommand*{\bibname}{Litteratur}
+\renewcommand*{\indexname}{Indeks}
+\renewcommand*{\glossaryname}{Forkortelser}
+\renewcommand*{\figurename}{Figur}
+\renewcommand*{\tablename}{Tabel}
+\renewcommand*{\figurerefname}{Figur}
+\renewcommand*{\tablerefname}{Tabel}
+\renewcommand*{\pagename}{side}
+\renewcommand*{\pagerefname}{side}
+\renewcommand*{\bookrefname}{Bog~}
+\renewcommand*{\partrefname}{Part~}
+\renewcommand*{\chapterrefname}{Kapitel~}
+\renewcommand*{\sectionrefname}{\S}
+\renewcommand*{\appendixrefname}{Bilag~}
 \else
   \setUniversity{University of Southern Denmark, Esbjerg}
   \setStudy{Environmental and Resource Management}
@@ -409,10 +495,13 @@
   \setPlace{Esbjerg}
   \setSubject{}
 \fi
-%
 
-
+\appto\appendix{\appendixpage}
 \endinput
+
+
+
+
 %%
 %% End of file `ermreport.cls'.
 

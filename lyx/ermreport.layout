@@ -6,7 +6,7 @@
 # feel free to contribute missing features!
 
 Preamble
-	 \usepackage{hyperref}
+	% \usepackage{hyperref}
 EndPreamble
 
 
