@@ -18,19 +18,19 @@
 %%%%%%%%
 \RequirePackage{microtype} 
 \microtypesetup{expansion=false}%
-\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\MakeTextUppercase{#1}}}%
-\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\scshape\MakeTextLowercase{#1}}}
+\DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[80]{\scshape{#1}}} 
+\DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{#1}}%
+\DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
+
+
 % for TOC and friends
-\renewcommand{\cftchapterfont}[1]{\textls[80]{\scshape{#1}}}
-\renewcommand{\cftpartfont}[1]{\textls[80]{\scshape{#1}}}
-\renewcommand{\cftbookfont}[1]{\textls[80]{\scshape{#1}}}
-\let\@tmp\addcontentsline
-\renewcommand{\addcontentsline}[3]{
-\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
-  \ifinlist{#2}{\@list}%
-    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
-    {\@tmp{#1}{#2}{#3}}
-}
+% Have to be preproced by addcontentsline
+\renewcommand{\cftchapterfont}[1]{\spacedsmallcaps{#1}}
+\renewcommand{\cftpartfont}[1]{\spacedsmallcaps{#1}}
+\renewcommand{\cftbookfont}[1]{\spacedsmallcaps{#1}}
+
+
 %%%%%%%%
 %\newfont{\chapterNumber}{pplr9d scaled 7000}
 \newfont{\chapterNumber}{eurb10 scaled 7000}
@@ -45,19 +45,30 @@
 %%%
 \RequirePackage{hyperref} 
 
+% hyperef redefines addcontentsline
+% This hack have to be after loading of hyperref
+\let\@tmp\addcontentsline
+\renewcommand{\addcontentsline}[3]{
+\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
+  \ifinlist{#2}{\@list}%
+    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
+    {\@tmp{#1}{#2}{#3}}
+}
+
 
 %%%
 \newcommand{\maxLength}[2]{%
   \ifdimcomp{#1}{>}{#2}{#1}{#2}
 }
 % For list loops
-\newcommand*{\@doList}[1]{#1\\}
+\newcommand*{\@doList}[1]{\MakeTextLowercase{#1}\\}
 \newcommand*{\@doList@i}[1]{#1\\[2ex]}
 \newcommand*{\@doList@ii}[1]{%
 \rule[0.5ex]{0.8\textwidth}{1pt}\par
 #1\par
 \vspace{3em}
 }
+\newcommand*{\@doList@iii}[1]{, #1}
 % Title
 \newcommand{\setTitle}[1]{\def\ermTitle{#1}}
 % Date
@@ -74,9 +85,9 @@
 \newlength{\len@B}
 \newlength{\len@C}
 \newcommand{\setAuthor}[2][\mbox{}]{%
-  \settowidth{\len@B}{#2}%
+  \settowidth{\len@B}{\spacedlowsmallcaps{#2}}%
   \setlength{\len@Aut}{\maxLength{\len@Aut}{\len@B}}
-  \settowidth{\len@B}{#1}%
+  \settowidth{\len@B}{\spacedlowsmallcaps{#1}}%
   \setlength{\len@Sup}{\maxLength{\len@Sup}{\len@B}}
   \listadd{\AuthorList}{#2}
   \listadd{\SupAuthorList}{#1}
@@ -97,9 +108,9 @@
 % Logo
 \newcommand{\setCoverLogo}[1]{\def\coverLogo{#1}}
 \setCoverLogo{%
-  \includegraphics[width=0.44\textwidth]{sdu_segl}
+  \includegraphics[width=0.39\textwidth]{sdu_segl}
   \hfill
-  \includegraphics[width=0.47\textwidth]{aau_segl}
+  \includegraphics[width=0.42\textwidth]{aau_segl}
 }
 \newcommand{\setTitleLogo}[1]{\def\titleLogo{#1}}
 %
@@ -115,20 +126,21 @@
 \newcommand{\coverpage}{%
   \calccentering{\unitlength}
   \begin{adjustwidth*}{\unitlength}{-\unitlength}
-  \begin{adjustwidth}{-1.5cm}{-1.5cm} 
+  %\begin{adjustwidth}{-1.5cm}{-1.5cm} 
   \begin{center}
   \vspace*{\fill}
-  \LARGE\spacedallcaps\ermTitle\par
-  \vspace{2cm}
+  \spacedallcaps\ermTitle\par
+  \bigskip
   \ifdefined\AuthorList
     \let\do=\@doList
-    \large\dolistloop{\AuthorList}
+    \spacedsmallcaps{\dolistloop{\AuthorList}}
   \fi  
+  \vfill
   \vfill
   \coverLogo
   \thispagestyle{empty}
   \end{center}
-  \end{adjustwidth}
+  %\end{adjustwidth}
   \end{adjustwidth*}}
 %
 % Title page
@@ -136,24 +148,24 @@
   \clearforchapter
   \thispagestyle{empty}
   \begin{center}
-  \large\textsc\ermSubject\par 
-  \large\textsc\ermStudy\par
-  \large\textsc\ermUniversity\par
+  \spacedallcaps\ermSubject\par 
+  \spacedallcaps\ermStudy\par
+  \spacedallcaps\ermUniversity\par
   \vfill
-  \Large\textsc\ermTitle\par
+  \spacedallcaps\ermTitle\par
   \vspace{2em}
-  \normalsize
+  %\normalsize
   \ifdefined\AuthorList
-    \begin{minipage}[t]{\len@Aut}%
-      \let\do=\@doList%
-      \dolistloop{\AuthorList}%
-    \end{minipage}%
+    \fbox{\begin{minipage}[t]{\len@Aut}%
+          \let\do=\@doList%
+          \spacedsmallcaps{\dolistloop{\AuthorList}}%
+        \end{minipage}}%
     \hspace{2ex}%
-    \begin{minipage}[t]{\len@Sup}%
-      \let\do=\@doList
-      \raggedleft
-      \dolistloop{\SupAuthorList} 
-    \end{minipage}\par 
+    \fbox{\begin{minipage}[t]{\len@Sup}%
+          \let\do=\@doList
+          \raggedleft
+          \spacedsmallcaps{\dolistloop{\SupAuthorList}}
+    \end{minipage}}\par 
   \fi
   \vfill
   \ifdefined\SupervisorList
@@ -194,6 +206,7 @@
 }
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%
+  \pdfsetup
   \coverpage
   \frontmatter
   \titlepage
@@ -463,8 +476,35 @@
 \setfloatadjustment{figure}{\centering}
 \setfloatadjustment{table}{\centering}
 
- \captionnamefont{}
+\captionnamefont{}
 %%
+\hypersetup{%
+    %draft, % = no hyperlinking at all (useful in b/w printouts)
+    colorlinks=true, pdfstartpage=3, pdfstartview=FitV,%, linktocpage=true
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+}
+\newcommand{\pdfsetup}{
+  \ifdefined\AuthorList
+    \let\do=\@doList@iii
+    \def\ermAuthors{\dolistloop{\AuthorList}}
+  \else
+    \def\ermAuthors{}
+  \fi
+  \hypersetup{%
+    pdftitle={\ermTitle},%
+    pdfauthor={\textcopyright\ermAuthors},%
+    pdfsubject={\ermSubject, \ermStudy, \ermUniversity},%
+    pdfkeywords={},%
+    %pdfcreator={pdfLaTeX},%
+    %pdfproducer={LaTeX with hyperref and classicthesis}%
+}}
+
 \endinput
 %% End of file `ermreport.cls'.
 
