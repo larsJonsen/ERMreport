@@ -9,6 +9,24 @@ Preamble
 	% \usepackage{hyperref}
 EndPreamble
 
+## predefined class options (the class is scrreprt from KOMA Script), all can be overridden
+#ClassOptions
+#  Other		"fontsize=11pt,paper=a4,twoside,openright,titlepage,numbers=noenddot,headinclude,#BCOR=5mm,footinclude=true,cleardoublepage=empty"#
+#  PageStyle	""#
+#  FontSize	""#
+#End#
+#
+## use Latin Modern sans serif
+#AddToPreamble
+#% use Latin Modern instead of Computer Modern sans serif
+#\renewcommand{\sfdefault}{lmss}
+#EndPreamble
+
+
+SecNumDepth		3
+TocDepth		2
+
+
 
 Format 49
 Columns            1
@@ -319,5 +337,57 @@ Float
 	IsPredefined          true
 	UsesFloatPkg          false
 	RefPrefix             box
+End
+
+
+
+############## character styles, access through /Edit/Text Style/ or /right-click/Text Style/
+
+
+InsetLayout "Spaced All Caps"
+	LyxType		charstyle
+	LabelString	"Spaced All Caps"
+
+	LatexType	command
+	LatexName	spacedallcaps
+	Decoration	Conglomerate
+	CustomPars	false
+#	PassThru	true
+	Font
+	  Shape		SmallCaps
+	  Size		large
+	EndFont
+End
+
+
+
+
+InsetLayout "Spaced Low Small Caps"
+	LyxType		charstyle
+	LabelString	"Spaced Low Small Caps"
+	LatexType	command
+	LatexName	spacedlowsmallcaps
+	Decoration	Conglomerate
+	CustomPars	false
+#	PassThru	true
+	Font
+	  Shape		SmallCaps
+	  Size		small
+	EndFont
+End
+
+
+
+# table headline centered and in spaced small caps
+InsetLayout "Table Headline"
+	LyxType		charstyle
+	LabelString	"Table Headline"
+	LatexType	command
+	LatexName	tableheadline
+	Decoration	Conglomerate
+	CustomPars	false
+	Font
+	  Shape		SmallCaps
+	EndFont
 End
 

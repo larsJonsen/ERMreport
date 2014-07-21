@@ -463,6 +463,7 @@
 \setfloatadjustment{figure}{\centering}
 \setfloatadjustment{table}{\centering}
 
+ \captionnamefont{}
 %%
 \endinput
 %% End of file `ermreport.cls'.
