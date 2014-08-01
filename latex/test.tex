@@ -1,4 +1,4 @@
-\documentclass[danish,oldfontcommands]{ermreport}
+\documentclass[11pt,a4paper,danish,oldfontcommands,biber]{ermreport}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
@@ -6,7 +6,7 @@
 \usepackage{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
-
+\addbibresource{~/git/ERMreport/lyx/erm.bib}
 %\setUniversity{Syddansk Universitet, Esbjerg}
 %\setStudy{Environmental and Resource Management}
 %
@@ -31,6 +31,7 @@
 %\setCover{SDU_logo.pdf}
 %\setTrustpage{asu.pdf}
 %
+
 \begin{document}
 \pdfsetup
 \coverpage
@@ -50,6 +51,9 @@
 \ermChapter{Første}
 \section{Section}
 \subsection{Subsection}
+
+TOC depth: \arabic{tocdepth}
+SEC num depth: \arabic{secnumdepth}
 
 \begin{table}
 \protect\caption[Tabel eksempel]{Tabel ekempel. Her er en forklaring på hvad der er i tabellen}
@@ -71,7 +75,8 @@ netus & red & True & 3 & \multicolumn{2}{c}{23}\tabularnewline
 \ermChapter[To]{Anden}
 \begin{boks}
 \caption{her er caption}
-Lidt tekst
+Lidt tekst \citet{Bringhurst2004,Wilson2009}
 \end{boks}
+\printbibliography 
 
 \end{document}

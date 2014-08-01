@@ -9,6 +9,8 @@ Preamble
 	% \usepackage{hyperref}
 EndPreamble
 
+
+
 ## predefined class options (the class is scrreprt from KOMA Script), all can be overridden
 #ClassOptions
 #  Other		"fontsize=11pt,paper=a4,twoside,openright,titlepage,numbers=noenddot,headinclude,#BCOR=5mm,footinclude=true,cleardoublepage=empty"#
@@ -22,13 +24,17 @@ EndPreamble
 #\renewcommand{\sfdefault}{lmss}
 #EndPreamble
 
+Format 49
+
+## predefined class option
+
 
 SecNumDepth		3
 TocDepth		2
 
 
 
-Format 49
+
 Columns            1
 Sides              2
 SecNumDepth        2
@@ -41,13 +47,14 @@ Provides subscript 1
 # Memoir has support for line spacing, but uses different names from
 # what setspace.sty does.  
 Provides SetSpace  1
+Provides natbib	1 # Use natbib or biblatex 
 TitleLatexName  "ermFront" 
 
 
 ClassOptions
 	FontSize             9|10|11|12|14|17
 	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
-	Other                oldfontcommands
+	Other                11pt,a4paper,biber,oldfontcommands
 End
 
 

@@ -4,12 +4,14 @@
 \begin_header
 \textclass ermreport
 \begin_preamble
-
+%\usepackage{doi}
 \usepackage{lipsum}
+\addbibresource{~/git/ERMreport/lyx/erm.bib}
 \end_preamble
-\use_default_options true
+\options 11pt,a4paper,danish,biber
+\use_default_options false
 \maintain_unincluded_children false
-\language danish
+\language english
 \language_package default
 \inputencoding utf8
 \fontencoding global
@@ -35,17 +37,17 @@
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style 
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -60,9 +62,9 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language danish
+\quotes_language english
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -73,75 +75,34 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Dette ufattelige store projekt som jeg har arbejdet på både dag og nat for
- så længe og som endelig er overstået
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-headstyles{Bringhurst}
-\end_layout
-
-\end_inset
-
-
+\begin_layout Title
+Titel
 \end_layout
 
 \begin_layout Date
+
+\lang danish
 8.
  Juni 2014
 \end_layout
 
-\begin_layout Author
-Casper Hansen
-\begin_inset Argument 1
-status open
+\begin_layout Subject
 
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
+\lang danish
+Projekt 1.
+ semester
 \end_layout
 
 \begin_layout Author
-Lars Jølk Ravn-Jonsen
-\begin_inset Argument 1
-status open
 
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Author
+\lang danish
 Katrine Petersen Jensen
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 345433
 \end_layout
 
@@ -151,11 +112,51 @@ status open
 \end_layout
 
 \begin_layout Author
+
+\lang danish
+Casper Hansen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang danish
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+
+\lang danish
+Lars Jølk Ravn-Jonsen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang danish
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+
+\lang danish
 Kurt Frank Blåtand
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 345433
 \end_layout
 
@@ -165,23 +166,55 @@ status open
 \end_layout
 
 \begin_layout Supervisor
+
+\lang danish
 Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøko
 nomi
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Abstract
-Her er en korte redegørelse for hvad jeg har bedrevet
+
+\lang danish
+Her er en korte redegørelse for hvad jeg har bedrevet, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "chap:Indledning"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "chap:Indledning"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Lorem-ipsum-dolor"
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "chap:Indledning"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Preface
+
+\lang danish
 Forord
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -213,6 +246,8 @@ nomname}{Forkortelser}
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -222,6 +257,8 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
@@ -232,10 +269,21 @@ set_width "auto"
 \end_layout
 
 \begin_layout Chapter
+
+\lang danish
 Indledning
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Indledning"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -252,13 +300,24 @@ lipsum[3-5]
 \begin_inset Float boks
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Aenean faucibus pede eu ant
+
+\lang danish
+Aenean faucibus pede eu ant 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bringhurst2004,Wilson2009"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -267,6 +326,8 @@ Aenean faucibus pede eu ant
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -288,10 +349,14 @@ lipsum[56-57]
 \end_layout
 
 \begin_layout Section
+
+\lang danish
 Quisque ullamcorper placerat ipsum
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -308,6 +373,8 @@ lipsum[5-10]
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "DSB"
@@ -319,6 +386,8 @@ description "De DanskeStatasbaner"
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "DFDS"
@@ -330,10 +399,21 @@ description "De Forenede Damskibs Selskaber"
 \end_layout
 
 \begin_layout Section
+
+\lang danish
 Lorem ipsum dolor sit amet
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Lorem-ipsum-dolor"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -354,10 +434,14 @@ lipsum[11-25]
 \end_layout
 
 \begin_layout Chapter
+
+\lang danish
 Nulla malesuada porttitor diam
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -374,10 +458,14 @@ lipsum[22-23]
 \end_layout
 
 \begin_layout Section
+
+\lang danish
 Sed commodo posuere pede
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -394,6 +482,8 @@ lipsum[24-30]
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset Float table
 wide false
 sideways false
@@ -404,14 +494,20 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\lang danish
 Tabel ekempel
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 Tabel eksempel
 \end_layout
 
@@ -427,6 +523,8 @@ Tabel eksempel
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
@@ -449,10 +547,14 @@ Tabel eksempel
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Flex Spaced Low Small Caps
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 Nulla
 \end_layout
 
@@ -467,10 +569,14 @@ Nulla
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Flex Spaced Low Small Caps
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 Ipsum
 \end_layout
 
@@ -485,10 +591,14 @@ Ipsum
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Flex Spaced Low Small Caps
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 Congue
 \end_layout
 
@@ -503,10 +613,14 @@ Congue
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 \begin_inset Flex Spaced Low Small Caps
 status open
 
 \begin_layout Plain Layout
+
+\lang danish
 Euismod
 \end_layout
 
@@ -523,6 +637,8 @@ Euismod
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 itae
 \end_layout
 
@@ -532,6 +648,8 @@ itae
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 red
 \end_layout
 
@@ -541,6 +659,8 @@ red
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 True
 \end_layout
 
@@ -550,6 +670,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 131
 \end_layout
 
@@ -559,6 +681,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 1.23
 \end_layout
 
@@ -570,6 +694,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 eros
 \end_layout
 
@@ -579,6 +705,8 @@ eros
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 blue
 \end_layout
 
@@ -588,6 +716,8 @@ blue
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 True
 \end_layout
 
@@ -597,6 +727,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 10958
 \end_layout
 
@@ -606,6 +738,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 645.3
 \end_layout
 
@@ -617,6 +751,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 wisi
 \end_layout
 
@@ -626,6 +762,8 @@ wisi
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 green
 \end_layout
 
@@ -635,6 +773,8 @@ green
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 False
 \end_layout
 
@@ -644,6 +784,8 @@ False
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 344
 \end_layout
 
@@ -653,6 +795,8 @@ False
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 0.056
 \end_layout
 
@@ -664,6 +808,8 @@ False
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 netus
 \end_layout
 
@@ -673,6 +819,8 @@ netus
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 red
 \end_layout
 
@@ -682,6 +830,8 @@ red
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 True
 \end_layout
 
@@ -691,6 +841,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 3
 \end_layout
 
@@ -700,6 +852,8 @@ True
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang danish
 23
 \end_layout
 
@@ -719,10 +873,14 @@ True
 \end_layout
 
 \begin_layout Subsection
+
+\lang danish
 Suspendisse vel felis
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
@@ -739,6 +897,47 @@ lipsum[31-50]
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang danish
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "erm"
+options "bibtotoc,chicago"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+printbibliography 		
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang danish
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -747,10 +946,14 @@ lipsum[31-50]
 
 \begin_layout Chapter
 \start_of_appendix
+
+\lang danish
 Proin tempus nibh sit amet nisl'
 \end_layout
 
 \begin_layout Standard
+
+\lang danish
 \begin_inset ERT
 status open
 
