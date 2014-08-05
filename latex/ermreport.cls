@@ -1,12 +1,44 @@
 %%%% file ermreport.cls
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ermreport}[2014/08/01 v0.0 erm report]
-%
-\newif\if@danish
-  \@danishfalse
-\DeclareOption{danish}{\@danishtrue}
+
+\newif\if@danish\@danishfalse
+\newif\if@biblatex\@biblatexfalse
+\newif\if@biber\@biberfalse
+
+% ********************************************************************
+% Options
+% ******************************************************************** 
+\DeclareOption{danish}{\@danishtrue%
+  \PassOptionsToClass{danish}{memoir}%
+  \PassOptionsToClass{danish}{bable}
+  }
+\DeclareOption{biblatex}{\@biblatextrue}
+\DeclareOption{biber}{\@bibertrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
-\LoadClassWithOptions{memoir}%[⟨date⟩]
+\LoadClass{memoir}%[⟨date⟩]
+
+%%% Bibliography
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
+
+\if@biber
+  \PassOptionsToPackage{style=authoryear,natbib=true,backend=biber,isbn=false}{biblatex}
+  \RequirePackage{biblatex} 
+\else
+  \if@biblatex
+    \PassOptionsToPackage{style=authoryear,natbib=true,backend=bibtex,isbn=false}{biblatex}
+    \RequirePackage{biblatex}
+  \else
+    \PassOptionsToPackage{authoryear}{natbib}
+    \RequirePackage{natbib}
+  \fi
+\fi
+
+
+
+
 %% Package
 %\RequirePackage{ifthen}%[1994/06/01]
 \RequirePackage{etoolbox}
@@ -156,16 +188,16 @@
   \vspace{2em}
   %\normalsize
   \ifdefined\AuthorList
-    \fbox{\begin{minipage}[t]{\len@Aut}%
+    \begin{minipage}[t]{\len@Aut}%
           \let\do=\@doList%
           \spacedsmallcaps{\dolistloop{\AuthorList}}%
-        \end{minipage}}%
+        \end{minipage}%
     \hspace{2ex}%
-    \fbox{\begin{minipage}[t]{\len@Sup}%
+    \begin{minipage}[t]{\len@Sup}%
           \let\do=\@doList
           \raggedleft
           \spacedsmallcaps{\dolistloop{\SupAuthorList}}
-    \end{minipage}}\par 
+    \end{minipage}\par 
   \fi
   \vfill
   \ifdefined\SupervisorList
@@ -358,7 +390,6 @@
     \begin{picture}(0,0)
       \put(\strip@pt\bringiii,-\strip@pt\bringiv){
       \color{halfgray}\chapterNumber\thechapter
-      %\resizebox{!}{\beforechapskip}{\color{halfgray}\chapnumfont \thechapter}
       }
     \end{picture}%
   }
@@ -385,7 +416,8 @@
   \setbeforesubsubsecskip{1.0\onelineskip
                           \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
   \setaftersubsubsecskip{-1em}%
-  \setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
+%%%  \setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
+  \setsubsubsecheadstyle{\normalfont\normalsize\spacedlowsmallcaps}%
   \setbeforeparaskip{1.0\onelineskip
                      \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
   \setafterparaskip{-1em}%
@@ -450,13 +482,13 @@
 \renewcommand*{\bookrefname}{Bog~}
 \renewcommand*{\partrefname}{Part~}
 \renewcommand*{\chapterrefname}{Kapitel~}
-\renewcommand*{\sectionrefname}{\S}
+%\renewcommand*{\sectionrefname}{\S}
 \renewcommand*{\appendixrefname}{Bilag~}
 \else
   \setUniversity{University of Southern Denmark, Esbjerg}
   \setStudy{Environmental and Resource Management}
-  \setTrustText{Det erkl\ae{}res herved p\aa{} tro og love, at undertegnede egenh\ae{}ndigt og selvst\ae{}ndigt har udformet denne rapport. Alle citater i teksten er markeret som s\aa{}danne, og rapporten eller v\ae{}sentlige dele af den har ikke tidligere v\ae{}ret fremlagt i anden bed\o{}mmelsessammenh\ae{}ng.}
-  \setSupervisorText{Vejleder:}{Vejledere:}
+  \setTrustText{I hereby solemnly declare that I have personally and independently prepared this paper. All quotations in the text have been marked as such, and the paper or considerable parts of it have not previously been subject to any examination or assessment.}
+  \setSupervisorText{Supervisor:}{Supervisors:}
   \setTitle{An Incredible Piece of Work over Which I have Struggled
    Day and Night for Far Too Long and now It is Over}
   \setDate{}
@@ -485,7 +517,8 @@
     %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,%
     breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
     plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    hypertexnames=true, pdfhighlight=/O,
+    pdfdisplaydoctitle=true,%nesting=true,%frenchlinks,%
     urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
 }
@@ -504,7 +537,45 @@
     %pdfcreator={pdfLaTeX},%
     %pdfproducer={LaTeX with hyperref and classicthesis}%
 }}
+%% Refstyle
+\AtEndPreamble{%
+  \@ifpackageloaded{refstyle}{
+    % No \S in sections
+    \newref{sec}{%
+      name      = \RSsectxt,
+      names     = \RSsecstxt,
+      Name      = \RSSectxt,
+      Names     = \RSSecstxt,
+      refcmd    = {\ref{#1}},
+      rngtxt    = \RSrngtxt,
+      lsttwotxt = \RSlsttwotxt,
+      lsttxt    = \RSlsttxt}
+    %%-- TEMPLATE FOR BOX -----------------------
+    \newref{box}{%
+      name      = \RSboxtxt,
+      names     = \RSboxstxt,
+      Name      = \RSBoxtxt,
+      Names     = \RSBoxstxt,
+      rngtxt    = \RSrngtxt,
+      lsttwotxt = \RSlsttwotxt,
+      lsttxt    = \RSlsttxt}
+    \RSaddto{\RSdanish}{%
+      \def\RSboxtxt{boks~}%
+      \def\RSboxstxt{boks~}%
+      \def\RSBoxtxt{Boks~}%
+    \def\RSBoxstxt{Boks~}%
+    }
+    \RSaddto{\RSenglish}{%
+      \def\RSboxtxt{box~}%
+      \def\RSboxstxt{boxes~}%
+      \def\RSBoxtxt{Box~}%
+    \def\RSBoxstxt{Boxes~}%
+    }
+  }
+}
 
+
+\maxsecnumdepth{subsection}
 \endinput
 %% End of file `ermreport.cls'.
 

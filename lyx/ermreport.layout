@@ -6,6 +6,8 @@
 # feel free to contribute missing features!
 
 Preamble
+%%-- TEMPLATE FOR SECTIONS ----------------------
+
 	% \usepackage{hyperref}
 EndPreamble
 
@@ -54,7 +56,7 @@ TitleLatexName  "ermFront"
 ClassOptions
 	FontSize             9|10|11|12|14|17
 	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
-	Other                11pt,a4paper,biber,oldfontcommands
+	Other                "11pt,a4paper,biber"
 End
 
 
