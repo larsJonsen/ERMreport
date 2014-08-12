@@ -40,7 +40,6 @@
 
 
 %% Package
-%\RequirePackage{ifthen}%[1994/06/01]
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 %%%
@@ -50,8 +49,10 @@
 %%%%%%%%
 \RequirePackage{microtype} 
 \microtypesetup{expansion=false}%
+\newcommand{\liningnums}[1]{%
+    {\fontfamily{pplx}\selectfont #1}}
 \DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[80]{\scshape{#1}}} 
-\DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{#1}}%
+\DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{\liningnums{#1}}}%
 \DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
 
@@ -75,6 +76,8 @@
 %\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
 %\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 %%%
+\RequirePackage{pdfpages}
+
 \RequirePackage{hyperref} 
 
 % hyperef redefines addcontentsline
@@ -93,7 +96,7 @@
   \ifdimcomp{#1}{>}{#2}{#1}{#2}
 }
 % For list loops
-\newcommand*{\@doList}[1]{\MakeTextLowercase{#1}\\}
+\newcommand*{\@doList}[1]{#1\\}
 \newcommand*{\@doList@i}[1]{#1\\[2ex]}
 \newcommand*{\@doList@ii}[1]{%
 \rule[0.5ex]{0.8\textwidth}{1pt}\par
@@ -103,6 +106,7 @@
 \newcommand*{\@doList@iii}[1]{, #1}
 % Title
 \newcommand{\setTitle}[1]{\def\ermTitle{#1}}
+\newcommand{\setSubtitle}[1]{\def\ermSubtitle{#1}}
 % Date
 \newcommand{\setDate}[1]{\def\ermDate{#1}}
 \newcommand{\setPlace}[1]{\def\ermPlace{#1}}
@@ -117,9 +121,9 @@
 \newlength{\len@B}
 \newlength{\len@C}
 \newcommand{\setAuthor}[2][\mbox{}]{%
-  \settowidth{\len@B}{\spacedlowsmallcaps{#2}}%
+  \settowidth{\len@B}{\large{#2}}%
   \setlength{\len@Aut}{\maxLength{\len@Aut}{\len@B}}
-  \settowidth{\len@B}{\spacedlowsmallcaps{#1}}%
+  \settowidth{\len@B}{\large\liningnums{#1}}%
   \setlength{\len@Sup}{\maxLength{\len@Sup}{\len@B}}
   \listadd{\AuthorList}{#2}
   \listadd{\SupAuthorList}{#1}
@@ -156,24 +160,32 @@
 %
 % Cover
 \newcommand{\coverpage}{%
-  \calccentering{\unitlength}
-  \begin{adjustwidth*}{\unitlength}{-\unitlength}
-  %\begin{adjustwidth}{-1.5cm}{-1.5cm} 
-  \begin{center}
-  \vspace*{\fill}
-  \spacedallcaps\ermTitle\par
-  \bigskip
-  \ifdefined\AuthorList
-    \let\do=\@doList
-    \spacedsmallcaps{\dolistloop{\AuthorList}}
-  \fi  
-  \vfill
-  \vfill
-  \coverLogo
-  \thispagestyle{empty}
-  \end{center}
-  %\end{adjustwidth}
-  \end{adjustwidth*}}
+  \ifdefined\ermCover
+    \includepdf{\ermCover}
+  \else
+    \calccentering{\unitlength}
+    \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    %\begin{adjustwidth}{-1.5cm}{-1.5cm} 
+    \begin{center}
+    \vspace*{\fill}
+    \spacedallcaps\ermTitle\par
+    \ifdefined\ermSubtitle
+      \spacedlowsmallcaps\ermSubtitle\par
+    \fi
+    \bigskip
+    \ifdefined\AuthorList
+      \let\do=\@doList
+      \large{\dolistloop{\AuthorList}}
+    \fi  
+    \vfill
+    \vfill
+    \coverLogo
+    \thispagestyle{empty}
+    \end{center}
+    %\end{adjustwidth}
+    \end{adjustwidth*}
+  \fi
+}
 %
 % Title page
 \newcommand{\titlepage}{
@@ -181,22 +193,25 @@
   \thispagestyle{empty}
   \begin{center}
   \spacedallcaps\ermSubject\par 
-  \spacedallcaps\ermStudy\par
-  \spacedallcaps\ermUniversity\par
+  \spacedlowsmallcaps\ermStudy\par
+  \spacedlowsmallcaps\ermUniversity\par
   \vfill
   \spacedallcaps\ermTitle\par
+  \ifdefined\ermSubtitle
+    \spacedlowsmallcaps\ermSubtitle\par
+  \fi
   \vspace{2em}
   %\normalsize
   \ifdefined\AuthorList
     \begin{minipage}[t]{\len@Aut}%
           \let\do=\@doList%
-          \spacedsmallcaps{\dolistloop{\AuthorList}}%
+          \large{\dolistloop{\AuthorList}}%
         \end{minipage}%
     \hspace{2ex}%
     \begin{minipage}[t]{\len@Sup}%
           \let\do=\@doList
           \raggedleft
-          \spacedsmallcaps{\dolistloop{\SupAuthorList}}
+          \large\liningnums{\dolistloop{\SupAuthorList}}
     \end{minipage}\par 
   \fi
   \vfill
@@ -218,23 +233,27 @@
 }
 % Declaration page
 \newcommand{\trustpage}{%
-  \chapter{\@trustHead}
-  \vspace*{\fill}
-  \begin{quote}
-  \ermTrustText\par
-  \vspace{2em}
-  \ermPlace, \ermDate\par
-  \vspace{2cm}
-  \end{quote}
-  \ifdefined\AuthorList
-    \begin{center}
-    \begin{minipage}{0.8\textwidth}
-      \let\do=\@doList@ii
-      \dolistloop{\AuthorList}
-    \end{minipage}
-    \end{center}
+  \ifdefined\ermTrustpage
+    \includepdf{\ermTrustpage}
+  \else
+    \chapter{\@trustHead}
+    \vspace*{\fill}
+    \begin{quote}
+    \ermTrustText\par
+    \vspace{2em}
+    \ermPlace, \ermDate\par
+    \vspace{2cm}
+    \end{quote}
+    \ifdefined\AuthorList
+      \begin{center}
+      \begin{minipage}{0.8\textwidth}
+        \let\do=\@doList@ii
+        \dolistloop{\AuthorList}
+      \end{minipage}
+      \end{center}
+    \fi
+    \vspace*{\fill}
   \fi
-  \vspace*{\fill}
 }
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%

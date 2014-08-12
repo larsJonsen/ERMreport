@@ -237,6 +237,25 @@ Style Title
 	Category              Title
 End
 
+Style Subtitle
+	Margin                Static
+	LatexType             Command
+	Category              Title
+	InTitle               1
+	LatexName             setSubtitle
+	ParSkip               0.4
+	ItemSep               0
+	TopSep                0
+	BottomSep             1
+	ParSep                1
+	Align                 Center
+	LabelType             No_Label
+	Font
+	  Size                large
+	EndFont
+	HTMLTag               h2
+End
+
 Style Date
 	LatexName             setDate
 	LabelString          "Delivery date"

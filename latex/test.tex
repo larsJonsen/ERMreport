@@ -18,33 +18,36 @@
 %%%
 %\setDate{3. april 2014}%
 %\setPlace{Esbjerg}
+\begin{document}
+
 \setSubject{Projekt 1. semester}
 %
 %\setAuthor{Casper Hansen}
-\setAuthor[II 345433]{Katrine Petersen Jensen}
-\setAuthor[III 345433]{Lars Jølk Ravn-Jonsen}
-\setAuthor[I 345433]{Kurt Frank Blåtand}
+\setAuthor[345433]{Katrine Petersen Jensen}
+\setAuthor[674339]{Lars Jølk Ravn-Jonsen}
+\setAuthor[345433]{Kurt Frank Blåtand}
 %\setAuthor{Casper Hansen}
 %
 %\setSupervisor{Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøkonomi}
 %\setSupervisor{Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøkonomi}
 %\setCover{SDU_logo.pdf}
 %\setTrustpage{asu.pdf}
+\setSubtitle{Her er en subtitle}
 %
 
-\begin{document}
+\setCover{sdu_segl.pdf}
+\setTrustpage{sdu_logo.pdf}
+%\ermFront
 \pdfsetup
 \coverpage
-  \frontmatter
-  \titlepage
-  \trustpage
+\frontmatter
+\titlepage
+\trustpage
 \begin{resume}
  safasfs
 \end{resume}
 \chapter{Preface}
-\newlength{\lenC}%
-\settowidth{\lenC}{\spacedlowsmallcaps{Katrine Petersen Jensen}}%
-\framebox[\lenC]{\spacedsmallcaps{\MakeTextLowercase{Katrine Petersen Jensen}}}
+
 
 \csshow{addcontentsline}
 \tableofcontents
