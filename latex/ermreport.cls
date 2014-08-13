@@ -235,6 +235,7 @@
 \newcommand{\trustpage}{%
   \ifdefined\ermTrustpage
     \includepdf{\ermTrustpage}
+    \addcontentsline{toc}{chapter}{\@trustHead}
   \else
     \chapter{\@trustHead}
     \vspace*{\fill}
@@ -501,6 +502,7 @@
 \renewcommand*{\bookrefname}{Bog~}
 \renewcommand*{\partrefname}{Part~}
 \renewcommand*{\chapterrefname}{Kapitel~}
+\renewcommand*{\@trustHead}{Tro og love}
 %\renewcommand*{\sectionrefname}{\S}
 \renewcommand*{\appendixrefname}{Bilag~}
 \else
