@@ -381,7 +381,47 @@ Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
  at det opdateres i det færdige dokument.
  Samtidig skal det levere et produkt der er estetisk tiltalende, dvs sat
  med en sammenhændende typografi.
+ Arbejdsgangen i udfærdigelsen af rapporten er ofte mod en deadline (aflevrings
+ dato).
+ Det man gerne vil som det sidste inden aflevering er at rbejde med inhold,
+ sammenhæng og tilsut korrektur læsning.
+ Det man ikke ønsker sig er at dokumnete kræver manule fomatering i større
+ omfang.
+ Skrive programmet skal defor håndtere typografien sikkert og så præsis
+ at kun få skønheds fejl skal rettes, som for eksempel hjælp til at del
+ ord rigtigt.
  
+\end_layout
+
+\begin_layout Subsection
+Samenarbejde
+\end_layout
+
+\begin_layout Standard
+Mens mange af de ting der nævnes nedenfor er specielt vigtige når man arbejde
+ flere på et dokumnet e de også nøjtige når man arbejde allene på et støre
+ dokument.
+ et problem der kan opstår når man arbejder flere på samme dokument er at
+ der er to der arbrjder på det smatidig og man derved får to versioner af
+ samme dokument.
+ Det kaldes vil jeg kalde en konflikt.
+ Når man arbejder på et større dokument er det beleliget at opdele dokument
+ i mindre filer, fx en fil pr kapitel.
+ Det gør filer mindre og mere overskuelige, samtidig har er den den fordel
+ ved at have flere filer at det er muligt at arbejde samtidig på samme hoved
+ dokument uden at der opstår konflikter, nemlg ved at man arbejder på hvert
+ sit del dokument.
+ Skrive programmet skal derfor understøtte at et dokument deles over flere
+ filer.
+ Samme argument kan tillæges grafik og tabeller, ofte er det en fordel at
+ have disse i særskilte filer med link i dokumentet, således at der kan
+ arbejde på tabellen, eller grafikken uden at selve dokument ændres.
+ Skrive programmet skal derfor understøte at der kan linkes til andet materiale.
+\end_layout
+
+\begin_layout Standard
+Når man arbejder på et dokument er dokument er det vigtigt at der er en
+ fælles platform at delle filer på, fx et internet
 \end_layout
 
 \begin_layout Standard
