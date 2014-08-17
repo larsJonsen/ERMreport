@@ -275,6 +275,116 @@ name "chap:Indledning"
 \end_layout
 
 \begin_layout Standard
+Miljø og ressource managemnt uddanelsen er en uddanelse hvor der lægges
+ vægt på at give de studerende kompetencer til deres fremtidige job.
+ Her er evnen til ved team work effektivt at fremstille en skriftlige rapporter
+ en af de kompentser vi uddaner i.
+ Som alt andet arbejde ligger en hel del af håndværket i at overskue arbejdet
+ og vælge det rette værktøj.
+ Hvad skal de værktøjer så kunne som skal faciliterer sammnearbejdet og
+ rapportskrtivnigen?
+\end_layout
+
+\begin_layout Itemize
+Der er behov for et skrive program der understøtter den struktur der forventes
+ af rapport genren
+\end_layout
+
+\begin_layout Itemize
+At arbejfe sammen om at skrive kræver programmer der understøter at flere
+ arbjder på samme dokument
+\end_layout
+
+\begin_layout Standard
+NEdfor diskuteres hver enkelt punkt i mere detaljer
+\end_layout
+
+\begin_layout Standard
+Rappot genren fordre en specifik stuktur af rapporten; Overordnet er den
+ strukturels delt i tre dele før del, hoved del og efter del.
+ Der er specifkke krab eller forventninger til hvilke del der skal hvære
+ hvor men lad os her se på hoved dellen der er hvor den faglige fremstiling
+ er.
+ 
+\end_layout
+
+\begin_layout Itemize
+Herakisk sturktur.
+ Den faglige fremstilling vil være opdelt i kapitler, der er delt ind i
+ sektinoner, der igen er delt ind i paragreffer.
+ Hver kapitel.
+ sektion og afsnit har en oversktift og er normalt nummereret.
+ Der kan være mere end tre niveauer i herakiet, men her tager vi udgangs
+ punkt i at tre nok er dækkende for det meste der igen er delt ind i 
+\end_layout
+
+\begin_layout Itemize
+Afsnit struktur.
+ Brødteksten der er selve indholdet i sectioner og paragraffer består af
+ bogstaver der samles til ord, ord der danner sætninger og sætninger der
+ danner afsnit.
+ Afsnit er en strukturel enhed i det skrevne, den består af sætninger der
+ høre sammen og behandler et emne TEOS.
+ Afsnits strukturen markeres i teksten, normalt ved at første linje i et
+ afsnit rykkes lidt ind.
+ Dog ikke hvis det er første afsnit efter en overskrift.
+\end_layout
+
+\begin_layout Itemize
+Figure, Tabeller mm.
+ En rapport har ofte figure og tabeller som argumentation i teksten.
+ Firgure og tabeller er ikke en del af selve teksten men ekstra dele der
+ sættes ind tæt på hvor der henvises til dem i teksten.
+ Da figure og tabeller ikke er del af brødteksten er deres placering noget
+ fri.
+ De placeres efter typografiske normer ofte øverste på en side.
+ Figure og tabeller har altid en beskrivende titel og nummeres fortløbrende,
+ evt inden for hvert kapittel.
+ Der er altid en henvisnig i teksten til hver eneste figur og tabel.
+\end_layout
+
+\begin_layout Itemize
+Interne henvisninger.
+ Alle figurer og tabeller har minst en intern henvisning, dvs en henvisning
+ der har det nummer som figuren/tabellen har.
+ En rapport er ofte et langt akademisk agument, man fremstiller forskelligt
+ der til slut bruges som argumentation for konklusione.
+ Det betyder der ofte er behov for talrige interne henvisniger, fx til tidligere
+ kapitler, sectioner eller afsnit.
+ Da de er nummereret henvises der ofte til nummerert.
+\end_layout
+
+\begin_layout Itemize
+Bibliografiske refferencer.
+ I teksten fremstilles refreres til andres arbejde med en kort mærke fx,
+ forfatter og årstal.
+ Den egentlige refference findes bagerst i en litteratur liste.
+ Litteratur listen skal indeholde alle refferncer i taksten, og ingen andre.
+ Litteraturlister kræves ofte struktureret efter specifice retningslijer.
+\end_layout
+
+\begin_layout Itemize
+Hyperlinks.
+ Selv om det sjældent er et krav til universites opgaver er det ikke desto
+ mindre ved at være standard at alle henvisninger i en text understøttes
+ af hypelinks når dokumnet er i pdf udgave, således at man ved at klikke
+ kan følge henvsningen.
+ Litteratur listen forvenes også at have url link til fx DOI.
+\end_layout
+
+\begin_layout Standard
+Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
+ lister og nomlatur, men ovenståemde er hovedtrækne i rapport gengren.
+ Et skrive program bør understøtte ovenståede, under hensytagen til at skrivning
+ er en dynamisk proces, hvor del bliver taget ud, tilføjet eller flyttet.
+ Programmet skal altså understøtte ovenståede reffrence systemer således
+ at det opdateres i det færdige dokument.
+ Samtidig skal det levere et produkt der er estetisk tiltalende, dvs sat
+ med en sammenhændende typografi.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
