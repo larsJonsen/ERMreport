@@ -394,25 +394,40 @@ Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
 \end_layout
 
 \begin_layout Subsection
-Samenarbejde
+Samenarbejde og file håndgering
 \end_layout
 
-\begin_layout Standard
-Mens mange af de ting der nævnes nedenfor er specielt vigtige når man arbejde
- flere på et dokumnet e de også nøjtige når man arbejde allene på et støre
- dokument.
- et problem der kan opstår når man arbejder flere på samme dokument er at
- der er to der arbrjder på det smatidig og man derved får to versioner af
- samme dokument.
- Det kaldes vil jeg kalde en konflikt.
+\begin_layout Itemize
+Central opvaring af filer.
+ Filer skal være tilgængelige for alle sammenarbejds partner
+\end_layout
+
+\begin_layout Itemize
+Versions kontrol.
+ Filer skal sikres mod uønskede ændringer, og man skal kunne se tidligere
+ versiner af dokumnet.
+ Det kaldes version kontrol
+\end_layout
+
+\begin_layout Itemize
+Håndtering af konflikter.
+ Et problem der kan opstår når man arbejder flere på samme dokument er at
+ der er to der arbrjder på det smatidig på samme og man derved får to versioner
+ af samme dokument.
+ Det vil jeg kalde en konflikt.
+ Der skal extere et sysgtem for hvordan disse håndteres.
+ Verisons kontrol er her en god start.
+\end_layout
+
+\begin_layout Itemize
+Opdeling i del dokumneter.
  Når man arbejder på et større dokument er det beleliget at opdele dokument
  i mindre filer, fx en fil pr kapitel.
- Det gør filer mindre og mere overskuelige, samtidig har er den den fordel
- ved at have flere filer at det er muligt at arbejde samtidig på samme hoved
- dokument uden at der opstår konflikter, nemlg ved at man arbejder på hvert
- sit del dokument.
- Skrive programmet skal derfor understøtte at et dokument deles over flere
- filer.
+ Det gør filer mindre og mere overskuelige, samtidig er den den fordel ved
+ at have flere filer at det er muligt at arbejde samtidig på samme hoved
+ dokument uden at der opstår konflikter, nemlig ved at man arbejder på hvert
+ sit del dokument.Skrive programmet skal derfor understøtte at et dokument
+ deles over flere filer.
  Samme argument kan tillæges grafik og tabeller, ofte er det en fordel at
  have disse i særskilte filer med link i dokumentet, således at der kan
  arbejde på tabellen, eller grafikken uden at selve dokument ændres.
@@ -420,8 +435,78 @@ Mens mange af de ting der nævnes nedenfor er specielt vigtige når man arbejde
 \end_layout
 
 \begin_layout Standard
-Når man arbejder på et dokument er dokument er det vigtigt at der er en
- fælles platform at delle filer på, fx et internet
+Mens mange af de ting der nævnes ovenfor er specielt vigtige når man arbejde
+ flere på et dokumnet e de også nøjtige når man arbejde allene på et støre
+ dokument.
+ 
+\end_layout
+
+\begin_layout Subsection
+Løsning
+\end_layout
+
+\begin_layout Standard
+Som skrive program er de gængse office skrive programmer Word, libreoffice,
+ pages og andre ikke egnet.
+ Systemer for interne refference eksistere men er dårlige og tunge, det
+ samme med bibliografiske refferencer.
+ Figurer og tabellers placering skal foretages manuelt og skifter hver gang
+ der redigeres i dokument.
+ Typografien overlader alt for meget til brugeren og typisk skal der bruges
+ dage som det sidste på at få et støre dokumnet til at se hæderlligt ud
+ typografisk set.
+ Word har vist understøtning for subdokuments, som jeg ikke har prøvet.
+ Et alternativ er at bruge 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Latex
+\end_layout
+
+\end_inset
+
+, Latex håndtere alle de oventående krav på bedste vis.
+ Problemet med Latex er indlærings kurve, man har behov for at investerer
+ en del tid i at forstå og andvende programmet.
+ Et løsning på det probelm er at andvende Lyx der er en front end til latex.
+ Lyx har allle Latexs muæigheder men en brugerflade der svare til et WYSIWYG
+ skrive program.
+ Det er dog ikke helt What you see is what you get.
+ Det er WYSIWYM What you see is what you mean: the screen editor have a
+ version rendered with a much simpler allgorhitm than the Latex program.
+ Only when you need to see the document, it is compiled with Latex mm.
+ Der er dog stadig nogel teknioske ting der skal håndters i Lyx som kræver
+ investering.
+ Investeringen kan dog mindskes betragtlig ved at udarbejde en latex klasse
+ og tilhørende lysx layout.
+ Og det er her ERMreport kommer ind i billedet.
+ ERMreport består af ermreport.cls en latex classe file der opsætter formatet
+ for en Miljø og resource projekt rapport og en ermreport.layout der er en
+ lyx lauout file der implemetere classen i lyx.
+\end_layout
+
+\begin_layout Standard
+Nedenfor følger indstallation og dokumentaiton.
+\end_layout
+
+\begin_layout Standard
+Fil dleing systemer.
+\end_layout
+
+\begin_layout Standard
+Dropbox.
+ Dropbox er rigtig godt til at sørge for at du har automatisk backup af
+ dine filer og den har versions kontrol (på websiden).
+ Man kan altid finde en tidligere udgave, dog begrænset i tid (tril 4 månder
+ tror jeg).
+ Man kan også dele filer.
+ Hvis man har konfliketer kommer der en ekstra file i dropbox som conflictoing
+ copy.
+ Det største 
 \end_layout
 
 \begin_layout Standard
