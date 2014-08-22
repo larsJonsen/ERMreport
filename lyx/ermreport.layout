@@ -80,6 +80,10 @@ Input stdfloats.inc
 Input stdsections.inc
 Input stdstarsections.inc
 Input numreport.inc
+Input stdtitle.inc
+Input stdstruct.inc
+#Input lyxmacros.inc
+Input stdlayouts.inc
 
 
 NoStyle Part
@@ -213,8 +217,6 @@ End
 # Style Poemtitle*
 
 
-Input stdtitle.inc
-Input stdstruct.inc
 
 
 Style Bibliography
@@ -227,8 +229,7 @@ Style Bibliography
 End
 
 
-Input lyxmacros.inc
-Input stdlayouts.inc
+
 
 # Style Legend
 
@@ -332,7 +333,7 @@ Style Subject
 End
 
 
-Style Trustpage
+Style Declaration
 	Margin                Static
 	LatexType             Command
 	Category              Title

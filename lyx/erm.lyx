@@ -149,6 +149,10 @@ status open
 
 \end_layout
 
+\begin_layout Author
+sgjsg
+\end_layout
+
 \begin_layout Supervisor
 Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøko
 nomi
@@ -493,8 +497,18 @@ Latex
 Nedenfor følger indstallation og dokumentaiton.
 \end_layout
 
+\begin_layout Subsection
+Samenarbejde og file håndtering.
+\end_layout
+
 \begin_layout Standard
-Fil dleing systemer.
+e.mauils.
+ det er helt almindelig at dele filer ved at sende dem rundt med email til
+ hinanden efter hånden som man arbejder i dem.
+ Selv om det sikre backup og en form for versionskontrol (hvis man ikke
+ sleter mails) er det den dårligste løsning.
+ Der er ikke til at undgå konflikter.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -506,7 +520,87 @@ Dropbox.
  Man kan også dele filer.
  Hvis man har konfliketer kommer der en ekstra file i dropbox som conflictoing
  copy.
- Det største 
+ Det største fare ved dropbox er hvis en sletter den delte mappe på sin
+ computer - det fjerner samtidg alle andres.
+ (den er dog stadig på dropboxserveren, men det er besværligt).
+ Konklusionen er at dropbox i højgrad er brugbar, men ikke ideel.
+\end_layout
+
+\begin_layout Standard
+Google-share.
+ Ok hvis man arbejder i google docs.
+\end_layout
+
+\begin_layout Standard
+Git baserede løsninger.
+ Git er State of the art indenfor versions kontrol af programering.
+ Der er intet i vejen for at bruge det til tekst domkumenter.
+ Git arbejder med et lokalt repositorio og it master på internettet.
+ Der findes gratis internet resposits som github og bitbucket.
+ Vi vil anvende github.
+ 
+\end_layout
+
+\begin_layout Section
+Dokomentation for ERMreport layout
+\end_layout
+
+\begin_layout Standard
+Den bedtse måde at komme igang er at åbne ermreport skabelon ermreport.lyx.
+\end_layout
+
+\begin_layout Standard
+Hvis skabelonen ikke bruges vær opmærksom på følgende:
+\end_layout
+
+\begin_layout Standard
+Encoding skal være Unicode (utf8) da det skal være sat for at bruge biber
+\end_layout
+
+\begin_layout Standard
+Frontmatter
+\end_layout
+
+\begin_layout Standard
+Title Sætter opgavens tittel
+\end_layout
+
+\begin_layout Standard
+Subtitle Setter en under tittel med mindre font
+\end_layout
+
+\begin_layout Standard
+Date Sætter afleverings dato
+\end_layout
+
+\begin_layout Standard
+Author Sætter forfatter navne.
+ Der kan (i modsætning til standard kalsser) sættes fler forfattere.
+ For hver forfatter kan sættes fødsels dato.
+ Det gøres ved menuen Insert > Birthday
+\end_layout
+
+\begin_layout Standard
+Supervisor Sætter vejledere.
+ Normalt skrives 'vejleder navn, univeritet, institut'.
+ Der kan sættes flere vejledere.
+\end_layout
+
+\begin_layout Standard
+Subject Sætter fagfes tittel fx Projekt 1.
+ semester
+\end_layout
+
+\begin_layout Standard
+Cover Kan bruges hvis ikke man er tilfreds med standard omslag.
+ Cover skal have navnet på en pdf file som bliver satg som omslag.
+ (undgå undescore og $ i navnet, eller skal det angives som RET)
+\end_layout
+
+\begin_layout Standard
+Declaration Når standard siden med Tro og love er underskrevet indscanes
+ den.
+ Navnet på pdf-filen angives så her og vil erstate standard siden.
 \end_layout
 
 \begin_layout Standard
