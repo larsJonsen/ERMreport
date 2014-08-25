@@ -19,7 +19,7 @@ JabRef: Sæt encoding. Options > Preferences > General nederst sæt Default enco
 
 Start lyx: Når lyx starter første gang tager det noget tid hav tålmodighed Når lyx starter første gang vil MikTex installere flere pakker, sig derfor ja til denne advarsel to gange
 
-Når lyx endelig starter tryk på øjene øverst til venstre, MikTex vil igen installerer nogle pakker sig trugt ja til det
+Når lyx endelig starter tryk på øjene øverst til venstre, MikTex vil igen installerer nogle pakker sig trygt ja til det og læs det pdf dokument der åbnes i acrobat reader
 
 
 Sourcettree: http://www.sourcetreeapp.com
@@ -30,11 +30,20 @@ Skip setup
 
 Sig nej til ssh key
 
-In Sourcetree go tomenue File > Registration... and do a Registration Now - Free!
+In Sourcetree go to menue File > Registration... and do a Registration Now - Free!
 
 Clone/new
 
 http://github.com/larsJonsen/ERMreport
+
+MikTex skal vide hvor den kan finde ermreprort.cls filen
+
+Åben en comand promt: Tryk på start knappen og skriv cmd enter
+
+I prometen skrives (copy-paste det)
+
+initexmf --register-root=c:%userprofile%\Git\ERMreport\latex
+initexmf -u
 
 mkdir \localtexmf
 mkdir \localtexmf\tex
