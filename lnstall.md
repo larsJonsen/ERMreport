@@ -42,8 +42,9 @@ MikTex skal vide hvor den kan finde ermreprort.cls filen
 
 mkdir %AppData%\MikTex\2.9\tex\latex
 mklink /j %AppData%\MikTex\2.9\tex\latex\ERMreport %userprofile%\Git\latex
+initexmf -u
 
-
-
+mklink /d %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\lyx\ermreport.layout
+mklink /d %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\lyx\erm.lyx
 
 
