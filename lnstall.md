@@ -40,8 +40,9 @@ MikTex skal vide hvor den kan finde ermreprort.cls filen
 
 Åben en comand promt: Tryk på start knappen og skriv cmd og tryk shift-crtl-enter for at starte en administrator promt
 
+mkdir %AppData%\MikTex\2.9\tex\latex
+mklink /j %AppData%\MikTex\2.9\tex\latex\ERMreport %userprofile%\Git\latex
 
-mklink /d %AppData%\MikTex\2.9\ERMreport\ermreport.cls %userprofile%\Git\latex\ermreport.cls
 
 
 
