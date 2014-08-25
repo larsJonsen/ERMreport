@@ -38,15 +38,11 @@ http://github.com/larsJonsen/ERMreport
 
 MikTex skal vide hvor den kan finde ermreprort.cls filen
 
-Åben en comand promt: Tryk på start knappen og skriv cmd enter
+Åben en comand promt: Tryk på start knappen og skriv cmd og tryk shift-crtl-enter for at starte en administrator promt
 
-I prometen skrives (copy-paste det)
 
-initexmf --register-root=c:%userprofile%\Git\ERMreport\latex
-initexmf -u
+mklink /d %AppData%\MikTex\2.9\ERMreport\ermreport.cls %userprofile%\Git\latex\ermreport.cls
 
-mkdir \localtexmf
-mkdir \localtexmf\tex
-mkdir \localtexmf\tex\latex
-mkdir \localtexmf\tex\latex\ERMreport
-mklink /d \localtexmf\tex\latex\ERMreport\ermreport.cls %userprofile%\Git\latex\ermreport.cls
+
+
+
