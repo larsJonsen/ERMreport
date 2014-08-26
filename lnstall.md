@@ -100,9 +100,13 @@ MikTex skal vide hvor den kan finde ermreprort.cls filen og lyx skal finde ermre
 I terminalen kopieres følgende ind: 
 
 `mkdir %AppData%\MikTex\2.9\tex\latex`
+
 `mklink /j %AppData%\MikTex\2.9\tex\latex\ERMreport %userprofile%\Git\ERMreport\latex`
+
 `initexmf -u`
+
 `mklink /d %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout`
+
 `mklink /d %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx`
 
 Første linje laver en directory i MikTex´s lokale mappe for tex filer. Anden linje laver en junction (som symbolske links til mapper heder i Windows). Herefter opdateres MikTex database. Så laver vi et symbolsk link så Lyx kan se layoutfile og template filen
@@ -116,8 +120,11 @@ __Her skal jeg lige have hjælp af en emd en mac så jeg får det rigtig__
 Åben en terminal. I terminalen kopieres følgende ind:
 
 `sudo ln -s ~/Git/ERMreport/latex /usr/local/texlive/texmf-local/tex/latex/ERMreport`
+
 `sudo texhash`
+
 `ln -s ~/Git/ERMreport/lyx/ermreport.layout ~/Library/Application\ Support/LyX-2.1/layouts/ermreport.layout`
+
 `ln -s ~/Git/ERMreport/lyx/erm.lyx ~/Library/Application\ Support/LyX-2.1/templates/erm.lyx`
 
 Efter de første linje vil promten bede om dit password
