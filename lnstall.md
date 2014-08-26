@@ -60,10 +60,12 @@ Når lyx endelig starter tryk på øjene øverst til venstre, MikTex vil igen in
 SourceTree er en grafisk brugerflade til versions kontrolsystemet _Git_. Det kan installeres fra Atlassian: [http://www.sourcetreeapp.com](http://www.sourcetreeapp.com)
 
 Sig bare ja til global ignor file:
+
 ![image006](./image/image006.png)
 
 
 Skip setup af account
+
 ![image007](./image/image007.png)
 
 Sig nej til ssh key
