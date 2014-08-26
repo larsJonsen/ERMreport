@@ -121,6 +121,98 @@ Style Preface
 	HTMLTag               h1
 End      	
 
+Style Dedication
+	Margin                Static
+	LatexType             Environment
+	LatexName             dedication
+	Category              FrontMatter
+	NextNoIndent          1
+	LeftMargin            MMM
+	RightMargin           MMM
+	ParIndent             MM
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	LabelType             Centered
+	LabelString           "Dedication"
+	LabelBottomSep        0.5
+	Font
+	  Size                Small
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Size                Large
+	EndFont
+End
+
+Style Acknowledgment
+	Margin                Static
+	LatexType             Environment
+	LatexName             acknowledgment
+	Category              FrontMatter
+	NextNoIndent          1
+	LeftMargin            MMM
+	RightMargin           MMM
+	ParIndent             MM
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	LabelType             Centered
+	LabelString           "Acknowledgment"
+	LabelBottomSep        0.5
+	Font
+	  Size                Small
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Size                Large
+	EndFont
+End
+
+Style Resume
+	Margin                Static
+	LatexType             Environment
+	LatexName             resume
+	Category              FrontMatter
+	NextNoIndent          1
+	LeftMargin            MMM
+	RightMargin           MMM
+	ParIndent             MM
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	LabelType             Centered
+	LabelString           "Resume"
+	LabelBottomSep        0.5
+	Font
+	  Size                Small
+	EndFont
+	LabelFont
+	  Series              Bold
+	  Size                Large
+	EndFont
+	HTMLLabelFirst        1
+	HTMLForceCSS          1
+	HTMLStyle
+		div.abstract {
+			margin: 4ex;
+		}
+		div.abstract_item {
+			font-size: small;
+			padding-top: 1ex;
+		}
+		div.abstract_label {
+			font-weight: bold;
+		}
+	EndHTMLStyle
+End
+
 Style Chapter
 	LatexName         ermChapter
 	Argument 1

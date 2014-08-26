@@ -81,8 +81,8 @@ Vi skal bruge G til flere ting som det første clone ERMreport.cls filer og ERMr
 
 I øverste venstre hjørne tryk på Clone/new
 
-- Under _Destination Path / URL:_ skriv _http://github.com/larsJonsen/ERMreport_ 
-- Under _Destination Path:_ skriver du i Windows _C:\Users\<bruger navn>\Git\ERMreport_ i Mac og Linux _~/Git/ERMreport_
+- Under _Source Path / URL:_ skriv _http://github.com/larsJonsen/ERMreport_ 
+- Under _Destination Path:_ skriver du i Windows _C:\Users\ \<bruger navn> \Git\ERMreport_ i Mac og Linux _~/Git/ERMreport_
 - Tryk på Clone og en copi af fillerne vil komme ned på din maskine (hvis du har internet adgang)
 
 ![image008](./image/image008.png)
@@ -109,9 +109,11 @@ I terminalen kopieres følgende ind:
 
 `mklink /d %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx`
 
+![image010](./image/image010.png)
+
 Første linje laver en directory i MikTex´s lokale mappe for tex filer. Anden linje laver en junction (som symbolske links til mapper heder i Windows). Herefter opdateres MikTex database. Så laver vi et symbolsk link så Lyx kan se layoutfile og template filen
 
-Herefter køres i lyx Værktøj > Genkonfigurer
+Herefter køres i Lyx menuen Værktøj > Genkonfigurer
 
 ###### Mac
 

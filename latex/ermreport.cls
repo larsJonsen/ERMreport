@@ -266,21 +266,21 @@
 }
 % Abstract
 % Make it start on new page
-\renewcommand{\setup@bstract}{%
-  \clearforchapter
-  \abs@leftindent=\absleftindent
-  \pagestyle{resume}
-  \if@twocolumn
-    \if@bsonecol
-    \else
-      \abs@leftindent=\z@
-      \absrightindent=\z@
-      \renewcommand*{\abstractnamefont}{\abscolnamefont}
-      \renewcommand*{\abstracttextfont}{\abscoltextfont}
-      \renewcommand*{\absnamepos}{flushleft}
-      \setlength{\abstitleskip}{-2ex}
-    \fi
-  \fi}
+%\renewcommand{\setup@bstract}{%
+%  \clearforchapter
+%  \abs@leftindent=\absleftindent
+%  \pagestyle{resume}
+%  \if@twocolumn
+%    \if@bsonecol
+%    \else
+%      \abs@leftindent=\z@
+%      \absrightindent=\z@
+%      \renewcommand*{\abstractnamefont}{\abscolnamefont}
+%      \renewcommand*{\abstracttextfont}{\abscoltextfont}
+%      \renewcommand*{\absnamepos}{flushleft}
+%      \setlength{\abstitleskip}{-2ex}
+%    \fi
+%  \fi}
 % Table fo content and friends
 \renewcommand{\tocheadstart}{%
   \parindent\z@
@@ -462,10 +462,24 @@
 \chapter*{\@resumeHead}
 }{}
 
+\newenvironment{dedication}{%
+\clearforchapter
+\thispagestyle{empty}
+\vspace*{\fill}
+}{
+\vspace*{\fill}\clearpage
+}
+
+\newenvironment{acknowledgment}{%
+\chapter*{\@acknowledgmentHead}
+}{}
+
+
 \newcommand{\@dedicationHead}{Dedication}
-\newcommand{\@resumeHead}{Resume}
+\newcommand{\@resumeHead}{Resumé}
 \newcommand{\@abstractHead}{Abstract}
 \newcommand{\@trustHead}{Declaration}
+\newcommand{\@acknowledgmentHead}{Acknowledgment}
 
 %%%%%% Standard text input
 
@@ -503,6 +517,8 @@
 \renewcommand*{\partrefname}{Part~}
 \renewcommand*{\chapterrefname}{Kapitel~}
 \renewcommand*{\@trustHead}{Tro og love}
+\renewcommand*{\@dedicationHead}{Tilegnet}
+\renewcommand*{\@acknowledgmentHead}{Anerkendelse}
 %\renewcommand*{\sectionrefname}{\S}
 \renewcommand*{\appendixrefname}{Bilag~}
 \else

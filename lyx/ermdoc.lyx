@@ -1,0 +1,1199 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass ermreport
+\begin_preamble
+%\usepackage{doi}
+\usepackage{lipsum}
+\addbibresource{~/git/ERMreport/lyx/erm.bib}
+\end_preamble
+\options biblatex
+\use_default_options true
+\maintain_unincluded_children false
+\language danish
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style 
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language danish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Dette ufattelige store projekt
+\end_layout
+
+\begin_layout Subtitle
+som jeg har arbejdet på både dag og nat for så længe og som endelig er overstået
+\end_layout
+
+\begin_layout Date
+8.
+ juni 2014
+\end_layout
+
+\begin_layout Subject
+Projekt 1.
+ semester
+\end_layout
+
+\begin_layout Author
+Katrine Petersen Jensen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Casper Hansen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Lars Jølk Ravn-Jonsen
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Kurt Frank Blåtand
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+345433
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+sgjsg
+\end_layout
+
+\begin_layout Supervisor
+Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsøko
+nomi
+\end_layout
+
+\begin_layout Abstract
+Her er en korte redegørelse for hvad jeg har bedrevet, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "chap:Indledning"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "chap:Indledning"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Lorem-ipsum-dolor"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "chap:Indledning"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:Suspendisse-vel-felis"
+
+\end_inset
+
+ lidt ord 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "box:Aenean-faucibus-pede"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Preface
+Forord
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-2]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Forkortelser}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Indledning
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Indledning"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Miljø og ressource managemnt uddanelsen er en uddanelse hvor der lægges
+ vægt på at give de studerende kompetencer til deres fremtidige job.
+ Her er evnen til ved team work effektivt at fremstille en skriftlige rapporter
+ en af de kompentser vi uddaner i.
+ Som alt andet arbejde ligger en hel del af håndværket i at overskue arbejdet
+ og vælge det rette værktøj.
+ Hvad skal de værktøjer så kunne som skal faciliterer sammnearbejdet og
+ rapportskrtivnigen?
+\end_layout
+
+\begin_layout Itemize
+Der er behov for et skrive program der understøtter den struktur der forventes
+ af rapport genren
+\end_layout
+
+\begin_layout Itemize
+At arbejfe sammen om at skrive kræver programmer der understøter at flere
+ arbjder på samme dokument
+\end_layout
+
+\begin_layout Standard
+NEdfor diskuteres hver enkelt punkt i mere detaljer
+\end_layout
+
+\begin_layout Standard
+Rappot genren fordre en specifik stuktur af rapporten; Overordnet er den
+ strukturels delt i tre dele før del, hoved del og efter del.
+ Der er specifkke krab eller forventninger til hvilke del der skal hvære
+ hvor men lad os her se på hoved dellen der er hvor den faglige fremstiling
+ er.
+ 
+\end_layout
+
+\begin_layout Itemize
+Herakisk sturktur.
+ Den faglige fremstilling vil være opdelt i kapitler, der er delt ind i
+ sektinoner, der igen er delt ind i paragreffer.
+ Hver kapitel.
+ sektion og afsnit har en oversktift og er normalt nummereret.
+ Der kan være mere end tre niveauer i herakiet, men her tager vi udgangs
+ punkt i at tre nok er dækkende for det meste der igen er delt ind i 
+\end_layout
+
+\begin_layout Itemize
+Afsnit struktur.
+ Brødteksten der er selve indholdet i sectioner og paragraffer består af
+ bogstaver der samles til ord, ord der danner sætninger og sætninger der
+ danner afsnit.
+ Afsnit er en strukturel enhed i det skrevne, den består af sætninger der
+ høre sammen og behandler et emne TEOS.
+ Afsnits strukturen markeres i teksten, normalt ved at første linje i et
+ afsnit rykkes lidt ind.
+ Dog ikke hvis det er første afsnit efter en overskrift.
+\end_layout
+
+\begin_layout Itemize
+Figure, Tabeller mm.
+ En rapport har ofte figure og tabeller som argumentation i teksten.
+ Firgure og tabeller er ikke en del af selve teksten men ekstra dele der
+ sættes ind tæt på hvor der henvises til dem i teksten.
+ Da figure og tabeller ikke er del af brødteksten er deres placering noget
+ fri.
+ De placeres efter typografiske normer ofte øverste på en side.
+ Figure og tabeller har altid en beskrivende titel og nummeres fortløbrende,
+ evt inden for hvert kapittel.
+ Der er altid en henvisnig i teksten til hver eneste figur og tabel.
+\end_layout
+
+\begin_layout Itemize
+Interne henvisninger.
+ Alle figurer og tabeller har minst en intern henvisning, dvs en henvisning
+ der har det nummer som figuren/tabellen har.
+ En rapport er ofte et langt akademisk agument, man fremstiller forskelligt
+ der til slut bruges som argumentation for konklusione.
+ Det betyder der ofte er behov for talrige interne henvisniger, fx til tidligere
+ kapitler, sectioner eller afsnit.
+ Da de er nummereret henvises der ofte til nummerert.
+\end_layout
+
+\begin_layout Itemize
+Bibliografiske refferencer.
+ I teksten fremstilles refreres til andres arbejde med en kort mærke fx,
+ forfatter og årstal.
+ Den egentlige refference findes bagerst i en litteratur liste.
+ Litteratur listen skal indeholde alle refferncer i taksten, og ingen andre.
+ Litteraturlister kræves ofte struktureret efter specifice retningslijer.
+\end_layout
+
+\begin_layout Itemize
+Hyperlinks.
+ Selv om det sjældent er et krav til universites opgaver er det ikke desto
+ mindre ved at være standard at alle henvisninger i en text understøttes
+ af hypelinks når dokumnet er i pdf udgave, således at man ved at klikke
+ kan følge henvsningen.
+ Litteratur listen forvenes også at have url link til fx DOI.
+\end_layout
+
+\begin_layout Standard
+Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
+ lister og nomlatur, men ovenståemde er hovedtrækne i rapport gengren.
+ Et skrive program bør understøtte ovenståede, under hensytagen til at skrivning
+ er en dynamisk proces, hvor del bliver taget ud, tilføjet eller flyttet.
+ Programmet skal altså understøtte ovenståede reffrence systemer således
+ at det opdateres i det færdige dokument.
+ Samtidig skal det levere et produkt der er estetisk tiltalende, dvs sat
+ med en sammenhændende typografi.
+ Arbejdsgangen i udfærdigelsen af rapporten er ofte mod en deadline (aflevrings
+ dato).
+ Det man gerne vil som det sidste inden aflevering er at rbejde med inhold,
+ sammenhæng og tilsut korrektur læsning.
+ Det man ikke ønsker sig er at dokumnete kræver manule fomatering i større
+ omfang.
+ Skrive programmet skal defor håndtere typografien sikkert og så præsis
+ at kun få skønheds fejl skal rettes, som for eksempel hjælp til at del
+ ord rigtigt.
+ 
+\end_layout
+
+\begin_layout Subsection
+Samenarbejde og file håndgering
+\end_layout
+
+\begin_layout Itemize
+Central opvaring af filer.
+ Filer skal være tilgængelige for alle sammenarbejds partner
+\end_layout
+
+\begin_layout Itemize
+Versions kontrol.
+ Filer skal sikres mod uønskede ændringer, og man skal kunne se tidligere
+ versiner af dokumnet.
+ Det kaldes version kontrol
+\end_layout
+
+\begin_layout Itemize
+Håndtering af konflikter.
+ Et problem der kan opstår når man arbejder flere på samme dokument er at
+ der er to der arbrjder på det smatidig på samme og man derved får to versioner
+ af samme dokument.
+ Det vil jeg kalde en konflikt.
+ Der skal extere et sysgtem for hvordan disse håndteres.
+ Verisons kontrol er her en god start.
+\end_layout
+
+\begin_layout Itemize
+Opdeling i del dokumneter.
+ Når man arbejder på et større dokument er det beleliget at opdele dokument
+ i mindre filer, fx en fil pr kapitel.
+ Det gør filer mindre og mere overskuelige, samtidig er den den fordel ved
+ at have flere filer at det er muligt at arbejde samtidig på samme hoved
+ dokument uden at der opstår konflikter, nemlig ved at man arbejder på hvert
+ sit del dokument.Skrive programmet skal derfor understøtte at et dokument
+ deles over flere filer.
+ Samme argument kan tillæges grafik og tabeller, ofte er det en fordel at
+ have disse i særskilte filer med link i dokumentet, således at der kan
+ arbejde på tabellen, eller grafikken uden at selve dokument ændres.
+ Skrive programmet skal derfor understøte at der kan linkes til andet materiale.
+\end_layout
+
+\begin_layout Standard
+Mens mange af de ting der nævnes ovenfor er specielt vigtige når man arbejde
+ flere på et dokumnet e de også nøjtige når man arbejde allene på et støre
+ dokument.
+ 
+\end_layout
+
+\begin_layout Subsection
+Løsning
+\end_layout
+
+\begin_layout Standard
+Som skrive program er de gængse office skrive programmer Word, libreoffice,
+ pages og andre ikke egnet.
+ Systemer for interne refference eksistere men er dårlige og tunge, det
+ samme med bibliografiske refferencer.
+ Figurer og tabellers placering skal foretages manuelt og skifter hver gang
+ der redigeres i dokument.
+ Typografien overlader alt for meget til brugeren og typisk skal der bruges
+ dage som det sidste på at få et støre dokumnet til at se hæderlligt ud
+ typografisk set.
+ Word har vist understøtning for subdokuments, som jeg ikke har prøvet.
+ Et alternativ er at bruge 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Latex
+\end_layout
+
+\end_inset
+
+, Latex håndtere alle de oventående krav på bedste vis.
+ Problemet med Latex er indlærings kurve, man har behov for at investerer
+ en del tid i at forstå og andvende programmet.
+ Et løsning på det probelm er at andvende Lyx der er en front end til latex.
+ Lyx har allle Latexs muæigheder men en brugerflade der svare til et WYSIWYG
+ skrive program.
+ Det er dog ikke helt What you see is what you get.
+ Det er WYSIWYM What you see is what you mean: the screen editor have a
+ version rendered with a much simpler allgorhitm than the Latex program.
+ Only when you need to see the document, it is compiled with Latex mm.
+ Der er dog stadig nogel teknioske ting der skal håndters i Lyx som kræver
+ investering.
+ Investeringen kan dog mindskes betragtlig ved at udarbejde en latex klasse
+ og tilhørende lysx layout.
+ Og det er her ERMreport kommer ind i billedet.
+ ERMreport består af ermreport.cls en latex classe file der opsætter formatet
+ for en Miljø og resource projekt rapport og en ermreport.layout der er en
+ lyx lauout file der implemetere classen i lyx.
+\end_layout
+
+\begin_layout Standard
+Nedenfor følger indstallation og dokumentaiton.
+\end_layout
+
+\begin_layout Subsection
+Samenarbejde og file håndtering.
+\end_layout
+
+\begin_layout Standard
+e.mauils.
+ det er helt almindelig at dele filer ved at sende dem rundt med email til
+ hinanden efter hånden som man arbejder i dem.
+ Selv om det sikre backup og en form for versionskontrol (hvis man ikke
+ sleter mails) er det den dårligste løsning.
+ Der er ikke til at undgå konflikter.
+ 
+\end_layout
+
+\begin_layout Standard
+Dropbox.
+ Dropbox er rigtig godt til at sørge for at du har automatisk backup af
+ dine filer og den har versions kontrol (på websiden).
+ Man kan altid finde en tidligere udgave, dog begrænset i tid (tril 4 månder
+ tror jeg).
+ Man kan også dele filer.
+ Hvis man har konfliketer kommer der en ekstra file i dropbox som conflictoing
+ copy.
+ Det største fare ved dropbox er hvis en sletter den delte mappe på sin
+ computer - det fjerner samtidg alle andres.
+ (den er dog stadig på dropboxserveren, men det er besværligt).
+ Konklusionen er at dropbox i højgrad er brugbar, men ikke ideel.
+\end_layout
+
+\begin_layout Standard
+Google-share.
+ Ok hvis man arbejder i google docs.
+\end_layout
+
+\begin_layout Standard
+Git baserede løsninger.
+ Git er State of the art indenfor versions kontrol af programering.
+ Der er intet i vejen for at bruge det til tekst domkumenter.
+ Git arbejder med et lokalt repositorio og it master på internettet.
+ Der findes gratis internet resposits som github og bitbucket.
+ Vi vil anvende github.
+ 
+\end_layout
+
+\begin_layout Section
+Dokomentation for ERMreport layout
+\end_layout
+
+\begin_layout Standard
+Den bedtse måde at komme igang er at åbne ermreport skabelon ermreport.lyx.
+\end_layout
+
+\begin_layout Standard
+Hvis skabelonen ikke bruges vær opmærksom på følgende:
+\end_layout
+
+\begin_layout Standard
+Encoding skal være Unicode (utf8) da det skal være sat for at bruge biber
+\end_layout
+
+\begin_layout Standard
+Frontmatter
+\end_layout
+
+\begin_layout Standard
+Title Sætter opgavens tittel
+\end_layout
+
+\begin_layout Standard
+Subtitle Setter en under tittel med mindre font
+\end_layout
+
+\begin_layout Standard
+Date Sætter afleverings dato
+\end_layout
+
+\begin_layout Standard
+Author Sætter forfatter navne.
+ Der kan (i modsætning til standard kalsser) sættes fler forfattere.
+ For hver forfatter kan sættes fødsels dato.
+ Det gøres ved menuen Insert > Birthday
+\end_layout
+
+\begin_layout Standard
+Supervisor Sætter vejledere.
+ Normalt skrives 'vejleder navn, univeritet, institut'.
+ Der kan sættes flere vejledere.
+\end_layout
+
+\begin_layout Standard
+Subject Sætter fagfes tittel fx Projekt 1.
+ semester
+\end_layout
+
+\begin_layout Standard
+Cover Kan bruges hvis ikke man er tilfreds med standard omslag.
+ Cover skal have navnet på en pdf file som bliver satg som omslag.
+ (undgå undescore og $ i navnet, eller skal det angives som RET)
+\end_layout
+
+\begin_layout Standard
+Declaration Når standard siden med Tro og love er underskrevet indscanes
+ den.
+ Navnet på pdf-filen angives så her og vil erstate standard siden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[3-5]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float boks
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aenean faucibus pede eu ant 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bringhurst2004,Wilson2009"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "box:Aenean-faucibus-pede"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[56-57]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Quisque ullamcorper placerat ipsum
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[5-10]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DSB"
+description "De DanskeStatasbaner"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "DFDS"
+description "De Forenede Damskibs Selskaber"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lorem ipsum dolor sit amet
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Lorem-ipsum-dolor"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[11-25]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Chapter
+Nulla malesuada porttitor diam
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[22-23]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sed commodo posuere pede
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[24-30]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabel ekempel
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Tabel eksempel
+\end_layout
+
+\end_inset
+
+.
+ Her er en forklaring på hvad der er i tabellen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="decimal" decimal_point="." valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+Nulla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+Ipsum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+Congue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+Euismod
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+itae
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+red
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+True
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+131
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eros
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+blue
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+True
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10958
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+645.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wisi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+green
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+False
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+344
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.056
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+netus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+red
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+True
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Suspendisse vel felis
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Suspendisse-vel-felis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[31-50]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "erm"
+options "bibtotoc,chicago"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+printbibliography 		
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Proin tempus nibh sit amet nisl'
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[100-120]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
