@@ -107,7 +107,7 @@ Første linje laver en directory i MikTex´s lokale mappe for tex filer. Anden l
 
 Herefter køres i lyx Værktøj > Genkonfigurer
 
-###### Mac og linux
+###### Mac
 
 __Her skal jeg lige have hjælp af en emd en mac så jeg får det rigtig__
 
@@ -118,4 +118,7 @@ __Her skal jeg lige have hjælp af en emd en mac så jeg får det rigtig__
 `ln -s ~/Git/ERMreport/lyx/ermreport.layout ~/Library/Application\ Support/LyX-2.1/layouts/ermreport.layout`
 `ln -s ~/Git/ERMreport/lyx/erm.lyx ~/Library/Application\ Support/LyX-2.1/templates/erm.lyx`
 
+Efter de første linje vil promten bede om dit password
+
+Herefter køres i lyx Værktøj > Genkonfigurer
 
