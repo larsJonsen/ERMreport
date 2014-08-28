@@ -221,11 +221,14 @@ Forskel på resume og abstract er kun overskift: Resume er dansk Abstract
 \end_layout
 
 \begin_layout Preface
-Forord 
+Forord
 \end_layout
 
 \begin_layout Standard
-Brug preface environmentet 
+Brug preface environmentet
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -248,8 +251,8 @@ name "chap:Indledning"
 \begin_layout Standard
 Her skrives og skrives 
 \begin_inset CommandInset citation
-LatexCommand citet
-key "Bringhurst2004"
+LatexCommand citep
+key "Bringhurst2004,Chicago2010,Langston2004,Wilson2009,Wulff2006"
 
 \end_inset
 
@@ -282,9 +285,7 @@ Lyx skal kunne finde *bib filen det gøres ved meuen Insert > List / TOC
 \end_layout
 
 \begin_layout Enumerate
-Der hvor bibliografien ønskes skal der være en 
-\backslash
-printbibliography i ERT:
+Der hvor bibliografien ønskes skal der være indsættes fra meneu Bibliograpy
 \end_layout
 
 \begin_layout Standard
@@ -305,14 +306,14 @@ options "bibtotoc,chicago"
 \end_inset
 
 
-\begin_inset ERT
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
- 
-\backslash
-printbibliography 
+Hod den tom
 \end_layout
 
 \end_inset

@@ -95,7 +95,7 @@ Style Preface
 	LabelString           "Preface"
 	#LabelType             Counter
 	#LabelCounter          chapter
-	#TocLevel              0
+	TocLevel              0
 	LatexType             Command
 	LatexName             chapter
 	NeedProtect           1
@@ -122,95 +122,21 @@ Style Preface
 End      	
 
 Style Dedication
-	Margin                Static
-	LatexType             Environment
+	CopyStyle			  Abstract
 	LatexName             dedication
-	Category              FrontMatter
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	ParIndent             MM
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	LabelType             Centered
 	LabelString           "Dedication"
-	LabelBottomSep        0.5
-	Font
-	  Size                Small
-	EndFont
-	LabelFont
-	  Series              Bold
-	  Size                Large
-	EndFont
 End
 
 Style Acknowledgment
-	Margin                Static
-	LatexType             Environment
+	CopyStyle			  Abstract
 	LatexName             acknowledgment
-	Category              FrontMatter
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	ParIndent             MM
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	LabelType             Centered
 	LabelString           "Acknowledgment"
-	LabelBottomSep        0.5
-	Font
-	  Size                Small
-	EndFont
-	LabelFont
-	  Series              Bold
-	  Size                Large
-	EndFont
 End
 
 Style Resume
-	Margin                Static
-	LatexType             Environment
+	CopyStyle			  Abstract
 	LatexName             resume
-	Category              FrontMatter
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	ParIndent             MM
-	ItemSep               0
-	TopSep                0.7
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	LabelType             Centered
 	LabelString           "Resume"
-	LabelBottomSep        0.5
-	Font
-	  Size                Small
-	EndFont
-	LabelFont
-	  Series              Bold
-	  Size                Large
-	EndFont
-	HTMLLabelFirst        1
-	HTMLForceCSS          1
-	HTMLStyle
-		div.abstract {
-			margin: 4ex;
-		}
-		div.abstract_item {
-			font-size: small;
-			padding-top: 1ex;
-		}
-		div.abstract_label {
-			font-weight: bold;
-		}
-	EndHTMLStyle
 End
 
 Style Chapter
@@ -482,7 +408,22 @@ Float
 	RefPrefix             box
 End
 
-
+Style Bibliography
+	Margin	Dynamic
+	LatexType	Command
+	LatexName	printbibliography
+	Category	List
+	KeepEmpty	1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Print Bibliography"
+	LabelFont
+	  Series	Bold
+	  Color		Green
+	EndFont
+End
 
 ############## character styles, access through /Edit/Text Style/ or /right-click/Text Style/
 

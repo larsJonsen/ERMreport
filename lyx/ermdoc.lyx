@@ -460,20 +460,8 @@ Som skrive program er de gængse office skrive programmer Word, libreoffice,
  dage som det sidste på at få et støre dokumnet til at se hæderlligt ud
  typografisk set.
  Word har vist understøtning for subdokuments, som jeg ikke har prøvet.
- Et alternativ er at bruge 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Latex
-\end_layout
-
-\end_inset
-
-, Latex håndtere alle de oventående krav på bedste vis.
+ Et alternativ er at bruge Latex, Latex håndtere alle de oventående krav
+ på bedste vis.
  Problemet med Latex er indlærings kurve, man har behov for at investerer
  en del tid i at forstå og andvende programmet.
  Et løsning på det probelm er at andvende Lyx der er en front end til latex.

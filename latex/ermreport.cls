@@ -24,19 +24,30 @@
 \RequirePackage{csquotes}
 
 \if@biber
-  \PassOptionsToPackage{style=authoryear,natbib=true,backend=biber,isbn=false}{biblatex}
-  \RequirePackage{biblatex} 
+  %\PassOptionsToPackage{style=authoryear,natbib=true,backend=biber,isbn=false}{biblatex}
+  \PassOptionsToPackage{authordate,natbib,backend=biber,isbn=false}{biblatex-chicago}
+  \RequirePackage{biblatex-chicago}
 \else
   \if@biblatex
-    \PassOptionsToPackage{style=authoryear,natbib=true,backend=bibtex,isbn=false}{biblatex}
-    \RequirePackage{biblatex}
+    \PassOptionsToPackage{authordate,natbib,backend=bibtex,isbn=false}{biblatex-chicago}
+    %\PassOptionsToPackage{style=authoryear,natbib=true,backend=bibtex,isbn=false}{biblatex}
+    \RequirePackage{biblatex-chicago}
   \else
     \PassOptionsToPackage{authoryear}{natbib}
     \RequirePackage{natbib}
   \fi
 \fi
 
-
+\@ifpackageloaded{biblatex}{
+% Bibitemsep like memoir
+%\setlength{\bibitemsep}{\itemsep}
+%\addtolength{\bibitemsep}{\parsep} 
+% Heading for bibliography
+\DefineBibliographyStrings{danish}{%
+  bibliography = {Litteratur},}
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},}
+}
 
 
 %% Package
