@@ -8,7 +8,6 @@
 \usepackage{lipsum}
 \addbibresource{~/git/ERMreport/lyx/erm.bib}
 \end_preamble
-\options biblatex
 \use_default_options true
 \maintain_unincluded_children false
 \language danish
@@ -726,10 +725,6 @@ lipsum[11-25]
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Chapter
 Nulla malesuada porttitor diam
 \end_layout
@@ -796,6 +791,13 @@ Tabel eksempel
 
 .
  Her er en forklaring på hvad der er i tabellen
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wulff2006,Wilson2009,Langston2004,Chicago2010,Bringhurst2004"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

@@ -3,6 +3,7 @@
 \ProvidesClass{ermreport}[2014/08/01 v0.0 erm report]
 
 \newif\if@danish\@danishfalse
+\newif\if@note\@notefalse
 \newif\if@biblatex\@biblatexfalse
 \newif\if@biber\@biberfalse
 
@@ -12,7 +13,8 @@
 \DeclareOption{danish}{\@danishtrue%
   \PassOptionsToClass{danish}{memoir}%
   \PassOptionsToClass{danish}{bable}
-  }
+}
+\DeclareOption{note}{\@notetrue}
 \DeclareOption{biblatex}{\@biblatextrue}
 \DeclareOption{biber}{\@bibertrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
@@ -20,8 +22,10 @@
 \LoadClass{memoir}%[⟨date⟩]
 
 %%% Bibliography
+% utf8 needed for biber
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{csquotes}
+% qutation marks set to english style even for danish
+\RequirePackage[style=english]{csquotes}
 
 \if@biber
   %\PassOptionsToPackage{style=authoryear,natbib=true,backend=biber,isbn=false}{biblatex}
@@ -38,11 +42,8 @@
   \fi
 \fi
 
+% Headings for bibliogrphy
 \@ifpackageloaded{biblatex}{
-% Bibitemsep like memoir
-%\setlength{\bibitemsep}{\itemsep}
-%\addtolength{\bibitemsep}{\parsep} 
-% Heading for bibliography
 \DefineBibliographyStrings{danish}{%
   bibliography = {Litteratur},}
 \DefineBibliographyStrings{english}{%
@@ -267,32 +268,41 @@
     \vspace*{\fill}
   \fi
 }
+
+\newcommand{\notetitlepage}{%
+  \begin{center}
+    \vspace{10ex}
+    \spacedallcaps\ermTitle\par
+    \ifdefined\ermSubtitle
+      \spacedlowsmallcaps\ermSubtitle\par
+    \fi
+    \bigskip
+    \ifdefined\AuthorList
+      \let\do=\@doList
+      \large{\dolistloop{\AuthorList}}
+    \fi 
+    \bigskip
+    \ifdefempty\ermDate{\today}{\ermDate}
+    \vspace{10ex}
+  \end{center}
+}
+
+
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%
-  \pdfsetup
-  \coverpage
-  \frontmatter
-  \titlepage
-  \trustpage
+  \if@note
+    \pdfsetup
+    \notetitlepage
+  \else
+    \pdfsetup
+    \coverpage
+    \frontmatter
+    \titlepage
+    \trustpage
+  \fi
 }
-% Abstract
-% Make it start on new page
-%\renewcommand{\setup@bstract}{%
-%  \clearforchapter
-%  \abs@leftindent=\absleftindent
-%  \pagestyle{resume}
-%  \if@twocolumn
-%    \if@bsonecol
-%    \else
-%      \abs@leftindent=\z@
-%      \absrightindent=\z@
-%      \renewcommand*{\abstractnamefont}{\abscolnamefont}
-%      \renewcommand*{\abstracttextfont}{\abscoltextfont}
-%      \renewcommand*{\absnamepos}{flushleft}
-%      \setlength{\abstitleskip}{-2ex}
-%    \fi
-%  \fi}
-% Table fo content and friends
+
+% Table of content and friends
 \renewcommand{\tocheadstart}{%
   \parindent\z@
   \parskip\z@
@@ -320,6 +330,11 @@
   \fi
   \chapter[#1][#2]{#3}%   
 }
+
+\if@note
+  \renewcommand\clearforchapter{\vspace{10ex}}
+  \let\ermChapter=\chapter
+\fi
 
 \newcommand{\boxname}{Box}
 \newcommand{\listboxname}{List of boxes}
