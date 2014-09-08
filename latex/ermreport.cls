@@ -111,9 +111,9 @@
 \newcommand*{\@doList}[1]{#1\\}
 \newcommand*{\@doList@i}[1]{#1\\[2ex]}
 \newcommand*{\@doList@ii}[1]{%
-\rule[0.5ex]{0.8\textwidth}{1pt}\par
-#1\par
-\vspace{3em}
+  \rule[0.5ex]{0.8\textwidth}{1pt}\par
+  #1\par
+  \vspace{3em}
 }
 \newcommand*{\@doList@iii}[1]{, #1}
 % Title
@@ -268,26 +268,44 @@
     \vspace*{\fill}
   \fi
 }
-
+% Note tile 
+%\newcommand{\notetitlepage}{%
+%  \begin{center}
+%    \vspace{8\onelineskip}
+%    \spacedallcaps\ermTitle\par
+%    \ifdefined\ermSubtitle
+%      \spacedlowsmallcaps\ermSubtitle\par
+%    \fi
+%    \bigskip
+%    \ifdefined\AuthorList
+%      \let\do=\@doList
+%      \large{\dolistloop{\AuthorList}}
+%    \fi 
+%    \bigskip
+%    \ifdefempty\ermDate{\today}{\ermDate}
+%    \vspace{4\onelineskip}
+%  \end{center}
+%}
 \newcommand{\notetitlepage}{%
-  \begin{center}
-    \vspace{10ex}
-    \spacedallcaps\ermTitle\par
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large \spacedallcaps\ermTitle \par
     \ifdefined\ermSubtitle
-      \spacedlowsmallcaps\ermSubtitle\par
-    \fi
-    \bigskip
-    \ifdefined\AuthorList
+      \spacedlowsmallcaps\ermSubtitle \par
+    \fi}%
+    \vskip 1.5em%
+    {\large \ifdefined\AuthorList
       \let\do=\@doList
       \large{\dolistloop{\AuthorList}}
-    \fi 
-    \bigskip
-    \ifdefempty\ermDate{\today}{\ermDate}
-    \vspace{10ex}
-  \end{center}
-}
-
-
+    \fi}% 
+    \vskip 1em%
+    {\large \ifdefempty\ermDate{\today}{\ermDate}}%    
+  \end{center}%
+  \par
+  \vskip 1.5em}
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%
   \if@note
@@ -308,20 +326,17 @@
   \parskip\z@
   \clearpage%
 }
-
 % Making chapter start mainmatter. For Lyx
 \def\ermChapter{%
   \@ifnextchar[%
     {\ermChapter@i}
     {\ermChapter@i[]}%
 }
-
 \def\ermChapter@i[#1]{%
   \@ifnextchar[%
   {\ermChapter@ii{#1}}
   {\ermChapter@ii{#1}[]}%
 }
-
 \def\ermChapter@ii#1[#2]#3{%
   \ifanappendix
     \relax
@@ -330,16 +345,15 @@
   \fi
   \chapter[#1][#2]{#3}%   
 }
-
+% If note, a article style 
 \if@note
-  \renewcommand\clearforchapter{\vspace{10ex}}
   \let\ermChapter=\chapter
 \fi
 
 \newcommand{\boxname}{Box}
 \newcommand{\listboxname}{List of boxes}
 \newlistof{listofboxs}{lob}{\listboxname}
-\newfloat{boxx}{lob}{\boxname}
+\newfloat[chapter]{boxx}{lob}{\boxname}
 %\newfixedcaption{\fboxcaption}{boks}
 \newlistentry{boks}{lob}{0}
 
@@ -348,38 +362,7 @@
   {\end{framed}\end{boxx}}
 
 % Pagestyle
-
-\makepagestyle{erm}
-\makeevenfoot{erm}{\thepage}{}{}
-\makeoddfoot{erm}{}{}{\thepage}
-\makeheadrule{erm}{\textwidth}{\normalrulethickness}
-\newcommand{\@ermmarks}{%
-  \let\@mkboth\markboth
-  \def\chaptermark##1{%
-    \markboth{%
-      \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
-      \fi
-      ##1}{}}
-  \def\sectionmark##1{\markright{%
-    \ifnum \c@secnumdepth>\z@
-      \thesection. \ %
-    \fi
-    ##1}}
-  \def\tocmark{\markboth{\contentsname}{Indhold}}
-  \def\lofmark{\markboth{\listfigurename}{}}
-  \def\lotmark{\markboth{\listtablename}{}}
-  \def\bibmark{\markboth{\bibname}{}}
-  \def\indexmark{\markboth{\indexname}{}}
-}
-\makepsmarks{erm}{\@ermmarks}
-\makeevenhead{erm}{\slshape\leftmark}{}{}
-\makeoddhead{erm}{}{}{\slshape\rightmark}
-
-
- %% Bringhurst page style
+%% Bringhurst page style
 \newlength{\bringi}
 \newlength{\bringii}
 \newlength{\bringiii}
@@ -425,7 +408,7 @@
 \addtolength{\bringiii}{\marginparsep}
 \setlength{\bringiv}{7.3\onelineskip}
 %%%%%%%%%%
-%% Headstyle modifyed bringhust from memoir
+%% Chapterstyle modifyed bringhust from memoir
 \makechapterstyle{Bringhurst}{%
   \chapterstyle{default}
   \renewcommand*{\chapterheadstart}{}
@@ -444,25 +427,36 @@
     \memRTLraggedright\spacedallcaps{##1}}
   \renewcommand*{\afterchaptertitle}{%
   \vskip\onelineskip \hrule\vskip\onelineskip}}
-
-\afterchaptertitle
+ 
+ %% Bringhurst chapter style as in memoir, but with number
+ \makechapterstyle{note}{%
+   \chapterstyle{default}
+  \renewcommand*{\chapterheadstart}{}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{\spacedallcaps\thechapter}
+  \renewcommand*{\afterchapternum}{.\hspace{2ex}}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \memRTLraggedright\spacedallcaps{##1}}
+  \renewcommand*{\afterchaptertitle}{%
+  \vskip\onelineskip \hrule\vskip\onelineskip}
+  \renewcommand\clearforchapter{\vspace{4\onelineskip}}
+}
+%%%%%%%%%
 
 \makeheadstyles{Bringhurst}{%
-\chapterstyle{Bringhurst}
+  \chapterstyle{Bringhurst}
   \setbeforesecskip{-1\onelineskip
                     \@plus -0.5\onelineskip \@minus -.5\onelineskip}%
   \setaftersecskip{1\onelineskip \@plus 0.1\onelineskip}%
-%%%  \setsecheadstyle{\normalfont\raggedright\scshape\MakeLowercase}%
   \setsecheadstyle{\memRTLraggedright\spacedlowsmallcaps}%
   \setbeforesubsecskip{-1.0\onelineskip
                        \@plus -0.25\onelineskip \@minus -0.25\onelineskip}%
   \setaftersubsecskip{1.0\onelineskip \@plus 0.1\onelineskip}%
-%%%  \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\raggedright}%
   \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\memRTLraggedright}%
   \setbeforesubsubsecskip{1.0\onelineskip
                           \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
   \setaftersubsubsecskip{-1em}%
-%%%  \setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
   \setsubsubsecheadstyle{\normalfont\normalsize\spacedlowsmallcaps}%
   \setbeforeparaskip{1.0\onelineskip
                      \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
@@ -475,6 +469,7 @@
   \setsubparaheadstyle{\normalfont\normalsize\itshape\addperiod}}
 
 \headstyles{Bringhurst}
+\if@note\chapterstyle{note}\fi
 
 
   
