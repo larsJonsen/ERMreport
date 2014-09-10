@@ -158,98 +158,75 @@ nomi
 \end_layout
 
 \begin_layout Abstract
-Her er en korte redegørelse for hvad jeg har bedrevet, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "chap:Indledning"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "chap:Indledning"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "sec:Lorem-ipsum-dolor"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand nameref
-reference "chap:Indledning"
-
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "sub:Suspendisse-vel-felis"
-
-\end_inset
-
- lidt ord 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "box:Aenean-faucibus-pede"
-
-\end_inset
-
- 
+Her er en korte redegørelse for hvad jeg har bedrevet,
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Preface
-Forord
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lipsum[1-2]
-\end_layout
+\begin_layout Acknowledgment
+ERMreport classen er forsøgt dessignet udfra 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Bringhurst2004"
 
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-nomname}{Forkortelser}
-\end_layout
+'s idear.
+ Jeg har hentet kode og inspiration fra 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Miede2010"
 
 \end_inset
 
+ og 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wilson2009"
 
+\end_inset
+
+ bygger på memoir latex classen 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Wilson2009a"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+listofboxs
+\end_layout
 
 \end_inset
 
@@ -285,7 +262,7 @@ Miljø og ressource managemnt uddanelsen er en uddanelse hvor der lægges
  Som alt andet arbejde ligger en hel del af håndværket i at overskue arbejdet
  og vælge det rette værktøj.
  Hvad skal de værktøjer så kunne som skal faciliterer sammnearbejdet og
- rapportskrtivnigen?
+ rapportskrivnigen?
 \end_layout
 
 \begin_layout Itemize
@@ -299,7 +276,7 @@ At arbejfe sammen om at skrive kræver programmer der understøter at flere
 \end_layout
 
 \begin_layout Standard
-NEdfor diskuteres hver enkelt punkt i mere detaljer
+Nedfor diskuteres hver enkelt punkt i mere detaljer
 \end_layout
 
 \begin_layout Standard

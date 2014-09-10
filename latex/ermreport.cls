@@ -49,7 +49,8 @@
 \DefineBibliographyStrings{english}{%
   bibliography = {References},}
 }
-
+%% No extra space at '.'
+\frenchspacing
 
 %% Package
 \RequirePackage{etoolbox}
