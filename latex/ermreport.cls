@@ -49,12 +49,11 @@
 \DefineBibliographyStrings{english}{%
   bibliography = {References},}
 }
-%% No extra space at '.'
-\frenchspacing
 
 %% Package
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
+\RequirePackage{ifplatform} %for \addbibresource in lyx
 %%%
 \PassOptionsToPackage{osf,sc}{mathpazo}%
 \RequirePackage{mathpazo} % Palatino with real small caps and old style figures
@@ -269,24 +268,7 @@
     \vspace*{\fill}
   \fi
 }
-% Note tile 
-%\newcommand{\notetitlepage}{%
-%  \begin{center}
-%    \vspace{8\onelineskip}
-%    \spacedallcaps\ermTitle\par
-%    \ifdefined\ermSubtitle
-%      \spacedlowsmallcaps\ermSubtitle\par
-%    \fi
-%    \bigskip
-%    \ifdefined\AuthorList
-%      \let\do=\@doList
-%      \large{\dolistloop{\AuthorList}}
-%    \fi 
-%    \bigskip
-%    \ifdefempty\ermDate{\today}{\ermDate}
-%    \vspace{4\onelineskip}
-%  \end{center}
-%}
+% Title page for note mode
 \newcommand{\notetitlepage}{%
   \newpage
   \null
@@ -307,6 +289,12 @@
   \end{center}%
   \par
   \vskip 1.5em}
+% Set \addbibresource for lyx
+\newcommand*{\setBibsource}[2]{%
+  \ifwin­dows\addbibresource{#1}
+  \else\addbibresource{#2}\fi
+}
+
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%
   \if@note
@@ -471,7 +459,8 @@
 
 \headstyles{Bringhurst}
 \if@note\chapterstyle{note}\fi
-
+%% No extra space at '.'
+\frenchspacing
 
   
 
