@@ -105,9 +105,9 @@ I terminalen kopieres følgende ind:
 
 `initexmf -u`
 
-`mklink /d %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout`
+`mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout`
 
-`mklink /d %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx`
+`mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx`
 
 ![image010](./image/image010.png)
 
@@ -135,7 +135,17 @@ Efter de første linje vil promten bede om dit password
 
 Herefter køres i lyx Værktøj > Genkonfigurer
 
+## Rette fejl i symboliclinks. Windows
+
+ved en fejl i første version fik vi lavet nogle symbolske filer der ikke virker  for at ændere dem gøre følgende.
+
+Åben en administarter comand promt: Tryk på start knappen og skriv _cmd_ og tryk __shift-crtl-enter__ for at starte en administrator terminal.
 
 
-rmdir %AppData%\LyX2.1\layouts\ermreport.layout
-mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout
+'rmdir %AppData%\LyX2.1\layouts\ermreport.layout'
+
+'rmdir %AppData%\LyX2.1\templates\erm.lyx'
+
+'mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout'
+
+'mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx'
