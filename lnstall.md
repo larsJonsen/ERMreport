@@ -99,15 +99,14 @@ MikTex skal vide hvor den kan finde ermreprort.cls filen og lyx skal finde ermre
 
 I terminalen kopieres følgende ind: 
 
-`mkdir %AppData%\MikTex\2.9\tex\latex`
+```bat
+mkdir %AppData%\MikTex\2.9\tex\latex
+mklink /j %AppData%\MikTex\2.9\tex\latex\ERMreport %userprofile%\Git\ERMreport\latex
+initexmf -u
 
-`mklink /j %AppData%\MikTex\2.9\tex\latex\ERMreport %userprofile%\Git\ERMreport\latex`
-
-`initexmf -u`
-
-`mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout`
-
-`mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx`
+mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout
+mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx
+```
 
 ![image010](./image/image010.png)
 
@@ -121,13 +120,12 @@ __Her skal jeg lige have hjælp af en emd en mac så jeg får det rigtig__
 
 Åben en terminal. I terminalen kopieres følgende ind:
 
-`sudo ln -s ~/Git/ERMreport/latex /usr/local/texlive/texmf-local/tex/latex/ERMreport`
-
-`sudo texhash`
-
-`ln -s ~/Git/ERMreport/lyx/ermreport.layout ~/Library/Application\ Support/LyX-2.1/layouts/ermreport.layout`
-
-`ln -s ~/Git/ERMreport/lyx/erm.lyx ~/Library/Application\ Support/LyX-2.1/templates/erm.lyx`
+```sh
+sudo ln -s ~/Git/ERMreport/latex /usr/local/texlive/texmf-local/tex/latex/ERMreport
+sudo texhash
+ln -s ~/Git/ERMreport/lyx/ermreport.layout ~/Library/Application\ Support/LyX-2.1/layouts/ermreport.layout
+ln -s ~/Git/ERMreport/lyx/erm.lyx ~/Library/Application\ Support/LyX-2.1/templates/erm.lyx
+```
 
 
 
@@ -141,11 +139,19 @@ ved en fejl i første version fik vi lavet nogle symbolske filer der ikke virker
 
 Åben en administarter comand promt: Tryk på start knappen og skriv _cmd_ og tryk __shift-crtl-enter__ for at starte en administrator terminal.
 
+```bat
+rmdir %AppData%\LyX2.1\layouts\ermreport.layout
+rmdir %AppData%\LyX2.1\templates\erm.lyx'
 
-'rmdir %AppData%\LyX2.1\layouts\ermreport.layout'
+mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout
+mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx
+```
 
-'rmdir %AppData%\LyX2.1\templates\erm.lyx'
+De første to linjer fjerner de forkerte links. De sidste to danner rigtige symbolske links
 
-'mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout'
+## Biber
 
-'mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx'
+Latex og dets orginale  system er et gammelt latex fra 1984 og Bibtex fra 1985. Der er nogle ting der er løbet fra Bibtex, det arbejder ikke med utf8, (har svært ved æ,ø og å) der findes ikkeordentlige style files der har url og doi på den rigteige måde. Den nye program heder Biblatex og Biber. Det er det vi bruger. Lyx skal derfor sætes til at bruge biber:
+
+##### Under Mac
+Gå til Lyx > Preference under Output > Latex under *bibliograpy generation* set *Processor* til **biber** 
