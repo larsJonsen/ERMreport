@@ -75,11 +75,11 @@
 \begin_body
 
 \begin_layout Title
-Dette ufattelige store projekt
+ERM report klasse
 \end_layout
 
 \begin_layout Subtitle
-som jeg har arbejdet på både dag og nat for så længe og som endelig er overstået
+Introduktion til ermreport.cls og ermreport.layout
 \end_layout
 
 \begin_layout Date
@@ -88,68 +88,11 @@ som jeg har arbejdet på både dag og nat for så længe og som endelig er overs
 \end_layout
 
 \begin_layout Subject
-Projekt 1.
- semester
+ERMReport
 \end_layout
 
 \begin_layout Author
-Katrine Petersen Jensen
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Author
-Casper Hansen
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Author
-Lars Jølk Ravn-Jonsen
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Author
-Kurt Frank Blåtand
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-345433
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Author
-sgjsg
+Lars Ravn-Jonsen
 \end_layout
 
 \begin_layout Supervisor
@@ -184,7 +127,8 @@ key "Wilson2009"
 
 \end_inset
 
- bygger på memoir latex classen 
+.
+ Implementering bygger på memoir latex classen 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Wilson2009a"
@@ -192,7 +136,7 @@ key "Wilson2009a"
 \end_inset
 
 .
- 
+ Jeg takker for allles indsats og glæder mig over ånden i open source.
 \end_layout
 
 \begin_layout Standard
@@ -271,71 +215,95 @@ Der er behov for et skrive program der understøtter den struktur der forventes
 \end_layout
 
 \begin_layout Itemize
-At arbejfe sammen om at skrive kræver programmer der understøter at flere
+At arbejde sammen om at skrive kræver programmer der understøter at flere
  arbjder på samme dokument
 \end_layout
 
 \begin_layout Standard
-Nedfor diskuteres hver enkelt punkt i mere detaljer
+Nedfor diskuteres hver enkelt punkt i mere detaljer.
 \end_layout
 
 \begin_layout Standard
 Rappot genren fordre en specifik stuktur af rapporten; Overordnet er den
  strukturels delt i tre dele før del, hoved del og efter del.
- Der er specifkke krab eller forventninger til hvilke del der skal hvære
- hvor men lad os her se på hoved dellen der er hvor den faglige fremstiling
+ Der er specifkke krav eller forventninger til hvilke del der skal i hvilke
+ dele; men lad os her se på hoved delen---der er hvor den faglige fremstiling
  er.
  
 \end_layout
 
-\begin_layout Itemize
-Herakisk sturktur.
+\begin_layout Description
+Herakisk
+\begin_inset space ~
+\end_inset
+
+sturktur.
  Den faglige fremstilling vil være opdelt i kapitler, der er delt ind i
- sektinoner, der igen er delt ind i paragreffer.
- Hver kapitel.
- sektion og afsnit har en oversktift og er normalt nummereret.
+ sektinoner, der igen er delt ind i undersektioner.
+ Hver kapitel, sektion og undersektion har en oversktift og er normalt nummerere
+t.
  Der kan være mere end tre niveauer i herakiet, men her tager vi udgangs
- punkt i at tre nok er dækkende for det meste der igen er delt ind i 
+ punkt i at tre nok er dækkende for det meste.
+ Seve teskste, brød teksten, er delt ind i afsnit.
 \end_layout
 
-\begin_layout Itemize
-Afsnit struktur.
- Brødteksten der er selve indholdet i sectioner og paragraffer består af
- bogstaver der samles til ord, ord der danner sætninger og sætninger der
- danner afsnit.
- Afsnit er en strukturel enhed i det skrevne, den består af sætninger der
+\begin_layout Description
+Afsnit
+\begin_inset space ~
+\end_inset
+
+struktur.
+ Brødteksten der er selve indholdet i sektioner og undersektioner består
+ af bogstaver der samles til ord, ord der danner sætninger og sætninger
+ der danner afsnit.
+ Afsnit er en strukturel enhed i det skrevn, den består af sætninger der
  høre sammen og behandler et emne TEOS.
  Afsnits strukturen markeres i teksten, normalt ved at første linje i et
- afsnit rykkes lidt ind.
- Dog ikke hvis det er første afsnit efter en overskrift.
+ afsnit rykkes lidt ind---dog ikke hvis det er første afsnit efter en overskrift.
 \end_layout
 
-\begin_layout Itemize
-Figure, Tabeller mm.
+\begin_layout Description
+Figure,
+\begin_inset space ~
+\end_inset
+
+Tabeller
+\begin_inset space ~
+\end_inset
+
+mm.
  En rapport har ofte figure og tabeller som argumentation i teksten.
- Firgure og tabeller er ikke en del af selve teksten men ekstra dele der
+ Firgure og tabeller er ikke en del af selve teksten, men ekstra dele der
  sættes ind tæt på hvor der henvises til dem i teksten.
  Da figure og tabeller ikke er del af brødteksten er deres placering noget
  fri.
  De placeres efter typografiske normer ofte øverste på en side.
- Figure og tabeller har altid en beskrivende titel og nummeres fortløbrende,
+ Figure og tabeller har altid en beskrivende titel og nummeres fortløbende,
  evt inden for hvert kapittel.
  Der er altid en henvisnig i teksten til hver eneste figur og tabel.
 \end_layout
 
-\begin_layout Itemize
-Interne henvisninger.
- Alle figurer og tabeller har minst en intern henvisning, dvs en henvisning
- der har det nummer som figuren/tabellen har.
- En rapport er ofte et langt akademisk agument, man fremstiller forskelligt
- der til slut bruges som argumentation for konklusione.
+\begin_layout Description
+Interne
+\begin_inset space ~
+\end_inset
+
+henvisninger.
+ Alle figurer og tabeller har mindst en intern henvisning, dvs en henvisning
+ der har det nummer som figuren tabellen har.
+ En rapport er ofte et langt akademisk agument, man fremlægger forskellige
+ der til slut bruges som argumentation for konklusionen.
  Det betyder der ofte er behov for talrige interne henvisniger, fx til tidligere
- kapitler, sectioner eller afsnit.
- Da de er nummereret henvises der ofte til nummerert.
+ kapitler, sectioner eller underafsnit.
+ Da dokumentes indeling er nummereret henvises der ofte til nummerert.
 \end_layout
 
-\begin_layout Itemize
-Bibliografiske refferencer.
+\begin_layout Description
+Bibliografiske
+\begin_inset space ~
+\end_inset
+
+refferencer.
  I teksten fremstilles refreres til andres arbejde med en kort mærke fx,
  forfatter og årstal.
  Den egentlige refference findes bagerst i en litteratur liste.
@@ -343,30 +311,40 @@ Bibliografiske refferencer.
  Litteraturlister kræves ofte struktureret efter specifice retningslijer.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 Hyperlinks.
  Selv om det sjældent er et krav til universites opgaver er det ikke desto
  mindre ved at være standard at alle henvisninger i en text understøttes
- af hypelinks når dokumnet er i pdf udgave, således at man ved at klikke
- kan følge henvsningen.
- Litteratur listen forvenes også at have url link til fx DOI.
+ af hypelinks når dokumnet er i pdf udgave, således at man ved et klik kan
+ følge henvsningen.
+ Litteratur listen forvenes også at have url link til fx 
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+doi
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
  lister og nomlatur, men ovenståemde er hovedtrækne i rapport gengren.
  Et skrive program bør understøtte ovenståede, under hensytagen til at skrivning
- er en dynamisk proces, hvor del bliver taget ud, tilføjet eller flyttet.
+ er en dynamisk proces, hvor dele bliver taget ud, tilføjet eller flyttet.
  Programmet skal altså understøtte ovenståede reffrence systemer således
  at det opdateres i det færdige dokument.
  Samtidig skal det levere et produkt der er estetisk tiltalende, dvs sat
  med en sammenhændende typografi.
  Arbejdsgangen i udfærdigelsen af rapporten er ofte mod en deadline (aflevrings
  dato).
- Det man gerne vil som det sidste inden aflevering er at rbejde med inhold,
+ Det man gerne vil som det sidste inden aflevering, er at arbejde med inhold,
  sammenhæng og tilsut korrektur læsning.
- Det man ikke ønsker sig er at dokumnete kræver manule fomatering i større
- omfang.
+ Det man ikke ønsker sig er at dokumnete kræver manule fomatering og typografisk
+ arbejde i større omfang.
  Skrive programmet skal defor håndtere typografien sikkert og så præsis
  at kun få skønheds fejl skal rettes, som for eksempel hjælp til at del
  ord rigtigt.
@@ -377,37 +355,70 @@ Der er mange andre dele i rapport generen fx inholdsfortegnelse, fodnoter,
 Samenarbejde og file håndgering
 \end_layout
 
-\begin_layout Itemize
-Central opvaring af filer.
- Filer skal være tilgængelige for alle sammenarbejds partner
+\begin_layout Description
+Central
+\begin_inset space ~
+\end_inset
+
+opvaring
+\begin_inset space ~
+\end_inset
+
+af
+\begin_inset space ~
+\end_inset
+
+filer.
+ Filer skal være tilgængelige for alle sammenarbejds partner.
 \end_layout
 
-\begin_layout Itemize
-Versions kontrol.
+\begin_layout Description
+Versions
+\begin_inset space ~
+\end_inset
+
+kontrol.
  Filer skal sikres mod uønskede ændringer, og man skal kunne se tidligere
  versiner af dokumnet.
- Det kaldes version kontrol
+ Det kaldes version kontrol.
 \end_layout
 
-\begin_layout Itemize
-Håndtering af konflikter.
+\begin_layout Description
+Håndtering
+\begin_inset space ~
+\end_inset
+
+af
+\begin_inset space ~
+\end_inset
+
+konflikter.
  Et problem der kan opstår når man arbejder flere på samme dokument er at
- der er to der arbrjder på det smatidig på samme og man derved får to versioner
- af samme dokument.
- Det vil jeg kalde en konflikt.
- Der skal extere et sysgtem for hvordan disse håndteres.
+ der er to der arbejder på samme dokument samtidig og der derved biver to
+ versioner af samme dokument.
+ Det kaldes en konflikt.
+ Der skal exciterer et system for hvordan konflikter i dikumenter håndteres.
  Verisons kontrol er her en god start.
 \end_layout
 
-\begin_layout Itemize
-Opdeling i del dokumneter.
- Når man arbejder på et større dokument er det beleliget at opdele dokument
- i mindre filer, fx en fil pr kapitel.
+\begin_layout Description
+Opdeling
+\begin_inset space ~
+\end_inset
+
+i
+\begin_inset space ~
+\end_inset
+
+deldokumneter.
+ Når man arbejder på et større dokument er det belejliget at opdele dokument
+ i mindre filer, fx en file pr kapitel.
  Det gør filer mindre og mere overskuelige, samtidig er den den fordel ved
- at have flere filer at det er muligt at arbejde samtidig på samme hoved
- dokument uden at der opstår konflikter, nemlig ved at man arbejder på hvert
- sit del dokument.Skrive programmet skal derfor understøtte at et dokument
- deles over flere filer.
+ at have flere filer, at det er muligt at arbejde samtidig på samme hoved
+ dokument uden at der opstår konflikter; nemlig ved at man arbejder på hvert
+ sit del dokument.
+ Skrive programmet skal derfor understøtte at et dokument deles over flere
+ filer.
  Samme argument kan tillæges grafik og tabeller, ofte er det en fordel at
  have disse i særskilte filer med link i dokumentet, således at der kan
  arbejde på tabellen, eller grafikken uden at selve dokument ændres.
@@ -416,7 +427,7 @@ Opdeling i del dokumneter.
 
 \begin_layout Standard
 Mens mange af de ting der nævnes ovenfor er specielt vigtige når man arbejde
- flere på et dokumnet e de også nøjtige når man arbejde allene på et støre
+ flere på et dokumnet er de også nyttige når man arbejde alene på et støre
  dokument.
  
 \end_layout
@@ -426,35 +437,67 @@ Løsning
 \end_layout
 
 \begin_layout Standard
-Som skrive program er de gængse office skrive programmer Word, libreoffice,
- pages og andre ikke egnet.
- Systemer for interne refference eksistere men er dårlige og tunge, det
+Som skrive program er de gængse office skrive programmer Word, Libre Office,
+ Pages og andre ikke egnet.
+ Systemer for interne refference eksistere, men er dårlige og tunge, det
  samme med bibliografiske refferencer.
  Figurer og tabellers placering skal foretages manuelt og skifter hver gang
  der redigeres i dokument.
  Typografien overlader alt for meget til brugeren og typisk skal der bruges
  dage som det sidste på at få et støre dokumnet til at se hæderlligt ud
  typografisk set.
- Word har vist understøtning for subdokuments, som jeg ikke har prøvet.
+ Word har vist nok understøtning for underdokumenter, som jeg ikke har prøvet.
  Et alternativ er at bruge Latex, Latex håndtere alle de oventående krav
  på bedste vis.
  Problemet med Latex er indlærings kurve, man har behov for at investerer
  en del tid i at forstå og andvende programmet.
- Et løsning på det probelm er at andvende Lyx der er en front end til latex.
- Lyx har allle Latexs muæigheder men en brugerflade der svare til et WYSIWYG
+ Et løsning på det probelm er at andvende Lyx der er en front end til Latex.
+ Lyx har allle Latexs muligheder, men en brugerflade der svare til et 
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+WYSIWYG
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+What you see is what you get
+\end_layout
+
+\end_inset
+
  skrive program.
  Det er dog ikke helt What you see is what you get.
- Det er WYSIWYM What you see is what you mean: the screen editor have a
- version rendered with a much simpler allgorhitm than the Latex program.
- Only when you need to see the document, it is compiled with Latex mm.
- Der er dog stadig nogel teknioske ting der skal håndters i Lyx som kræver
+ Det er 
+\begin_inset Flex Spaced Low Small Caps
+status open
+
+\begin_layout Plain Layout
+WYSIWYM
+\end_layout
+
+\end_inset
+
+ what you see is what you mean: Det amn ser på skærmen er en tekst editor
+ med en version af dokumnet sat på samme måde som det færdige dokumenthe
+ screen editor have a version rendered with a much simpler allgorhitm than
+ the Latex program.
+ Only when you need to see the document, men sat med en meget simpler algoritme.
+ Selve dokument bliver først sat med Latx når det færdig dokument ønskes.
+ Der er dog stadig nogel tekniske ting der skal håndters i Lyx som kræver
  investering.
- Investeringen kan dog mindskes betragtlig ved at udarbejde en latex klasse
- og tilhørende lysx layout.
+ Investeringen kan dog mindskes betragtlig ved at udarbejde en Latex klasse
+ og tilhørende Lyx layout.
  Og det er her ERMreport kommer ind i billedet.
- ERMreport består af ermreport.cls en latex classe file der opsætter formatet
- for en Miljø og resource projekt rapport og en ermreport.layout der er en
- lyx lauout file der implemetere classen i lyx.
+ ERMreport består af ermreport.cls en latex klasse file der opsætter formatet
+ for en Miljø og resource manamgement projekt rapport og en ermreport.layout
+ der er en lyx lauout file der implemeterer klassen i Lyx.
 \end_layout
 
 \begin_layout Standard
@@ -466,23 +509,27 @@ Samenarbejde og file håndtering.
 \end_layout
 
 \begin_layout Standard
-e.mauils.
- det er helt almindelig at dele filer ved at sende dem rundt med email til
- hinanden efter hånden som man arbejder i dem.
+Måder at dele filer på 
+\end_layout
+
+\begin_layout Description
+e-mails.
+ det er helt almindelig at dele filer ved at sende dem rundt med e-mail
+ til hinanden efter hånden som man arbejder i dem.
  Selv om det sikre backup og en form for versionskontrol (hvis man ikke
- sleter mails) er det den dårligste løsning.
- Der er ikke til at undgå konflikter.
+ sletter mails) er det den dårligste løsning.
+ Det er ikke til at undgå konflikter.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Dropbox.
  Dropbox er rigtig godt til at sørge for at du har automatisk backup af
  dine filer og den har versions kontrol (på websiden).
- Man kan altid finde en tidligere udgave, dog begrænset i tid (tril 4 månder
+ Man kan altid finde en tidligere udgave, dog begrænset i tid (til 4 månder
  tror jeg).
  Man kan også dele filer.
- Hvis man har konfliketer kommer der en ekstra file i dropbox som conflictoing
+ Hvis man har konfliketer kommer der en ekstra file i dropbox som conflicting
  copy.
  Det største fare ved dropbox er hvis en sletter den delte mappe på sin
  computer - det fjerner samtidg alle andres.
@@ -490,18 +537,24 @@ Dropbox.
  Konklusionen er at dropbox i højgrad er brugbar, men ikke ideel.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Google-share.
  Ok hvis man arbejder i google docs.
 \end_layout
 
-\begin_layout Standard
-Git baserede løsninger.
+\begin_layout Description
+Git
+\begin_inset space ~
+\end_inset
+
+baserede
+\begin_inset space ~
+\end_inset
+
+løsninger.
  Git er State of the art indenfor versions kontrol af programering.
- Der er intet i vejen for at bruge det til tekst domkumenter.
- Git arbejder med et lokalt repositorio og it master på internettet.
- Der findes gratis internet resposits som github og bitbucket.
- Vi vil anvende github.
+ Der er intet i vejen for Bitbucket.
+ Vi vil anvende Github.
  
 \end_layout
 
@@ -510,7 +563,8 @@ Dokomentation for ERMreport layout
 \end_layout
 
 \begin_layout Standard
-Den bedtse måde at komme igang er at åbne ermreport skabelon ermreport.lyx.
+Den bedtse måde at komme igang er at åbne ermreport skabelon ermreport.lyx
+ eller hele mappen fra GIT.
 \end_layout
 
 \begin_layout Standard
