@@ -6,13 +6,8 @@
 \usepackage{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{catchfile}
-\newcommand{\getenv}[2][]{%
-  \CatchFileEdef{\temp}{"|kpsewhich --var-value #2"}{}%
-  \if\relax\detokenize{#1}\relax\temp\else\let#1\temp\fi}
 
-\getenv[\HOME]{HOME}
-\addbibresource{\HOME/git/ERMreport/lyx/erm.bib}
+\addbibresource{~/Git/ERMreport/lyx/erm.bib}
 %\setUniversity{Syddansk Universitet, Esbjerg}
 %\setStudy{Environmental and Resource Management}
 %
@@ -52,7 +47,7 @@
 %\trustpage
 
 \begin{resume}
- safasfs \HOME
+ safasfs 
 \end{resume}
 \chapter{Preface}
 
@@ -83,12 +78,13 @@ netus & red & True & 3 & \multicolumn{2}{c}{23}\tabularnewline
 
 \section[Toc]{Section}
 \section[Toc2][head]{Section}
-\appendix
-\ermChapter[To]{Anden}
 \begin{boks}
 \caption{her er caption}
-Lidt tekst \citet{Bringhurst2004,Wilson2009}
+Lidt tekst og lit tekst \citet{Bringhurst2004,Wilson2009}
 \end{boks}
 \printbibliography 
+\appendix
+\ermChapter[To]{Anden}
+
 
 \end{document}
