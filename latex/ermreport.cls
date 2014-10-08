@@ -20,7 +20,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 \LoadClass{memoir}%[⟨date⟩]
-
+\setmarginnotes{17pt}{51pt}{\onelineskip}
 %%% Bibliography
 % utf8 needed for biber
 \RequirePackage[utf8]{inputenc}
@@ -67,6 +67,7 @@
 \DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{\liningnums{#1}}}%
 \DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
+\DeclareRobustCommand{\smallcaps}[1]{{\scshape\MakeTextLowercase{#1}}}
 
 
 % for TOC and friends
@@ -74,7 +75,7 @@
 \renewcommand{\cftchapterfont}[1]{\spacedsmallcaps{#1}}
 \renewcommand{\cftpartfont}[1]{\spacedsmallcaps{#1}}
 \renewcommand{\cftbookfont}[1]{\spacedsmallcaps{#1}}
-
+%\captionnamefont{\textls[80]\scshape\MakeTextLowercase}
 
 %%%%%%%%
 %\newfont{\chapterNumber}{pplr9d scaled 7000}
@@ -313,7 +314,7 @@
 \renewcommand{\tocheadstart}{%
   \parindent\z@
   \parskip\z@
-  \clearpage%
+  \clearforchapter%
 }
 % Making chapter start mainmatter. For Lyx
 \def\ermChapter{%
@@ -477,7 +478,12 @@
 \clearforchapter
 \thispagestyle{empty}
 \vspace*{\fill}
+\calccentering{\unitlength}
+\begin{adjustwidth*}{\unitlength}{-\unitlength}
+\begin{center}
 }{
+\end{center}
+\end{adjustwidth*}
 \vspace*{\fill}\clearpage
 }
 
@@ -556,7 +562,6 @@
 \setfloatadjustment{figure}{\centering}
 \setfloatadjustment{table}{\centering}
 
-\captionnamefont{}
 %%
 \hypersetup{%
     %draft, % = no hyperlinking at all (useful in b/w printouts)

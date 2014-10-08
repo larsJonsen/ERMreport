@@ -8,6 +8,7 @@
 \usepackage{lipsum}
 \addbibresource{~/git/ERMreport/lyx/erm.bib}
 \end_preamble
+\options 11pt,a4paper,biber,note
 \use_default_options true
 \maintain_unincluded_children false
 \language danish
@@ -100,8 +101,13 @@ Lektor Lars Ravn-Jonsen, Syddansk Universitet, Institut for Miljø- og Erhvevsø
 nomi
 \end_layout
 
-\begin_layout Abstract
-Her er en korte redegørelse for hvad jeg har bedrevet,
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Acknowledgment
@@ -130,61 +136,13 @@ key "Wilson2009"
 .
  Implementering bygger på memoir latex classen 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "Wilson2009a"
 
 \end_inset
 
 .
  Jeg takker for allles indsats og glæder mig over ånden i open source.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-listofboxs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset nomencl_print
-LatexCommand printnomenclature
-set_width "auto"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
@@ -318,7 +276,7 @@ Hyperlinks.
  af hypelinks når dokumnet er i pdf udgave, således at man ved et klik kan
  følge henvsningen.
  Litteratur listen forvenes også at have url link til fx 
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Abbreviations
 status open
 
 \begin_layout Plain Layout
@@ -447,24 +405,28 @@ Som skrive program er de gængse office skrive programmer Word, Libre Office,
  dage som det sidste på at få et støre dokumnet til at se hæderlligt ud
  typografisk set.
  Word har vist nok understøtning for underdokumenter, som jeg ikke har prøvet.
- Et alternativ er at bruge Latex, Latex håndtere alle de oventående krav
+ 
+\end_layout
+
+\begin_layout Standard
+Et alternativ er at bruge Latex, Latex håndtere alle de oventående krav
  på bedste vis.
  Problemet med Latex er indlærings kurve, man har behov for at investerer
  en del tid i at forstå og andvende programmet.
  Et løsning på det probelm er at andvende Lyx der er en front end til Latex.
  Lyx har allle Latexs muligheder, men en brugerflade der svare til et 
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Abbreviations
 status open
 
 \begin_layout Plain Layout
-WYSIWYG
+wysiwyg
 \end_layout
 
 \end_inset
 
-
+ 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 What you see is what you get
@@ -475,27 +437,33 @@ What you see is what you get
  skrive program.
  Det er dog ikke helt What you see is what you get.
  Det er 
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Abbreviations
 status open
 
 \begin_layout Plain Layout
-WYSIWYM
+wysiwym
 \end_layout
 
 \end_inset
 
- what you see is what you mean: Det amn ser på skærmen er en tekst editor
- med en version af dokumnet sat på samme måde som det færdige dokumenthe
- screen editor have a version rendered with a much simpler allgorhitm than
- the Latex program.
- Only when you need to see the document, men sat med en meget simpler algoritme.
+ what you see is what you mean: Det der ses på skærmen er en tekst editor
+ med en version af dokumnet sat på samme måde som det færdige dokumen, men
+ sat med en mget simpler algoritme end hvad Latex programet bruger.
  Selve dokument bliver først sat med Latx når det færdig dokument ønskes.
  Der er dog stadig nogel tekniske ting der skal håndters i Lyx som kræver
  investering.
  Investeringen kan dog mindskes betragtlig ved at udarbejde en Latex klasse
  og tilhørende Lyx layout.
- Og det er her ERMreport kommer ind i billedet.
- ERMreport består af ermreport.cls en latex klasse file der opsætter formatet
+ Og det er her 
+\noun on
+erm
+\noun default
+report kommer ind i billedet.
+ 
+\noun on
+erm
+\noun default
+report består af ermreport.cls en latex klasse file der opsætter formatet
  for en Miljø og resource manamgement projekt rapport og en ermreport.layout
  der er en lyx lauout file der implemeterer klassen i Lyx.
 \end_layout
@@ -559,66 +527,166 @@ løsninger.
 \end_layout
 
 \begin_layout Section
-Dokomentation for ERMreport layout
+Dokomentation for 
+\noun on
+erm
+\noun default
+report layout
 \end_layout
 
 \begin_layout Standard
-Den bedtse måde at komme igang er at åbne ermreport skabelon ermreport.lyx
+Den bedste måde at komme igang er at åbne ermreport skabelon ermreport.lyx
  eller hele mappen fra GIT.
+ Hvis skabelonen ikke bruges vær opmærksom på følgende: Encoding skal være
+ Unicode (utf8) da det er nødvendig for at bruge biber og classen derfor
+ loader inputenc med utf8
 \end_layout
 
-\begin_layout Standard
-Hvis skabelonen ikke bruges vær opmærksom på følgende:
+\begin_layout Subsubsection*
+Asfsnits meneuen:
 \end_layout
 
-\begin_layout Standard
-Encoding skal være Unicode (utf8) da det skal være sat for at bruge biber
+\begin_layout Description
+Title
 \end_layout
 
-\begin_layout Standard
-Frontmatter
-\end_layout
-
-\begin_layout Standard
+\begin_deeper
+\begin_layout Description
 Title Sætter opgavens tittel
 \end_layout
 
-\begin_layout Standard
-Subtitle Setter en under tittel med mindre font
+\begin_layout Description
+Subtitle Sætter en under tittel med mindre font
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Date Sætter afleverings dato
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Author Sætter forfatter navne.
  Der kan (i modsætning til standard kalsser) sættes fler forfattere.
  For hver forfatter kan sættes fødsels dato.
  Det gøres ved menuen Insert > Birthday
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Supervisor Sætter vejledere.
  Normalt skrives 'vejleder navn, univeritet, institut'.
  Der kan sættes flere vejledere.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Subject Sætter fagfes tittel fx Projekt 1.
  semester
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Cover Kan bruges hvis ikke man er tilfreds med standard omslag.
  Cover skal have navnet på en pdf file som bliver satg som omslag.
- (undgå undescore og $ i navnet, eller skal det angives som RET)
+ (undgå undescore og $ i navnet, eller skal det angives som ERT)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Declaration Når standard siden med Tro og love er underskrevet indscanes
  den.
  Navnet på pdf-filen angives så her og vil erstate standard siden.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Frontmatter
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Abstract Absract er for et engelsk sammendrag
+\end_layout
+
+\begin_layout Description
+Preface Prefase er for forord, man skal selv give overskrift.
+ Det skaber et kapitel uden nummer der kommer ind i inholdsfortegnelsen.
+ Det kan også bruges til andre frontmater ting som begrebslister.
+ 
+\end_layout
+
+\begin_layout Description
+Dedication Hvis der er nogel værket skal dedikeres ti
+\end_layout
+
+\begin_layout Description
+Acknowledgment Hvis der e rnogle der skal takkes specielt
+\end_layout
+
+\begin_layout Description
+Resumé Resumé er for et dansk sammendrag
+\end_layout
+
+\end_deeper
+\begin_layout Description
+List
+\end_layout
+
+\begin_layout Description
+Bibliography Indsættes hvor litteratur listen skal printes
+\end_layout
+
+\begin_layout Subsubsection*
+Andre mennuer
+\end_layout
+
+\begin_layout Description
+Boks
+\begin_inset space ~
+\end_inset
+
+environmet Insert > Float > Boks insætter et flot boks.
+\end_layout
+
+\begin_layout Description
+Ekstra
+\begin_inset space ~
+\end_inset
+
+fonts Edit > Text styles > Spaced All Caps formatere til 
+\begin_inset Flex Large Heading
+status open
+
+\begin_layout Plain Layout
+store store bokstaver
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Edit > Text styles > Spaced Low Small Caps formatere til 
+\begin_inset Flex Small Heading
+status open
+
+\begin_layout Plain Layout
+små store bogstaver
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Edit > Text styles > Abbreviations formatere til 
+\begin_inset Flex Abbreviations
+status open
+
+\begin_layout Plain Layout
+forkortelser
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -859,7 +927,7 @@ key "Wulff2006,Wilson2009,Langston2004,Chicago2010,Bringhurst2004"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Small Heading
 status open
 
 \begin_layout Plain Layout
@@ -877,7 +945,7 @@ Nulla
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Small Heading
 status open
 
 \begin_layout Plain Layout
@@ -895,7 +963,7 @@ Ipsum
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Small Heading
 status open
 
 \begin_layout Plain Layout
@@ -913,7 +981,7 @@ Congue
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Flex Spaced Low Small Caps
+\begin_inset Flex Small Heading
 status open
 
 \begin_layout Plain Layout

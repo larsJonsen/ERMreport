@@ -141,11 +141,13 @@ ved en fejl i første version fik vi lavet nogle symbolske filer der ikke virker
 
 ```bat
 rmdir %AppData%\LyX2.1\layouts\ermreport.layout
-rmdir %AppData%\LyX2.1\templates\erm.lyx'
+rmdir %AppData%\LyX2.1\templates\erm.lyx
 
 mklink %AppData%\LyX2.1\layouts\ermreport.layout %userprofile%\Git\ERMreport\lyx\ermreport.layout
 mklink %AppData%\LyX2.1\templates\erm.lyx %userprofile%\Git\ERMreport\lyx\erm.lyx
 ```
+
+Køre lyx Tools > Reconfiguer
 
 De første to linjer fjerner de forkerte links. De sidste to danner rigtige symbolske links
 
