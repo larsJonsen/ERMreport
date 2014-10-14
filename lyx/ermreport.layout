@@ -6,36 +6,12 @@
 # feel free to contribute missing features!
 
 Preamble
-%%-- TEMPLATE FOR SECTIONS ----------------------
 
-	% \usepackage{hyperref}
 EndPreamble
-
-
-
-## predefined class options (the class is scrreprt from KOMA Script), all can be overridden
-#ClassOptions
-#  Other		"fontsize=11pt,paper=a4,twoside,openright,titlepage,numbers=noenddot,headinclude,#BCOR=5mm,footinclude=true,cleardoublepage=empty"#
-#  PageStyle	""#
-#  FontSize	""#
-#End#
-#
-## use Latin Modern sans serif
-#AddToPreamble
-#% use Latin Modern instead of Computer Modern sans serif
-#\renewcommand{\sfdefault}{lmss}
-#EndPreamble
 
 Format 49
 
 ## predefined class option
-
-
-#SecNumDepth		2
-#TocDepth		1
-
-
-
 
 Columns            1
 Sides              2
@@ -52,13 +28,11 @@ Provides SetSpace  1
 Provides natbib	1 # Use natbib or biblatex 
 TitleLatexName  "ermFront" 
 
-
 ClassOptions
 	FontSize             9|10|11|12|14|17
 	PageStyle            empty|plain|headings|myheadings|ruled|Ruled|companion
 	Other                "11pt,a4paper,biber"
 End
-
 
 Style Standard
 	Category              MainText
@@ -72,7 +46,6 @@ Style Standard
 	LabelType             No_Label
 End
 
-
 Input stdinsets.inc
 Input stdlists.inc
 Input stdcounters.inc
@@ -84,7 +57,6 @@ Input stdtitle.inc
 Input stdstruct.inc
 #Input lyxmacros.inc
 Input stdlayouts.inc
-
 
 NoStyle Part
 NoStyle Part*  
