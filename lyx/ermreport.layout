@@ -31,8 +31,8 @@ Format 49
 ## predefined class option
 
 
-SecNumDepth		3
-TocDepth		2
+#SecNumDepth		2
+#TocDepth		1
 
 
 
@@ -400,11 +400,12 @@ Float
 	GuiName               Boks
 	Placement             tbp
 	Extension             lob
-	NumberWithin          none
+	NumberWithin          chapter
 	Style                 ruled
 	ListName              "List of Boxes"
 	IsPredefined          true
 	UsesFloatPkg          false
+	ListCommand           listoffboxes
 	RefPrefix             box
 End
 
@@ -480,5 +481,4 @@ InsetLayout Flex:Abbreviations
 	EndHTMLStyle
 	ResetsFont true
 End
-
 

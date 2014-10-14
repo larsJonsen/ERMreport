@@ -1,34 +1,75 @@
-%%%% file ermreport.cls
+ %%%% file ermreport.cls
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ermreport}[2014/08/01 v0.0 erm report]
-
+\ProvidesClass{ermreport}[2014/10/14 v0.1 erm report]
 \newif\if@danish\@danishfalse
 \newif\if@note\@notefalse
 \newif\if@biblatex\@biblatexfalse
 \newif\if@biber\@biberfalse
-
+\newif\if@chapfig\@chapfigfalse
 % ********************************************************************
 % Options
 % ******************************************************************** 
 \DeclareOption{danish}{\@danishtrue%
   \PassOptionsToClass{danish}{memoir}%
-  \PassOptionsToClass{danish}{bable}
+  \PassOptionsToPackage{danish}{bable}
 }
 \DeclareOption{note}{\@notetrue}
 \DeclareOption{biblatex}{\@biblatextrue}
 \DeclareOption{biber}{\@bibertrue}
+\DeclareOption{chapfig}{\@chapfigtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
+% ********************************************************************
+% Package
+% ********************************************************************
 \LoadClass{memoir}%[⟨date⟩]
-\setmarginnotes{17pt}{51pt}{\onelineskip}
-%%% Bibliography
+\RequirePackage{etoolbox}
+\RequirePackage{graphicx}
+\RequirePackage{pdfpages}
+\RequirePackage{hyperref}
+% Palatino with real small caps and old style figures 
+\PassOptionsToPackage{osf,sc}{mathpazo}
+\RequirePackage{mathpazo} 
+\RequirePackage{microtype} 
 % utf8 needed for biber
 \RequirePackage[utf8]{inputenc}
 % qutation marks set to english style even for danish
 \RequirePackage[style=english]{csquotes}
-
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\RequirePackage{xcolor}
+% ********************************************************************
+% Page layout
+% ********************************************************************
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+%% No extra space at '.'
+\frenchspacing
+% *******************************************************************
+% Fonts declaration
+% ********************************************************************
+\linespread{1.05} % a bit more line space for Palatino
+\microtypesetup{expansion=false}%
+% Capital nummbers for all caps headings
+\DeclareRobustCommand\liningnums{\fontfamily{pplx}\selectfont}%
+% Spaced all caps for headings
+\DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[80]{\scshape{#1}}} 
+\DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{\liningnums{#1}}}%
+\DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
+\DeclareRobustCommand{\smallcaps}[1]{{\scshape\MakeTextLowercase{#1}}}
+% Chapter number font
+\newfont{\chapterNumber}{eurb10 scaled 7000}
+% ********************************************************************
+% Colors for hyperlinks and chapter
+% ********************************************************************
+\definecolor{halfgray}{gray}{0.55} % chapter numbers 
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+%\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+% ********************************************************************
+% Bibliography
+% ********************************************************************
 \if@biber
-  %\PassOptionsToPackage{style=authoryear,natbib=true,backend=biber,isbn=false}{biblatex}
   \PassOptionsToPackage{authordate,natbib,backend=biber,isbn=false}{biblatex-chicago}
   \RequirePackage{biblatex-chicago}
 \else
@@ -41,70 +82,9 @@
     \RequirePackage{natbib}
   \fi
 \fi
-
-% Headings for bibliogrphy
-\@ifpackageloaded{biblatex}{
-\DefineBibliographyStrings{danish}{%
-  bibliography = {Litteratur},}
-\DefineBibliographyStrings{english}{%
-  bibliography = {References},}
-}
-
-%% Package
-\RequirePackage{etoolbox}
-\RequirePackage{graphicx}
-\RequirePackage{ifplatform} %for \addbibresource in lyx
-%%%
-\PassOptionsToPackage{osf,sc}{mathpazo}%
-\RequirePackage{mathpazo} % Palatino with real small caps and old style figures
-\linespread{1.05} % a bit more for Palatino
-%%%%%%%%
-\RequirePackage{microtype} 
-\microtypesetup{expansion=false}%
-\newcommand{\liningnums}[1]{%
-    {\fontfamily{pplx}\selectfont #1}}
-\DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[80]{\scshape{#1}}} 
-\DeclareRobustCommand{\spacedcaps}[1]{\textls[160]{\liningnums{#1}}}%
-\DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
-\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
-\DeclareRobustCommand{\smallcaps}[1]{{\scshape\MakeTextLowercase{#1}}}
-
-
-% for TOC and friends
-% Have to be preproced by addcontentsline
-\renewcommand{\cftchapterfont}[1]{\spacedsmallcaps{#1}}
-\renewcommand{\cftpartfont}[1]{\spacedsmallcaps{#1}}
-\renewcommand{\cftbookfont}[1]{\spacedsmallcaps{#1}}
-%\captionnamefont{\textls[80]\scshape\MakeTextLowercase}
-
-%%%%%%%%
-%\newfont{\chapterNumber}{pplr9d scaled 7000}
-\newfont{\chapterNumber}{eurb10 scaled 7000}
-%%%%%%%%
-\PassOptionsToPackage{dvipsnames}{xcolor}
-  \RequirePackage{xcolor} % [dvipsnames] 
-\definecolor{halfgray}{gray}{0.55} % chapter numbers 
-\definecolor{webgreen}{rgb}{0,.5,0}
-\definecolor{webbrown}{rgb}{.6,0,0}
-%\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
-%\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
-%%%
-\RequirePackage{pdfpages}
-
-\RequirePackage{hyperref} 
-
-% hyperef redefines addcontentsline
-% This hack have to be after loading of hyperref
-\let\@tmp\addcontentsline
-\renewcommand{\addcontentsline}[3]{
-\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
-  \ifinlist{#2}{\@list}%
-    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
-    {\@tmp{#1}{#2}{#3}}
-}
-
-
-%%%
+% ********************************************************************
+% Title pages and freinds
+% ********************************************************************
 \newcommand{\maxLength}[2]{%
   \ifdimcomp{#1}{>}{#2}{#1}{#2}
 }
@@ -170,7 +150,6 @@
 }
 % Trust Text
 \newcommand{\setTrustText}[1]{\def\ermTrustText{#1}}
-%
 % Cover
 \newcommand{\coverpage}{%
   \ifdefined\ermCover
@@ -178,7 +157,6 @@
   \else
     \calccentering{\unitlength}
     \begin{adjustwidth*}{\unitlength}{-\unitlength}
-    %\begin{adjustwidth}{-1.5cm}{-1.5cm} 
     \begin{center}
     \vspace*{\fill}
     \spacedallcaps\ermTitle\par
@@ -195,11 +173,9 @@
     \coverLogo
     \thispagestyle{empty}
     \end{center}
-    %\end{adjustwidth}
     \end{adjustwidth*}
   \fi
 }
-%
 % Title page
 \newcommand{\titlepage}{
   \clearforchapter
@@ -214,7 +190,6 @@
     \spacedlowsmallcaps\ermSubtitle\par
   \fi
   \vspace{2em}
-  %\normalsize
   \ifdefined\AuthorList
     \begin{minipage}[t]{\len@Aut}%
           \let\do=\@doList%
@@ -248,9 +223,9 @@
 \newcommand{\trustpage}{%
   \ifdefined\ermTrustpage
     \includepdf{\ermTrustpage}
-    \addcontentsline{toc}{chapter}{\@trustHead}
+    \addcontentsline{toc}{chapter}{\trustHead}
   \else
-    \chapter{\@trustHead}
+    \chapter{\trustHead}
     \vspace*{\fill}
     \begin{quote}
     \ermTrustText\par
@@ -290,12 +265,9 @@
   \end{center}%
   \par
   \vskip 1.5em}
-% Set \addbibresource for lyx
-\newcommand*{\setBibsource}[2]{%
-  \ifwin­dows\addbibresource{#1}
-  \else\addbibresource{#2}\fi
-}
-
+% ********************************************************************
+% Specific for lyx
+% ********************************************************************
 % Gluing evrything togheteher, for LYX
 \newcommand{\ermFront}{%
   \if@note
@@ -308,13 +280,6 @@
     \titlepage
     \trustpage
   \fi
-}
-
-% Table of content and friends
-\renewcommand{\tocheadstart}{%
-  \parindent\z@
-  \parskip\z@
-  \clearforchapter%
 }
 % Making chapter start mainmatter. For Lyx
 \def\ermChapter{%
@@ -335,34 +300,163 @@
   \fi
   \chapter[#1][#2]{#3}%   
 }
-% If note, a article style 
+% If note, normal article style 
 \if@note
   \let\ermChapter=\chapter
 \fi
-
-\newcommand{\boxname}{Box}
-\newcommand{\listboxname}{List of boxes}
-\newlistof{listofboxs}{lob}{\listboxname}
+% ********************************************************************
+%Abstract and freinds
+% ********************************************************************
+\renewenvironment{abstract}{%
+  \chapter*{\abstractHead}
+}{}
+\newenvironment{resume}{%
+  \chapter*{\resumeHead}
+}{}
+\newenvironment{dedication}{%
+  \clearforchapter
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength}{-\unitlength}
+  \begin{center}
+}{
+  \end{center}
+  \end{adjustwidth*}
+  \vspace*{\fill}\clearpage
+}
+\newenvironment{acknowledgment}{%
+  \chapter*{\acknowledgmentHead}
+}{}
+% Start apendix with a appendix page
+\appto\appendix{\appendixpage}
+% ********************************************************************
+% Flots and capiton
+% ********************************************************************
+% New boxfloat speled boks
+\newlistof{listoffboxes}{lob}{\listboxname}
 \newfloat[chapter]{boxx}{lob}{\boxname}
-%\newfixedcaption{\fboxcaption}{boks}
-\newlistentry{boks}{lob}{0}
-
+\newlistentry{boxx}{lob}{0}
 \newenvironment{boks}%
   {\begin{boxx}\begin{framed}}
   {\end{framed}\end{boxx}}
+%  Center figures and tables
+\setfloatadjustment{figure}{\centering}
+\setfloatadjustment{table}{\centering}
+\if@chapfig%
+  \relax
+\else
+  \counterwithout{figure}{chapter}
+  \counterwithout{table}{chapter}
+  \counterwithout{boxx}{chapter}
+  \renewcommand\@memfront@floats{}
+  \renewcommand\@memmain@floats{}
+  \renewcommand\@memback@floats{}
+\fi
 
+% Tabular with math numbers
+\BeforeBeginEnvironment{tabular}{\liningnums}
+\BeforeBeginEnvironment{tabular*}{\liningnums}
+% Captions 
+\captionnamefont{\scshape\lsstyle}
+% Captionname have to be set in lower case
+% It have to be done after begin document else 
+% bable change it
+% ********************************************************************
+% TOC and friends
+% ********************************************************************
+\renewcommand{\tocheadstart}{%
+  \parindent\z@
+  \parskip\z@
+  \clearforchapter%
+}
+\renewcommand{\lofheadstart}{%
+  \parindent\z@
+  \parskip\z@
+  \clearpage%
+}
+\renewcommand{\lotheadstart}{%
+  \parindent\z@
+  \parskip\z@
+  \clearpage%
+}
+\renewcommand{\lobheadstart}{%
+  \parindent\z@
+  \parskip\z@
+  \clearpage%
+}
+% Small all caps for book part and chpater. 
+% Tolowercase have to be preproced before add contentsline
+\renewcommand{\cftchapterfont}[1]{\spacedsmallcaps{#1}}
+\renewcommand{\cftpartfont}[1]{\spacedsmallcaps{#1}}
+\renewcommand{\cftbookfont}[1]{\spacedsmallcaps{#1}}
+% TOC with numbers after heading. Number space all caps
+\def\tocspace{\hspace{.4em}} 
+\renewcommand{\cftchapterleader}{\tocspace}
+\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+\renewcommand{\cftchapterpagefont}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsectionleader}{\tocspace}
+\renewcommand{\cftsectionpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsectionafterpnum}{\cftparfillskip}
+\renewcommand{\cftsectionpagefont}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsubsectionleader}{\tocspace}
+\renewcommand{\cftsubsectionpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsubsectionafterpnum}{\cftparfillskip}
+\renewcommand{\cftsubsubsectionleader}{\tocspace}
+\renewcommand{\cftsubsubsectionpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsubsubsectionafterpnum}{\cftparfillskip}
+\renewcommand{\cftparagraphleader}{\tocspace}
+\renewcommand{\cftparagraphpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftparagraphafterpnum}{\cftparfillskip}
+\renewcommand{\cftsubparagraphleader}{\tocspace}
+\renewcommand{\cftsubparagraphpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftsubparagraphafterpnum}{\cftparfillskip}
+\renewcommand{\cftfigureleader}{\tocspace}
+\renewcommand{\cftfigurepresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftfigureafterpnum}{\cftparfillskip}
+\renewcommand{\cfttableleader}{\tocspace}
+\renewcommand{\cfttablepresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cfttableafterpnum}{\cftparfillskip}
+\renewcommand{\cftboxxleader}{\tocspace}
+\renewcommand{\cftboxxpresnum}{\scshape\MakeTextLowercase}
+\renewcommand{\cftboxxafterpnum}{\cftparfillskip}
+\if@chapfig%
+  \setlength{\cftfigurenumwidth}{\cftsectionnumwidth}
+  \setlength{\cfttablenumwidth}{\cftsectionnumwidth}
+  \setlength{\cftboxxnumwidth}{\cftsectionnumwidth}
+\else
+  \setlength{\cftfigurenumwidth}{\cftchapternumwidth}
+  \setlength{\cfttablenumwidth}{\cftchapternumwidth}
+  \setlength{\cftboxxnumwidth}{\cftchapternumwidth}
+\fi
+
+% This hack have to be after loading of hyperref
+\let\@tmp\addcontentsline
+\renewcommand{\addcontentsline}[3]{
+\forcsvlist{\listadd\@list}{book, part, chapter, appendix}
+  \ifinlist{#2}{\@list}%
+    {\@tmp{#1}{#2}{\texorpdfstring{\MakeTextLowercase{#3}}{#3}}}
+    {\@tmp{#1}{#2}{#3}}
+}  
+% ********************************************************************
 % Pagestyle
-%% Bringhurst page style
+% ********************************************************************
+% Bringhurst page style
 \newlength{\bringi}
 \newlength{\bringii}
 \newlength{\bringiii}
 \newlength{\bringiv}
-\makepagestyle{bringhurst}
-\makeevenfoot{bringhurst}{\thepage}{}{}
-\makeoddfoot{bringhurst}{}{}{\thepage}
 \setlength{\bringi}{\headsep}
 \addtolength{\bringi}{\topskip}
 \addtolength{\bringi}{7.3\onelineskip}
+\setlength{\bringii}{\marginparsep}
+\addtolength{\bringii}{\marginparwidth}
+\setlength{\bringiii}{\textwidth}
+\addtolength{\bringiii}{\marginparsep}
+\setlength{\bringiv}{7.3\onelineskip}
+\makepagestyle{bringhurst}
+\makeevenfoot{bringhurst}{\thepage}{}{}
+\makeoddfoot{bringhurst}{}{}{\thepage}
 \newcommand{\bringpicr}[1]{%
   \setlength{\unitlength}{1pt}
   \begin{picture}(0,0)
@@ -372,10 +466,7 @@
     \end{minipage}
     }
   \end{picture}
-}
-       
-\setlength{\bringii}{\marginparsep}
-\addtolength{\bringii}{\marginparwidth}
+}      
 \newcommand{\bringpicl}[1]{%
   \setlength{\unitlength}{1pt}
   \begin{picture}(0,0)
@@ -392,13 +483,10 @@
 }    
 \makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
 \makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
-\pagestyle{bringhurst}
-
-\setlength{\bringiii}{\textwidth}
-\addtolength{\bringiii}{\marginparsep}
-\setlength{\bringiv}{7.3\onelineskip}
-%%%%%%%%%%
-%% Chapterstyle modifyed bringhust from memoir
+% ********************************************************************
+% Chapterstyles
+% ********************************************************************
+% Chapterstyle modifyed bringhust from memoir
 \makechapterstyle{Bringhurst}{%
   \chapterstyle{default}
   \renewcommand*{\chapterheadstart}{}
@@ -417,8 +505,7 @@
     \memRTLraggedright\spacedallcaps{##1}}
   \renewcommand*{\afterchaptertitle}{%
   \vskip\onelineskip \hrule\vskip\onelineskip}}
- 
- %% Bringhurst chapter style as in memoir, but with number
+ % Bringhurst chapter style as in memoir, but with number
  \makechapterstyle{note}{%
    \chapterstyle{default}
   \renewcommand*{\chapterheadstart}{}
@@ -432,8 +519,9 @@
   \vskip\onelineskip \hrule\vskip\onelineskip}
   \renewcommand\clearforchapter{\vspace{4\onelineskip}}
 }
-%%%%%%%%%
-
+% ********************************************************************
+% Headstyle
+% ********************************************************************
 \makeheadstyles{Bringhurst}{%
   \chapterstyle{Bringhurst}
   \setbeforesecskip{-1\onelineskip
@@ -457,123 +545,24 @@
                         \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
   \setaftersubparaskip{-1em}%
   \setsubparaheadstyle{\normalfont\normalsize\itshape\addperiod}}
-
+%
+% ********************************************************************
+% Layout
+% ********************************************************************
+\pagestyle{bringhurst}
 \headstyles{Bringhurst}
 \if@note\chapterstyle{note}\fi
-%% No extra space at '.'
-\frenchspacing
-
-  
-
-%%%%%%%% 
-\renewenvironment{abstract}{%
-\chapter*{\@abstractHead}
-}{}
-
-\newenvironment{resume}{%
-\chapter*{\@resumeHead}
-}{}
-
-\newenvironment{dedication}{%
-\clearforchapter
-\thispagestyle{empty}
-\vspace*{\fill}
-\calccentering{\unitlength}
-\begin{adjustwidth*}{\unitlength}{-\unitlength}
-\begin{center}
-}{
-\end{center}
-\end{adjustwidth*}
-\vspace*{\fill}\clearpage
-}
-
-\newenvironment{acknowledgment}{%
-\chapter*{\@acknowledgmentHead}
-}{}
-
-
-\newcommand{\@dedicationHead}{Dedication}
-\newcommand{\@resumeHead}{Resumé}
-\newcommand{\@abstractHead}{Abstract}
-\newcommand{\@trustHead}{Declaration}
-\newcommand{\@acknowledgmentHead}{Acknowledgment}
-
-%%%%%% Standard text input
-
-\if@danish
-  \setUniversity{Syddansk Universitet, Esbjerg}
-  \setStudy{Milj\o{} og Resource Management}
-  \setTrustText{Det erkl\ae{}res herved p\aa{} tro og love, at undertegnede egenh\ae{}ndigt og selvst\ae{}ndigt har udformet denne rapport. Alle citater i teksten er markeret som s\aa{}danne, og rapporten eller v\ae{}sentlige dele af den har ikke tidligere v\ae{}ret fremlagt i anden bed\o{}mmelsessammenh\ae{}ng.}
-  \setSupervisorText{Vejleder:}{Vejledere:}
-  \setTitle{Dette ufattelige store projekt som jeg har arbejdet p\aa{} b\aa{}de dag og nat for s\aa{} l\ae{}nge og som endelig er overst\aa{}et}
-  \setDate{}
-  \setPlace{Esbjerg}
-  \setSubject{}
-  \renewcommand{\boxname}{Boks}
-  %\newcommand*{\abstractname}{Abstract}
-  % from memoir
-\renewcommand*{\contentsname}{Indhold}
-\renewcommand*{\listfigurename}{Figure}
-\renewcommand*{\listtablename}{Tabeler}
-\renewcommand*{\bookname}{Bog}
-\renewcommand*{\partname}{Part}
-\renewcommand*{\chaptername}{Kapitel}
-\renewcommand*{\appendixname}{Bilag}
-\renewcommand*{\appendixtocname}{Bilag}
-\renewcommand*{\appendixpagename}{Bilag}
-\renewcommand*{\bibname}{Litteratur}
-\renewcommand*{\indexname}{Indeks}
-\renewcommand*{\glossaryname}{Forkortelser}
-\renewcommand*{\figurename}{Figur}
-\renewcommand*{\tablename}{Tabel}
-\renewcommand*{\figurerefname}{Figur}
-\renewcommand*{\tablerefname}{Tabel}
-\renewcommand*{\pagename}{side}
-\renewcommand*{\pagerefname}{side}
-\renewcommand*{\bookrefname}{Bog~}
-\renewcommand*{\partrefname}{Part~}
-\renewcommand*{\chapterrefname}{Kapitel~}
-\renewcommand*{\@trustHead}{Tro og love}
-\renewcommand*{\@dedicationHead}{Tilegnet}
-\renewcommand*{\@acknowledgmentHead}{Anerkendelse}
-%\renewcommand*{\sectionrefname}{\S}
-\renewcommand*{\appendixrefname}{Bilag~}
-\else
-  \setUniversity{University of Southern Denmark, Esbjerg}
-  \setStudy{Environmental and Resource Management}
-  \setTrustText{I hereby solemnly declare that I have personally and independently prepared this paper. All quotations in the text have been marked as such, and the paper or considerable parts of it have not previously been subject to any examination or assessment.}
-  \setSupervisorText{Supervisor:}{Supervisors:}
-  \setTitle{An Incredible Piece of Work over Which I have Struggled
-   Day and Night for Far Too Long and now It is Over}
-  \setDate{}
-  \setPlace{Esbjerg}
-  \setSubject{}
-\fi
-
-\appto\appendix{\appendixpage}
-
-
-%%  Center figures and tables
-
- \renewcommand\@memmain@floats{%
-   \counterwithout{figure}{chapter} 
-   \counterwithout{table}{chapter}}   
-
-\setfloatadjustment{figure}{\centering}
-\setfloatadjustment{table}{\centering}
-
-%%
+\maxsecnumdepth{subsection}
+\settocdepth{section}
+% ********************************************************************
+% Hyperref setup
+% ********************************************************************
 \hypersetup{%
-    %draft, % = no hyperlinking at all (useful in b/w printouts)
     colorlinks=true, pdfstartpage=3, pdfstartview=FitV,%, linktocpage=true
-    % uncomment the following line if you want to have black links (e.g., for printing)
-    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,%
     breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
     plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-    hypertexnames=true, pdfhighlight=/O,
-    pdfdisplaydoctitle=true,%nesting=true,%frenchlinks,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
-    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    hypertexnames=true, pdfhighlight=/O, pdfdisplaydoctitle=true,
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, 
 }
 \newcommand{\pdfsetup}{
   \ifdefined\AuthorList
@@ -587,10 +576,79 @@
     pdfauthor={\textcopyright\ermAuthors},%
     pdfsubject={\ermSubject, \ermStudy, \ermUniversity},%
     pdfkeywords={},%
-    %pdfcreator={pdfLaTeX},%
-    %pdfproducer={LaTeX with hyperref and classicthesis}%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and ERMreport}%
 }}
-%% Refstyle
+% ********************************************************************
+% Standard text input
+% ********************************************************************
+\newcommand{\resumeHead}{Resumé}
+\newcommand{\abstractHead}{Abstract}
+\newcommand{\trustHead}{Declaration}
+\newcommand{\acknowledgmentHead}{Acknowledgment}
+\newcommand{\boxname}{box}
+\newcommand{\listboxname}{List of boxes}
+%
+\if@danish
+  \setUniversity{Syddansk Universitet, Esbjerg}
+  \setStudy{Milj\o{} og Resource Management}
+  \setTrustText{Det erkl\ae{}res herved p\aa{} tro og love, at undertegnede egenh\ae{}ndigt og selvst\ae{}ndigt har udformet denne rapport. Alle citater i teksten er markeret som s\aa{}danne, og rapporten eller v\ae{}sentlige dele af den har ikke tidligere v\ae{}ret fremlagt i anden bed\o{}mmelsessammenh\ae{}ng.}
+  \setSupervisorText{Vejleder:}{Vejledere:}
+  \setTitle{Dette ufattelige store projekt som jeg har arbejdet p\aa{} b\aa{}de dag og nat for s\aa{} l\ae{}nge og som endelig er overst\aa{}et}
+  \setDate{}
+  \setPlace{Esbjerg}
+  \setSubject{}
+  \renewcommand{\boxname}{boks}
+  \renewcommand*{\contentsname}{Indhold}
+  \renewcommand*{\listfigurename}{Figure}
+  \renewcommand*{\listtablename}{Tabeler}
+  \renewcommand*{\listboxname}{Bokse}
+  \renewcommand*{\bookname}{Bog}
+  \renewcommand*{\partname}{Part}
+  \renewcommand*{\chaptername}{Kapitel}
+  \renewcommand*{\appendixname}{Bilag}
+  \renewcommand*{\appendixtocname}{Bilag}
+  \renewcommand*{\appendixpagename}{Bilag}
+  \renewcommand*{\bibname}{Litteratur}
+  \renewcommand*{\indexname}{Indeks}
+  \renewcommand*{\glossaryname}{Forkortelser}
+  \renewcommand*{\figurerefname}{Figur}
+  \renewcommand*{\tablerefname}{Tabel}
+  \renewcommand*{\pagename}{side}
+  \renewcommand*{\pagerefname}{side}
+  \renewcommand*{\bookrefname}{Bog~}
+  \renewcommand*{\partrefname}{Part~}
+  \renewcommand*{\chapterrefname}{Kapitel~}
+  \renewcommand*{\trustHead}{Tro og love}
+  \renewcommand*{\acknowledgmentHead}{Anerkendelse}
+  \renewcommand*{\appendixrefname}{Bilag~}
+  \AfterEndPreamble{% set after bable to lower small case
+    \renewcommand*{\figurename}{figur}
+    \renewcommand*{\tablename}{\MakeTextLowercase{tabel}}
+  }
+\else
+  \setUniversity{University of Southern Denmark, Esbjerg}
+  \setStudy{Environmental and Resource Management}
+  \setTrustText{I hereby solemnly declare that I have personally and independently prepared this paper. All quotations in the text have been marked as such, and the paper or considerable parts of it have not previously been subject to any examination or assessment.}
+  \setSupervisorText{Supervisor:}{Supervisors:}
+  \setTitle{An Incredible Piece of Work over Which I have Struggled
+   Day and Night for Far Too Long and now It is Over}
+  \setDate{}
+  \setPlace{Esbjerg}
+  \setSubject{}
+  \AfterEndPreamble{% set after bable to lower small case
+    \renewcommand*{\figurename}{figure}
+    \renewcommand*{\tablename}{\MakeTextLowercase{table}}
+  }
+\fi
+% Headings for bibliogrphy
+\@ifpackageloaded{biblatex}{
+\DefineBibliographyStrings{danish}{%
+  bibliography = {Litteratur},}
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},}
+}
+%% For Refstyle
 \AtEndPreamble{%
   \@ifpackageloaded{refstyle}{
     % No \S in sections
@@ -624,11 +682,9 @@
       \def\RSBoxtxt{Box~}%
     \def\RSBoxstxt{Boxes~}%
     }
-  }
+  }{}
 }
-
-
-\maxsecnumdepth{subsection}
+%
 \endinput
 %% End of file `ermreport.cls'.
 
