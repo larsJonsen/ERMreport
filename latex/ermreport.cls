@@ -26,6 +26,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 \RequirePackage{pdfpages}
+\PassOptionsToClass{breaklinks}{hyperref}
 \RequirePackage{hyperref}
 % Palatino with real small caps and old style figures 
 \PassOptionsToPackage{osf,sc}{mathpazo}
@@ -40,13 +41,22 @@
 % ********************************************************************
 % Page layout
 % ********************************************************************
+\setlxvchars %65 characters
+\linespread{1.05}\selectfont % a bit more line space for Palatino
+\newlength{\text@height}
+\setlength{\text@height}{39\baselineskip}
+\addtolength{\text@height}{\topskip} %40 lines
+\settypeblocksize{\text@height}{1.08\lxvchars}{*}
+\setlrmargins{*}{*}{1.5}
+\setulmargins{*}{*}{1.5}
 \setmarginnotes{17pt}{51pt}{\onelineskip}
+\checkandfixthelayout
 %% No extra space at '.'
 \frenchspacing
 % *******************************************************************
 % Fonts declaration
 % ********************************************************************
-\linespread{1.05} % a bit more line space for Palatino
+
 \microtypesetup{expansion=false}%
 % Capital nummbers for all caps headings
 \DeclareRobustCommand\liningnums{\fontfamily{pplx}\selectfont}%
@@ -148,6 +158,8 @@
   \hfill
   \includegraphics[width=0.44\textwidth]{aau_logo}
 }
+% Colophon text
+\newcommand{\setColophon}[1]{\def\ermColophonText{#1}}
 % Trust Text
 \newcommand{\setTrustText}[1]{\def\ermTrustText{#1}}
 % Cover
@@ -219,6 +231,24 @@
   \titleLogo
   \end{center}
 }
+% Colophon
+\newcommand{\colophon}{%
+  \ifdefined\ermColophonText
+    \clearpage
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \calccentering{\unitlength}
+    \begin{adjustwidth*}{\unitlength}{-\unitlength}
+    \begin{center}
+    \ermColophonText
+    \end{center}
+    \end{adjustwidth*}
+    \vfill
+    \vspace*{\fill}
+  \else
+    \relax
+  \fi
+}
 % Declaration page
 \newcommand{\trustpage}{%
   \ifdefined\ermTrustpage
@@ -248,6 +278,7 @@
 \newcommand{\notetitlepage}{%
   \newpage
   \null
+  \thispagestyle{plain}
   \vskip 2em%
   \begin{center}%
   \let \footnote \thanks
@@ -272,12 +303,14 @@
 \newcommand{\ermFront}{%
   \if@note
     \pdfsetup
+    \mainmatter
     \notetitlepage
   \else
     \pdfsetup
     \coverpage
     \frontmatter
     \titlepage
+    \colophon
     \trustpage
   \fi
 }
@@ -303,6 +336,7 @@
 % If note, normal article style 
 \if@note
   \let\ermChapter=\chapter
+  \aliaspagestyle{chapter}{note}
 \fi
 % ********************************************************************
 %Abstract and freinds
@@ -478,11 +512,31 @@
   \end{picture}
 }
 \makepsmarks{bringhurst}{%
+  \nouppercaseheads
   \def\chaptermark##1{\markboth{##1}{##1}}
   \def\sectionmark##1{\markright{##1}}
 }    
-\makeevenhead{bringhurst}{\bringpicl{\rightmark}}{}{}
-\makeoddhead{bringhurst}{}{}{\bringpicr{\leftmark}}
+\makeevenhead{bringhurst}{\bringpicl{\leftmark}}{}{}
+\makeoddhead{bringhurst}{}{}{\bringpicr{\rightmark}}
+% note chapter page style
+\makepagestyle{note}
+\makeevenfoot{note}{\thepage}{}{}
+\makeoddfoot{note}{}{%
+  \ifnum\value{page} = 1 \thepage\fi}{%
+  \ifnum\value{page} = 1 \relax\else\thepage\fi}
+\makepsmarks{note}{%
+  \nouppercaseheads
+  \def\chaptermark##1{\markboth{##1}{##1}}
+  \def\sectionmark##1{\markright{##1}}
+}    
+\makeevenhead{note}{\bringpicl{\leftmark}}{}{}
+\makeoddhead{note}{}{}{%
+  \ifnum\value{page} = 1 
+    \relax
+  \else
+    \bringpicr{\rightmark}
+  \fi}
+%
 % ********************************************************************
 % Chapterstyles
 % ********************************************************************
@@ -516,7 +570,8 @@
   \renewcommand*{\printchaptertitle}[1]{%
     \memRTLraggedright\spacedallcaps{##1}}
   \renewcommand*{\afterchaptertitle}{%
-  \vskip\onelineskip \hrule\vskip\onelineskip}
+  \par\nobreak\vskip\onelineskip \hrule\par\nobreak\vskip\onelineskip
+  }
   \renewcommand\clearforchapter{\vspace{4\onelineskip}}
 }
 % ********************************************************************
@@ -641,12 +696,20 @@
     \renewcommand*{\tablename}{\MakeTextLowercase{table}}
   }
 \fi
-% Headings for bibliogrphy
+% Bibliography
 \@ifpackageloaded{biblatex}{
-\DefineBibliographyStrings{danish}{%
-  bibliography = {Litteratur},}
-\DefineBibliographyStrings{english}{%
-  bibliography = {References},}
+  % Headings for bibliography
+  \DefineBibliographyStrings{danish}{%
+    bibliography = {Lit\-te\-ra\-tur},}
+  \DefineBibliographyStrings{danish}{%
+    andothers = {et\addabbrvspace al\adddot}
+  }
+  \DefineBibliographyStrings{english}{%
+    bibliography = {References},}
+  % To let biblatex divide urls
+  \setcounter{biburlnumpenalty}{100}
+  \setcounter{biburlucpenalty}{100}
+  \setcounter{biburllcpenalty}{100}
 }
 %% For Refstyle
 \AtEndPreamble{%
