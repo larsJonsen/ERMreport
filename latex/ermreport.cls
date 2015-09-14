@@ -38,6 +38,7 @@
 \RequirePackage[style=english]{csquotes}
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \RequirePackage{xcolor}
+\usepackage{relsize}
 % ********************************************************************
 % Page layout
 % ********************************************************************
@@ -66,6 +67,41 @@
 \DeclareRobustCommand{\spacedallcaps}[1]{\spacedcaps{\MakeTextUppercase{#1}}}%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{\spacedsmallcaps{\MakeTextLowercase{#1}}}
 \DeclareRobustCommand{\smallcaps}[1]{{\scshape\MakeTextLowercase{#1}}}
+\DeclareRobustCommand{\smalcapsit}[1]{\textit{\textbf{\MakeUppercase{\smaller[2]#1}}}}
+
+\newcommand*\scit{%
+        \begingroup
+        %\let\templettercommand#1%
+        %\let\tempspacecommand#2%
+        \catcode`\ 12
+        \foreachlettergo
+}
+\def\foreachlettergo#1{%
+        \testletter#1\relax
+        \endgroup
+}
+\def\testletter#1#2\relax{%
+  \if#1\otherspace
+    { }
+   \else
+    \ifnum9<1#1
+      \textit#1%
+    \else
+      \smalcapsit{#1}%
+    \fi
+  \fi
+  \ifx\relax#2\relax
+          \let\next\relax
+  \else
+          \let\next\testletter
+  \fi
+  \next#2\relax
+}
+
+\catcode`\ 12
+\def\otherspace{ }%
+\catcode`\ 10
+
 % Chapter number font
 \newfont{\chapterNumber}{eurb10 scaled 7000}
 % ********************************************************************
@@ -336,7 +372,7 @@
 % If note, normal article style 
 \if@note
   \let\ermChapter=\chapter
-  \aliaspagestyle{chapter}{note}
+  \aliaspagestyle{chapter}{simple}
 \fi
 % ********************************************************************
 %Abstract and freinds
@@ -536,6 +572,15 @@
   \else
     \bringpicr{\rightmark}
   \fi}
+%simple
+\makepagestyle{simple}
+\makeevenfoot{simple}{\thepage}{}{}
+\makeoddfoot{simple}{}{%
+  \ifnum\value{page} = 1 \thepage\fi}{%
+  \ifnum\value{page} = 1 \relax\else\thepage\fi}
+\makeevenhead{simple}{}{}{}
+\makeoddhead{simple}{}{}{}
+
 %
 % ********************************************************************
 % Chapterstyles
@@ -604,9 +649,13 @@
 % ********************************************************************
 % Layout
 % ********************************************************************
-\pagestyle{bringhurst}
 \headstyles{Bringhurst}
-\if@note\chapterstyle{note}\fi
+\if@note
+  \chapterstyle{note}
+  \pagestyle{simple}
+\else
+  \pagestyle{bringhurst}
+\fi
 \maxsecnumdepth{subsection}
 \settocdepth{section}
 % ********************************************************************
