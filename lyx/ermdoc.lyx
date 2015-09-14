@@ -6,7 +6,7 @@
 \begin_preamble
 %\usepackage{doi}
 \usepackage{lipsum}
-\addbibresource{~/git/ERMreport/lyx/erm.bib}
+\addbibresource{erm.bib}
 \end_preamble
 \options 11pt,a4paper,biber,note
 \use_default_options true
