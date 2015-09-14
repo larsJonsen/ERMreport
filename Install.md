@@ -53,4 +53,4 @@ Start lyx: Når lyx starter første gang tager det noget tid hav tålmodighed. -
 
 Når lyx endelig starter tryk på øjnene øverst til venstre, MikTex vil igen installerer nogle pakker sig trygt ja til det og læs det pdf dokument der åbnes i acrobat reader
 
-[Instalation af SourceTree og ERMreport pakker](SourceTreeInstall.md)
+[Instalation af SourceTree og ERMreport pakker](SourcTreeInstall.md)
